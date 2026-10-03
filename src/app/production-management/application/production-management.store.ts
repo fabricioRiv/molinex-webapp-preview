@@ -12,6 +12,7 @@ export type ProductionManagementOperationError =
   | 'create-batch'
   | 'create-reception'
   | 'create-record'
+  | 'update-record'
   | 'load-batches'
   | 'load-receptions'
   | 'load-records';
@@ -84,6 +85,24 @@ export class ProductionManagementStore {
           this.#completeRequest();
         },
         error: () => this.#failRequest('create-record'),
+      });
+  }
+
+  updateProductionRecord(productionRecord: ProductionRecord): void {
+    this.#startRequest();
+    this.#productionManagementApi
+      .updateProductionRecord(productionRecord)
+      .pipe(retry(REQUEST_RETRY_COUNT))
+      .subscribe({
+        next: (updatedProductionRecord) => {
+          this.#productionRecordsSignal.update((records) =>
+            records.map((record) =>
+              record.id === updatedProductionRecord.id ? updatedProductionRecord : record,
+            ),
+          );
+          this.#completeRequest();
+        },
+        error: () => this.#failRequest('update-record'),
       });
   }
 

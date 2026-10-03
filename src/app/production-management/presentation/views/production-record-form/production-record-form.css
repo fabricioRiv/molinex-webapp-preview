@@ -87,6 +87,23 @@ form {
   padding: 0.9rem 1rem;
 }
 
+.form-state {
+  align-items: center;
+  background: var(--molinex-surface);
+  border: 1px solid var(--molinex-border);
+  border-radius: 1rem;
+  color: var(--molinex-text-secondary);
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+  min-height: 12rem;
+  padding: 1.5rem;
+}
+
+.form-state--error {
+  color: var(--molinex-critical);
+}
+
 @media (max-width: 600px) {
   form {
     padding: 1rem;

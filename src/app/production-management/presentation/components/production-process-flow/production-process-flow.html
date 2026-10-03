@@ -37,6 +37,13 @@
               {{ record.details.startedAt | date: 'MMM d, HH:mm' }}
             </time>
           </div>
+          <a
+            mat-icon-button
+            [routerLink]="['/production/records', record.id, 'edit']"
+            [attr.aria-label]="'production-overview.processes.edit' | translate"
+          >
+            <span class="material-symbols-outlined" aria-hidden="true">edit</span>
+          </a>
         </div>
       }
     </div>

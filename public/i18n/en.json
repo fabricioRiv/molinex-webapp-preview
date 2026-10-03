@@ -134,15 +134,19 @@
     },
     "processes": {
       "record": "Record process",
-      "empty": "No production processes recorded for this batch."
+      "empty": "No production processes recorded for this batch.",
+      "edit": "Edit production process"
     }
   },
   "production-record": {
     "eyebrow": "Production Management",
     "new-title": "Record production process",
+    "edit-title": "Edit production process",
     "description": "Associate the process information with its production batch.",
+    "edit-description": "Correct the permitted process data while keeping its production batch.",
     "batch": "Production batch",
     "selected-batch": "Selected batch",
+    "batch-locked": "The related batch cannot be changed during an update.",
     "process-name": "Process name",
     "processed-weight": "Processed weight",
     "unit": "Unit of measurement",
@@ -150,7 +154,10 @@
     "finished-at": "Finish date and time (optional)",
     "status": "Process status",
     "create": "Record process",
+    "update": "Save changes",
     "cancel": "Cancel",
+    "loading": "Loading production process...",
+    "back": "Return to production",
     "units": {
       "KILOGRAM": "Kilograms",
       "METRIC_TON": "Metric tons"
@@ -166,7 +173,9 @@
       "processed-weight": "Enter a processed weight greater than zero.",
       "started-at": "Enter the process start date and time.",
       "finished-at": "The finish time cannot precede the start time.",
-      "create": "The production process could not be recorded."
+      "create": "The production process could not be recorded.",
+      "update": "The production process could not be updated.",
+      "not-found": "The requested production process was not found."
     }
   },
   "raw-material-receptions": {
