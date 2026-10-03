@@ -1,4 +1,4 @@
-import { computed, DestroyRef, inject, Injectable, Signal, signal } from '@angular/core';
+import { computed, DestroyRef, inject, Injectable, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { retry } from 'rxjs';
 import { ProductionBatch } from '../domain/model/production-batch.entity';
@@ -7,8 +7,7 @@ import { ProductionManagementApi } from '../infrastructure/production-management
 
 const REQUEST_RETRY_COUNT = 2;
 
-export type ProductionBatchOperationError =
-  'create' | 'delete' | 'load-batches' | 'load-receptions' | 'update';
+export type ProductionBatchOperationError = 'create' | 'load-batches' | 'load-receptions';
 
 @Injectable({ providedIn: 'root' })
 export class ProductionManagementStore {
@@ -32,10 +31,6 @@ export class ProductionManagementStore {
     this.#loadRawMaterialReceptions();
   }
 
-  getProductionBatchById(id: number): Signal<ProductionBatch | undefined> {
-    return computed(() => this.productionBatches().find((batch) => batch.id === id));
-  }
-
   addProductionBatch(productionBatch: ProductionBatch): void {
     this.#startRequest();
     this.#productionManagementApi
@@ -47,38 +42,6 @@ export class ProductionManagementStore {
           this.#completeRequest();
         },
         error: () => this.#failRequest('create'),
-      });
-  }
-
-  updateProductionBatch(updatedProductionBatch: ProductionBatch): void {
-    this.#startRequest();
-    this.#productionManagementApi
-      .updateProductionBatch(updatedProductionBatch)
-      .pipe(retry(REQUEST_RETRY_COUNT))
-      .subscribe({
-        next: (productionBatch) => {
-          this.#productionBatchesSignal.update((batches) =>
-            batches.map((batch) => (batch.id === productionBatch.id ? productionBatch : batch)),
-          );
-          this.#completeRequest();
-        },
-        error: () => this.#failRequest('update'),
-      });
-  }
-
-  deleteProductionBatch(id: number): void {
-    this.#startRequest();
-    this.#productionManagementApi
-      .deleteProductionBatch(id)
-      .pipe(retry(REQUEST_RETRY_COUNT))
-      .subscribe({
-        next: () => {
-          this.#productionBatchesSignal.update((batches) =>
-            batches.filter((batch) => batch.id !== id),
-          );
-          this.#completeRequest();
-        },
-        error: () => this.#failRequest('delete'),
       });
   }
 

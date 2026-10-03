@@ -71,10 +71,6 @@
     "received-quantity": "Cantidad recibida",
     "missing-reception": "Recepción no encontrada",
     "registered-at": "Fecha de registro",
-    "actions": "Acciones",
-    "edit": "Editar lote de producción",
-    "delete": "Eliminar lote de producción",
-    "confirm-delete": "¿Eliminar el lote {{ code }}?",
     "metrics": {
       "total": "Lotes registrados",
       "today": "Registrados hoy",
@@ -83,20 +79,16 @@
     "errors": {
       "load-batches": "No se pudieron cargar los lotes de producción.",
       "load-receptions": "No se pudieron cargar las recepciones de materia prima.",
-      "create": "No se pudo registrar el lote de producción.",
-      "update": "No se pudo actualizar el lote de producción.",
-      "delete": "No se pudo eliminar el lote de producción."
+      "create": "No se pudo registrar el lote de producción."
     }
   },
   "production-batch": {
     "eyebrow": "Gestión de Producción",
     "new-title": "Registrar lote de producción",
-    "edit-title": "Editar lote de producción",
     "code": "Código del lote",
     "reception": "Recepción de materia prima",
     "registered-at": "Fecha y hora de registro",
     "create": "Registrar lote",
-    "update": "Actualizar lote",
     "cancel": "Cancelar",
     "errors": {
       "code": "Ingresa un código de lote de hasta 50 caracteres.",

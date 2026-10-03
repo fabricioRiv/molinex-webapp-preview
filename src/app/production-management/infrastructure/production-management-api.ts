@@ -26,12 +26,4 @@ export class ProductionManagementApi extends BaseApi {
   createProductionBatch(productionBatch: ProductionBatch): Observable<ProductionBatch> {
     return this.#productionBatchesEndpoint.create(productionBatch);
   }
-
-  updateProductionBatch(productionBatch: ProductionBatch): Observable<ProductionBatch> {
-    return this.#productionBatchesEndpoint.update(productionBatch, productionBatch.id);
-  }
-
-  deleteProductionBatch(id: number): Observable<void> {
-    return this.#productionBatchesEndpoint.delete(id);
-  }
 }
