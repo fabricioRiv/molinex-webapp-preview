@@ -102,6 +102,7 @@
     "title": "Operaciones de producción",
     "description": "Supervisa el ingreso de materia prima y la trazabilidad de los lotes.",
     "register-reception": "Registrar recepción",
+    "view-history": "Historial de producción",
     "loading": "Cargando operaciones de producción...",
     "load-error": "No se pudo cargar la información de producción.",
     "retry": "Reintentar",
@@ -176,6 +177,39 @@
       "create": "No se pudo registrar el proceso productivo.",
       "update": "No se pudo actualizar el proceso productivo.",
       "not-found": "No se encontró el proceso productivo solicitado."
+    }
+  },
+  "production-history": {
+    "eyebrow": "Gestión de Producción",
+    "title": "Historial de producción",
+    "description": "Consulta los procesos productivos por periodo, lote y estado.",
+    "back": "Resumen de producción",
+    "loading": "Cargando historial de producción...",
+    "load-error": "No se pudo cargar el historial de producción.",
+    "retry": "Reintentar",
+    "empty": "No hay procesos productivos para los filtros seleccionados.",
+    "results": "{{ count }} procesos",
+    "filters": {
+      "title": "Filtros del historial",
+      "from": "Desde",
+      "to": "Hasta",
+      "batch": "Lote de producción",
+      "all-batches": "Todos los lotes",
+      "status": "Estado",
+      "clear": "Limpiar filtros",
+      "invalid-period": "La fecha inicial no puede ser posterior a la fecha final."
+    },
+    "metrics": {
+      "processes": "Procesos del periodo",
+      "weight": "Peso procesado",
+      "completed": "Procesos completados",
+      "batches": "Lotes involucrados"
+    },
+    "statuses": {
+      "ALL": "Todos los estados",
+      "REGISTERED": "Registrado",
+      "IN_PROGRESS": "En proceso",
+      "COMPLETED": "Completado"
     }
   },
   "raw-material-receptions": {

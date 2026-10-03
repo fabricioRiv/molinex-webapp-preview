@@ -39,6 +39,12 @@
   margin-right: 0.4rem;
 }
 
+.header-actions {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 0.65rem;
+}
+
 .metrics-grid {
   display: grid;
   gap: 1rem;
@@ -176,6 +182,10 @@
     align-self: flex-start;
   }
 
+  .header-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
 }
 
 @media (max-width: 480px) {

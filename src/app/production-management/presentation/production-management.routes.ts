@@ -25,6 +25,10 @@ const productionRecordForm = () =>
   import('./views/production-record-form/production-record-form').then(
     (module) => module.ProductionRecordForm,
   );
+const productionHistory = () =>
+  import('./views/production-history/production-history').then(
+    (module) => module.ProductionHistory,
+  );
 
 export const productionManagementRoutes: Routes = [
   {
@@ -62,5 +66,10 @@ export const productionManagementRoutes: Routes = [
     path: 'records/:id/edit',
     loadComponent: productionRecordForm,
     title: applicationTitle('Edit production record'),
+  },
+  {
+    path: 'history',
+    loadComponent: productionHistory,
+    title: applicationTitle('Production history'),
   },
 ];

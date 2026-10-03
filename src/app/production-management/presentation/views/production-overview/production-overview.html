@@ -5,10 +5,16 @@
       <h1>{{ 'production-overview.title' | translate }}</h1>
       <p>{{ 'production-overview.description' | translate }}</p>
     </div>
-    <a mat-flat-button routerLink="/production/receptions/new">
-      <span class="material-symbols-outlined" aria-hidden="true">add</span>
-      {{ 'production-overview.register-reception' | translate }}
-    </a>
+    <div class="header-actions">
+      <a mat-stroked-button routerLink="/production/history">
+        <span class="material-symbols-outlined" aria-hidden="true">history</span>
+        {{ 'production-overview.view-history' | translate }}
+      </a>
+      <a mat-flat-button routerLink="/production/receptions/new">
+        <span class="material-symbols-outlined" aria-hidden="true">add</span>
+        {{ 'production-overview.register-reception' | translate }}
+      </a>
+    </div>
   </header>
 
   @if (store.loading() && recentActivity().length === 0) {
