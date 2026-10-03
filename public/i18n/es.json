@@ -59,6 +59,7 @@
     "title": "Lotes de producción",
     "description": "Registra y vincula cada lote con su recepción de materia prima.",
     "new": "Nuevo lote",
+    "view-receptions": "Recepciones de materia prima",
     "loading": "Cargando lotes de producción...",
     "empty": "No hay lotes de producción registrados.",
     "retry": "Reintentar",
@@ -79,7 +80,7 @@
     "errors": {
       "load-batches": "No se pudieron cargar los lotes de producción.",
       "load-receptions": "No se pudieron cargar las recepciones de materia prima.",
-      "create": "No se pudo registrar el lote de producción."
+      "create-batch": "No se pudo registrar el lote de producción."
     }
   },
   "production-batch": {
@@ -94,6 +95,54 @@
       "code": "Ingresa un código de lote de hasta 50 caracteres.",
       "reception": "Selecciona una recepción de materia prima.",
       "registered-at": "Ingresa la fecha y hora de registro."
+    }
+  },
+  "raw-material-receptions": {
+    "eyebrow": "Gestión de Producción",
+    "title": "Recepciones de materia prima",
+    "description": "Consulta la materia prima recibida antes de registrar los lotes de producción.",
+    "new": "Nueva recepción",
+    "view-batches": "Lotes de producción",
+    "loading": "Cargando recepciones de materia prima...",
+    "empty": "No hay recepciones de materia prima registradas.",
+    "retry": "Reintentar",
+    "search": "Buscar por identificador, proveedor o procedencia",
+    "results": "{{ count }} resultados",
+    "id": "ID",
+    "received-at": "Fecha de recepción",
+    "supplier": "Proveedor",
+    "origin": "Procedencia",
+    "quantity": "Cantidad recibida",
+    "metrics": {
+      "total": "Recepciones registradas",
+      "today": "Recibidas hoy",
+      "suppliers": "Proveedores"
+    },
+    "errors": {
+      "load-batches": "No se pudieron cargar los lotes de producción.",
+      "load-receptions": "No se pudieron cargar las recepciones de materia prima.",
+      "create-reception": "No se pudo registrar la recepción de materia prima."
+    }
+  },
+  "raw-material-reception": {
+    "eyebrow": "Gestión de Producción",
+    "new-title": "Registrar recepción de materia prima",
+    "received-at": "Fecha y hora de recepción",
+    "supplier": "Proveedor",
+    "origin": "Procedencia",
+    "quantity": "Cantidad recibida",
+    "unit": "Unidad de medida",
+    "create": "Registrar recepción",
+    "cancel": "Cancelar",
+    "units": {
+      "KILOGRAM": "Kilogramos",
+      "METRIC_TON": "Toneladas métricas"
+    },
+    "errors": {
+      "received-at": "Ingresa la fecha y hora de recepción.",
+      "supplier": "Ingresa un proveedor de hasta 100 caracteres.",
+      "origin": "Ingresa una procedencia de hasta 150 caracteres.",
+      "quantity": "Ingresa una cantidad mayor que cero."
     }
   },
   "views": {

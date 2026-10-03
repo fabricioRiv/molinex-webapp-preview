@@ -2,7 +2,7 @@
   display: block;
 }
 
-.production-batches {
+.raw-material-receptions {
   display: grid;
   gap: 1.5rem;
 }
@@ -40,11 +40,7 @@
   gap: 0.65rem;
 }
 
-.page-header button {
-  flex: 0 0 auto;
-}
-
-.page-header button .material-symbols-outlined {
+.header-actions .material-symbols-outlined {
   font-size: 1.2rem;
   margin-right: 0.4rem;
 }
@@ -130,7 +126,7 @@
 }
 
 table {
-  min-width: 60rem;
+  min-width: 52rem;
   width: 100%;
 }
 
@@ -138,17 +134,6 @@ th {
   color: var(--molinex-text-secondary);
   font-size: 0.72rem;
   text-transform: uppercase;
-}
-
-.cell-detail {
-  color: var(--molinex-text-secondary);
-  display: block;
-  font-size: 0.72rem;
-  margin-top: 0.15rem;
-}
-
-.cell-detail--warning {
-  color: var(--molinex-critical);
 }
 
 .state-panel {
@@ -170,20 +155,8 @@ th {
     grid-template-columns: 1fr;
   }
 
-  .page-header {
-    align-items: stretch;
-    flex-direction: column;
-  }
-
-  .page-header button {
-    align-self: flex-start;
-  }
-
-  .header-actions {
-    align-items: stretch;
-    flex-direction: column;
-  }
-
+  .page-header,
+  .header-actions,
   .list-toolbar {
     align-items: stretch;
     flex-direction: column;

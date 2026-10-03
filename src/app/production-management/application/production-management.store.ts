@@ -7,7 +7,11 @@ import { ProductionManagementApi } from '../infrastructure/production-management
 
 const REQUEST_RETRY_COUNT = 2;
 
-export type ProductionBatchOperationError = 'create' | 'load-batches' | 'load-receptions';
+export type ProductionManagementOperationError =
+  | 'create-batch'
+  | 'create-reception'
+  | 'load-batches'
+  | 'load-receptions';
 
 @Injectable({ providedIn: 'root' })
 export class ProductionManagementStore {
@@ -23,7 +27,7 @@ export class ProductionManagementStore {
   );
   readonly #pendingRequestCount = signal(0);
   readonly loading = computed(() => this.#pendingRequestCount() > 0);
-  readonly #errorSignal = signal<ProductionBatchOperationError | null>(null);
+  readonly #errorSignal = signal<ProductionManagementOperationError | null>(null);
   readonly error = this.#errorSignal.asReadonly();
 
   constructor() {
@@ -41,7 +45,24 @@ export class ProductionManagementStore {
           this.#productionBatchesSignal.update((batches) => [...batches, createdProductionBatch]);
           this.#completeRequest();
         },
-        error: () => this.#failRequest('create'),
+        error: () => this.#failRequest('create-batch'),
+      });
+  }
+
+  addRawMaterialReception(rawMaterialReception: RawMaterialReception): void {
+    this.#startRequest();
+    this.#productionManagementApi
+      .createRawMaterialReception(rawMaterialReception)
+      .pipe(retry(REQUEST_RETRY_COUNT))
+      .subscribe({
+        next: (createdRawMaterialReception) => {
+          this.#rawMaterialReceptionsSignal.update((receptions) => [
+            ...receptions,
+            createdRawMaterialReception,
+          ]);
+          this.#completeRequest();
+        },
+        error: () => this.#failRequest('create-reception'),
       });
   }
 
@@ -87,7 +108,7 @@ export class ProductionManagementStore {
     this.#pendingRequestCount.update((count) => Math.max(0, count - 1));
   }
 
-  #failRequest(error: ProductionBatchOperationError): void {
+  #failRequest(error: ProductionManagementOperationError): void {
     this.#errorSignal.set(error);
     this.#completeRequest();
   }

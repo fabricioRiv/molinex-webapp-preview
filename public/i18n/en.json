@@ -59,6 +59,7 @@
     "title": "Production batches",
     "description": "Register and trace batches to their raw material reception.",
     "new": "New batch",
+    "view-receptions": "Raw material receptions",
     "loading": "Loading production batches...",
     "empty": "No production batches are registered.",
     "retry": "Retry",
@@ -79,7 +80,7 @@
     "errors": {
       "load-batches": "Production batches could not be loaded.",
       "load-receptions": "Raw material receptions could not be loaded.",
-      "create": "The production batch could not be created."
+      "create-batch": "The production batch could not be created."
     }
   },
   "production-batch": {
@@ -94,6 +95,54 @@
       "code": "Enter a batch code of up to 50 characters.",
       "reception": "Select a raw material reception.",
       "registered-at": "Enter the registration date and time."
+    }
+  },
+  "raw-material-receptions": {
+    "eyebrow": "Production Management",
+    "title": "Raw material receptions",
+    "description": "Review the raw material received before registering production batches.",
+    "new": "New reception",
+    "view-batches": "Production batches",
+    "loading": "Loading raw material receptions...",
+    "empty": "No raw material receptions are registered.",
+    "retry": "Retry",
+    "search": "Search by identifier, supplier, or origin",
+    "results": "{{ count }} results",
+    "id": "ID",
+    "received-at": "Reception date",
+    "supplier": "Supplier",
+    "origin": "Origin",
+    "quantity": "Quantity received",
+    "metrics": {
+      "total": "Registered receptions",
+      "today": "Received today",
+      "suppliers": "Suppliers"
+    },
+    "errors": {
+      "load-batches": "Production batches could not be loaded.",
+      "load-receptions": "Raw material receptions could not be loaded.",
+      "create-reception": "The raw material reception could not be registered."
+    }
+  },
+  "raw-material-reception": {
+    "eyebrow": "Production Management",
+    "new-title": "Register raw material reception",
+    "received-at": "Reception date and time",
+    "supplier": "Supplier",
+    "origin": "Origin",
+    "quantity": "Quantity received",
+    "unit": "Unit of measurement",
+    "create": "Register reception",
+    "cancel": "Cancel",
+    "units": {
+      "KILOGRAM": "Kilograms",
+      "METRIC_TON": "Metric tons"
+    },
+    "errors": {
+      "received-at": "Enter the reception date and time.",
+      "supplier": "Enter a supplier of up to 100 characters.",
+      "origin": "Enter an origin of up to 150 characters.",
+      "quantity": "Enter a quantity greater than zero."
     }
   },
   "views": {

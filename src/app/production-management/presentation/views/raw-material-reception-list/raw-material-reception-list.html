@@ -1,0 +1,131 @@
+<section class="raw-material-receptions">
+  <header class="page-header">
+    <div>
+      <span class="eyebrow">{{ 'raw-material-receptions.eyebrow' | translate }}</span>
+      <h1>{{ 'raw-material-receptions.title' | translate }}</h1>
+      <p>{{ 'raw-material-receptions.description' | translate }}</p>
+    </div>
+    <div class="header-actions">
+      <button mat-stroked-button type="button" (click)="navigateToBatches()">
+        <span class="material-symbols-outlined" aria-hidden="true">inventory_2</span>
+        {{ 'raw-material-receptions.view-batches' | translate }}
+      </button>
+      <button mat-flat-button type="button" (click)="navigateToNew()">
+        <span class="material-symbols-outlined" aria-hidden="true">add</span>
+        {{ 'raw-material-receptions.new' | translate }}
+      </button>
+    </div>
+  </header>
+
+  <div class="summary-grid">
+    <article class="summary-card">
+      <span class="material-symbols-outlined" aria-hidden="true">local_shipping</span>
+      <div>
+        <strong>{{ store.rawMaterialReceptions().length }}</strong>
+        <span>{{ 'raw-material-receptions.metrics.total' | translate }}</span>
+      </div>
+    </article>
+    <article class="summary-card">
+      <span class="material-symbols-outlined" aria-hidden="true">today</span>
+      <div>
+        <strong>{{ receivedTodayCount() }}</strong>
+        <span>{{ 'raw-material-receptions.metrics.today' | translate }}</span>
+      </div>
+    </article>
+    <article class="summary-card">
+      <span class="material-symbols-outlined" aria-hidden="true">groups</span>
+      <div>
+        <strong>{{ supplierCount() }}</strong>
+        <span>{{ 'raw-material-receptions.metrics.suppliers' | translate }}</span>
+      </div>
+    </article>
+  </div>
+
+  @if (store.loading() && store.rawMaterialReceptions().length === 0) {
+    <div class="state-panel">
+      <mat-spinner diameter="36" />
+      <span>{{ 'raw-material-receptions.loading' | translate }}</span>
+    </div>
+  } @else if (store.error()) {
+    <div class="state-panel state-panel--error" role="alert">
+      <span class="material-symbols-outlined" aria-hidden="true">error</span>
+      <span>{{ 'raw-material-receptions.errors.' + store.error() | translate }}</span>
+      <button mat-button type="button" (click)="store.reloadProductionData()">
+        {{ 'raw-material-receptions.retry' | translate }}
+      </button>
+    </div>
+  } @else if (store.rawMaterialReceptions().length === 0) {
+    <div class="state-panel">
+      <span class="material-symbols-outlined" aria-hidden="true">local_shipping</span>
+      <span>{{ 'raw-material-receptions.empty' | translate }}</span>
+    </div>
+  } @else {
+    <div class="list-toolbar">
+      <mat-form-field appearance="outline" subscriptSizing="dynamic">
+        <mat-label>{{ 'raw-material-receptions.search' | translate }}</mat-label>
+        <span matPrefix class="material-symbols-outlined" aria-hidden="true">search</span>
+        <input matInput type="search" [value]="searchTerm()" (input)="updateSearchTerm($event)" />
+      </mat-form-field>
+      <span>
+        {{ 'raw-material-receptions.results' | translate: { count: filteredReceptions().length } }}
+      </span>
+    </div>
+
+    <div class="table-card">
+      <div class="table-scroll">
+        <table
+          mat-table
+          [dataSource]="dataSource()"
+          matSort
+          matSortActive="receivedAt"
+          matSortDirection="desc"
+          matSortDisableClear
+        >
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              {{ 'raw-material-receptions.id' | translate }}
+            </th>
+            <td mat-cell *matCellDef="let reception"><strong>#{{ reception.id }}</strong></td>
+          </ng-container>
+
+          <ng-container matColumnDef="receivedAt">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              {{ 'raw-material-receptions.received-at' | translate }}
+            </th>
+            <td mat-cell *matCellDef="let reception">
+              {{ reception.receivedAt | date: 'yyyy-MM-dd HH:mm' }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="supplier">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              {{ 'raw-material-receptions.supplier' | translate }}
+            </th>
+            <td mat-cell *matCellDef="let reception">{{ reception.supplierName }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="origin">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              {{ 'raw-material-receptions.origin' | translate }}
+            </th>
+            <td mat-cell *matCellDef="let reception">{{ reception.originDescription }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="quantity">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              {{ 'raw-material-receptions.quantity' | translate }}
+            </th>
+            <td mat-cell *matCellDef="let reception">
+              {{ reception.quantity.value | number: '1.0-2' }}
+              {{ measurementUnitSymbol(reception.quantity.unit) }}
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </div>
+      <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons />
+    </div>
+  }
+</section>

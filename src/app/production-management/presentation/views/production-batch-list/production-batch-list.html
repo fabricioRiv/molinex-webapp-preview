@@ -5,10 +5,16 @@
       <h1>{{ 'production-batches.title' | translate }}</h1>
       <p>{{ 'production-batches.description' | translate }}</p>
     </div>
-    <button mat-flat-button type="button" (click)="navigateToNew()">
-      <span class="material-symbols-outlined" aria-hidden="true">add</span>
-      {{ 'production-batches.new' | translate }}
-    </button>
+    <div class="header-actions">
+      <button mat-stroked-button type="button" (click)="navigateToReceptions()">
+        <span class="material-symbols-outlined" aria-hidden="true">local_shipping</span>
+        {{ 'production-batches.view-receptions' | translate }}
+      </button>
+      <button mat-flat-button type="button" (click)="navigateToNew()">
+        <span class="material-symbols-outlined" aria-hidden="true">add</span>
+        {{ 'production-batches.new' | translate }}
+      </button>
+    </div>
   </header>
 
   <div class="summary-grid">
