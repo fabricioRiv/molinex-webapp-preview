@@ -5,7 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
 import { BaseForm } from '../../../../shared/presentation/components/base-form/base-form';
 import { ProductionManagementStore } from '../../../application/production-management.store';
@@ -30,11 +30,12 @@ const MILLISECONDS_PER_MINUTE = 60_000;
 export class ProductionBatchForm extends BaseForm {
   protected readonly store = inject(ProductionManagementStore);
   readonly #formBuilder = inject(FormBuilder);
+  readonly #route = inject(ActivatedRoute);
   readonly #router = inject(Router);
 
   protected readonly form = this.#formBuilder.nonNullable.group({
     code: ['', [Validators.required, Validators.maxLength(50)]],
-    receptionId: [0, [Validators.required, Validators.min(1)]],
+    receptionId: [this.#requestedReceptionId(), [Validators.required, Validators.min(1)]],
     registeredAt: [this.#toDateTimeLocal(new Date()), Validators.required],
   });
 
@@ -58,7 +59,7 @@ export class ProductionBatchForm extends BaseForm {
   }
 
   protected navigateToList(): void {
-    this.#router.navigate(['/production']).then();
+    this.#router.navigate(['/production/batches']).then();
   }
 
   protected measurementUnitSymbol(unit: string): string {
@@ -68,5 +69,10 @@ export class ProductionBatchForm extends BaseForm {
   #toDateTimeLocal(date: Date): string {
     const timezoneOffsetInMilliseconds = date.getTimezoneOffset() * MILLISECONDS_PER_MINUTE;
     return new Date(date.getTime() - timezoneOffsetInMilliseconds).toISOString().slice(0, 16);
+  }
+
+  #requestedReceptionId(): number {
+    const receptionId = Number(this.#route.snapshot.queryParamMap.get('receptionId'));
+    return Number.isInteger(receptionId) && receptionId > 0 ? receptionId : 0;
   }
 }

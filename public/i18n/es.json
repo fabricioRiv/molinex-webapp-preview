@@ -97,6 +97,42 @@
       "registered-at": "Ingresa la fecha y hora de registro."
     }
   },
+  "production-overview": {
+    "eyebrow": "Gestión de Producción",
+    "title": "Operaciones de producción",
+    "description": "Supervisa el ingreso de materia prima y la trazabilidad de los lotes.",
+    "register-reception": "Registrar recepción",
+    "loading": "Cargando operaciones de producción...",
+    "load-error": "No se pudo cargar la información de producción.",
+    "retry": "Reintentar",
+    "metrics": {
+      "receptions": "Recepciones de materia prima",
+      "batches": "Lotes de producción",
+      "today": "{{ count }} hoy",
+      "traceability": "Trazabilidad de lotes",
+      "linked": "{{ linked }} de {{ total }} vinculados"
+    },
+    "traceability": {
+      "eyebrow": "Trazabilidad",
+      "title": "De la recepción al lote de producción",
+      "description": "Sigue cada recepción de materia prima y los lotes creados a partir de ella.",
+      "empty": "Registra una recepción de materia prima para iniciar su trazabilidad.",
+      "reception": "Recepción",
+      "no-batches": "Sin lote de producción asignado",
+      "assign-batch": "Asignar lote",
+      "add-batch": "Agregar lote",
+      "unlinked-title": "Lotes sin una recepción válida",
+      "unlinked-description": "{{ count }} lotes hacen referencia a una recepción inexistente.",
+      "view-receptions": "Ver todas las recepciones",
+      "view-batches": "Ver todos los lotes"
+    },
+    "activity": {
+      "eyebrow": "Operaciones",
+      "title": "Actividad reciente",
+      "empty": "No se ha registrado actividad de producción.",
+      "reception": "Recepción"
+    }
+  },
   "raw-material-receptions": {
     "eyebrow": "Gestión de Producción",
     "title": "Recepciones de materia prima",

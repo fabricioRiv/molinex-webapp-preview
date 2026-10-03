@@ -97,6 +97,42 @@
       "registered-at": "Enter the registration date and time."
     }
   },
+  "production-overview": {
+    "eyebrow": "Production Management",
+    "title": "Production operations",
+    "description": "Monitor raw material intake and batch traceability.",
+    "register-reception": "Register reception",
+    "loading": "Loading production operations...",
+    "load-error": "Production information could not be loaded.",
+    "retry": "Retry",
+    "metrics": {
+      "receptions": "Raw material receptions",
+      "batches": "Production batches",
+      "today": "{{ count }} today",
+      "traceability": "Batch traceability",
+      "linked": "{{ linked }} of {{ total }} linked"
+    },
+    "traceability": {
+      "eyebrow": "Traceability",
+      "title": "From reception to production batch",
+      "description": "Follow each raw material reception and the batches created from it.",
+      "empty": "Register a raw material reception to start its traceability.",
+      "reception": "Reception",
+      "no-batches": "No production batch assigned",
+      "assign-batch": "Assign batch",
+      "add-batch": "Add batch",
+      "unlinked-title": "Batches without a valid reception",
+      "unlinked-description": "{{ count }} batches reference a reception that does not exist.",
+      "view-receptions": "View all receptions",
+      "view-batches": "View all batches"
+    },
+    "activity": {
+      "eyebrow": "Operations",
+      "title": "Recent activity",
+      "empty": "No production activity has been registered.",
+      "reception": "Reception"
+    }
+  },
   "raw-material-receptions": {
     "eyebrow": "Production Management",
     "title": "Raw material receptions",
