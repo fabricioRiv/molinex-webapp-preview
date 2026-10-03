@@ -2,6 +2,7 @@ import { computed, DestroyRef, inject, Injectable, signal } from '@angular/core'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { retry } from 'rxjs';
 import { ProductionBatch } from '../domain/model/production-batch.entity';
+import { ProductionRecord } from '../domain/model/production-record.entity';
 import { RawMaterialReception } from '../domain/model/raw-material-reception.entity';
 import { ProductionManagementApi } from '../infrastructure/production-management-api';
 
@@ -10,8 +11,10 @@ const REQUEST_RETRY_COUNT = 2;
 export type ProductionManagementOperationError =
   | 'create-batch'
   | 'create-reception'
+  | 'create-record'
   | 'load-batches'
-  | 'load-receptions';
+  | 'load-receptions'
+  | 'load-records';
 
 @Injectable({ providedIn: 'root' })
 export class ProductionManagementStore {
@@ -25,6 +28,9 @@ export class ProductionManagementStore {
   readonly rawMaterialReceptionMap = computed(
     () => new Map(this.rawMaterialReceptions().map((reception) => [reception.id, reception])),
   );
+  readonly #productionRecordsSignal = signal<ProductionRecord[]>([]);
+  readonly productionRecords = this.#productionRecordsSignal.asReadonly();
+  readonly productionRecordCount = computed(() => this.productionRecords().length);
   readonly #pendingRequestCount = signal(0);
   readonly loading = computed(() => this.#pendingRequestCount() > 0);
   readonly #errorSignal = signal<ProductionManagementOperationError | null>(null);
@@ -33,6 +39,7 @@ export class ProductionManagementStore {
   constructor() {
     this.#loadProductionBatches();
     this.#loadRawMaterialReceptions();
+    this.#loadProductionRecords();
   }
 
   addProductionBatch(productionBatch: ProductionBatch): void {
@@ -66,9 +73,24 @@ export class ProductionManagementStore {
       });
   }
 
+  addProductionRecord(productionRecord: ProductionRecord): void {
+    this.#startRequest();
+    this.#productionManagementApi
+      .createProductionRecord(productionRecord)
+      .pipe(retry(REQUEST_RETRY_COUNT))
+      .subscribe({
+        next: (createdProductionRecord) => {
+          this.#productionRecordsSignal.update((records) => [...records, createdProductionRecord]);
+          this.#completeRequest();
+        },
+        error: () => this.#failRequest('create-record'),
+      });
+  }
+
   reloadProductionData(): void {
     this.#loadProductionBatches();
     this.#loadRawMaterialReceptions();
+    this.#loadProductionRecords();
   }
 
   #loadProductionBatches(): void {
@@ -96,6 +118,20 @@ export class ProductionManagementStore {
           this.#completeRequest();
         },
         error: () => this.#failRequest('load-receptions'),
+      });
+  }
+
+  #loadProductionRecords(): void {
+    this.#startRequest();
+    this.#productionManagementApi
+      .getProductionRecords()
+      .pipe(takeUntilDestroyed(this.#destroyRef))
+      .subscribe({
+        next: (productionRecords) => {
+          this.#productionRecordsSignal.set(productionRecords);
+          this.#completeRequest();
+        },
+        error: () => this.#failRequest('load-records'),
       });
   }
 

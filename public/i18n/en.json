@@ -131,6 +131,42 @@
       "title": "Recent activity",
       "empty": "No production activity has been registered.",
       "reception": "Reception"
+    },
+    "processes": {
+      "record": "Record process",
+      "empty": "No production processes recorded for this batch."
+    }
+  },
+  "production-record": {
+    "eyebrow": "Production Management",
+    "new-title": "Record production process",
+    "description": "Associate the process information with its production batch.",
+    "batch": "Production batch",
+    "selected-batch": "Selected batch",
+    "process-name": "Process name",
+    "processed-weight": "Processed weight",
+    "unit": "Unit of measurement",
+    "started-at": "Start date and time",
+    "finished-at": "Finish date and time (optional)",
+    "status": "Process status",
+    "create": "Record process",
+    "cancel": "Cancel",
+    "units": {
+      "KILOGRAM": "Kilograms",
+      "METRIC_TON": "Metric tons"
+    },
+    "statuses": {
+      "REGISTERED": "Registered",
+      "IN_PROGRESS": "In progress",
+      "COMPLETED": "Completed"
+    },
+    "errors": {
+      "batch": "Select a production batch.",
+      "process-name": "Enter a process name of up to 100 characters.",
+      "processed-weight": "Enter a processed weight greater than zero.",
+      "started-at": "Enter the process start date and time.",
+      "finished-at": "The finish time cannot precede the start time.",
+      "create": "The production process could not be recorded."
     }
   },
   "raw-material-receptions": {

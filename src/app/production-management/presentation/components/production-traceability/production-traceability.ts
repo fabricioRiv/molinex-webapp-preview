@@ -4,10 +4,19 @@ import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
 import { ProductionBatch } from '../../../domain/model/production-batch.entity';
+import { ProductionRecord } from '../../../domain/model/production-record.entity';
 import { RawMaterialReception } from '../../../domain/model/raw-material-reception.entity';
+import { ProductionProcessFlow } from '../production-process-flow/production-process-flow';
 
 @Component({
-  imports: [DatePipe, DecimalPipe, MatButtonModule, RouterLink, TranslatePipe],
+  imports: [
+    DatePipe,
+    DecimalPipe,
+    MatButtonModule,
+    ProductionProcessFlow,
+    RouterLink,
+    TranslatePipe,
+  ],
   selector: 'app-production-traceability',
   styleUrl: './production-traceability.css',
   templateUrl: './production-traceability.html',
@@ -15,6 +24,7 @@ import { RawMaterialReception } from '../../../domain/model/raw-material-recepti
 export class ProductionTraceability {
   readonly receptions = input.required<RawMaterialReception[]>();
   readonly batches = input.required<ProductionBatch[]>();
+  readonly records = input.required<ProductionRecord[]>();
   protected readonly batchesByReception = computed(() => {
     const batchesByReception = new Map<number, ProductionBatch[]>();
 
@@ -28,6 +38,16 @@ export class ProductionTraceability {
   protected readonly unlinkedBatches = computed(() => {
     const receptionIds = new Set(this.receptions().map((reception) => reception.id));
     return this.batches().filter((batch) => !receptionIds.has(batch.receptionId));
+  });
+  protected readonly recordsByBatch = computed(() => {
+    const recordsByBatch = new Map<number, ProductionRecord[]>();
+
+    for (const record of this.records()) {
+      const batchRecords = recordsByBatch.get(record.batchId) ?? [];
+      recordsByBatch.set(record.batchId, [...batchRecords, record]);
+    }
+
+    return recordsByBatch;
   });
 
   protected measurementUnitSymbol(unit: string): string {

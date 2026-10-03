@@ -131,6 +131,42 @@
       "title": "Actividad reciente",
       "empty": "No se ha registrado actividad de producción.",
       "reception": "Recepción"
+    },
+    "processes": {
+      "record": "Registrar proceso",
+      "empty": "Este lote aún no tiene procesos productivos registrados."
+    }
+  },
+  "production-record": {
+    "eyebrow": "Gestión de Producción",
+    "new-title": "Registrar proceso productivo",
+    "description": "Asocia la información del proceso con su lote de producción.",
+    "batch": "Lote de producción",
+    "selected-batch": "Lote seleccionado",
+    "process-name": "Nombre del proceso",
+    "processed-weight": "Peso procesado",
+    "unit": "Unidad de medida",
+    "started-at": "Fecha y hora de inicio",
+    "finished-at": "Fecha y hora de finalización (opcional)",
+    "status": "Estado del proceso",
+    "create": "Registrar proceso",
+    "cancel": "Cancelar",
+    "units": {
+      "KILOGRAM": "Kilogramos",
+      "METRIC_TON": "Toneladas métricas"
+    },
+    "statuses": {
+      "REGISTERED": "Registrado",
+      "IN_PROGRESS": "En proceso",
+      "COMPLETED": "Completado"
+    },
+    "errors": {
+      "batch": "Selecciona un lote de producción.",
+      "process-name": "Ingresa un nombre de proceso de hasta 100 caracteres.",
+      "processed-weight": "Ingresa un peso procesado mayor que cero.",
+      "started-at": "Ingresa la fecha y hora de inicio del proceso.",
+      "finished-at": "La finalización no puede ser anterior al inicio.",
+      "create": "No se pudo registrar el proceso productivo."
     }
   },
   "raw-material-receptions": {
