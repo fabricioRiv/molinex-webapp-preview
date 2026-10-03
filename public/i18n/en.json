@@ -102,6 +102,7 @@
     "title": "Production operations",
     "description": "Monitor raw material intake and batch traceability.",
     "register-reception": "Register reception",
+    "view-history": "Production history",
     "loading": "Loading production operations...",
     "load-error": "Production information could not be loaded.",
     "retry": "Retry",
@@ -176,6 +177,39 @@
       "create": "The production process could not be recorded.",
       "update": "The production process could not be updated.",
       "not-found": "The requested production process was not found."
+    }
+  },
+  "production-history": {
+    "eyebrow": "Production Management",
+    "title": "Production history",
+    "description": "Review production processes by period, batch, and status.",
+    "back": "Production overview",
+    "loading": "Loading production history...",
+    "load-error": "Production history could not be loaded.",
+    "retry": "Retry",
+    "empty": "No production processes match the selected filters.",
+    "results": "{{ count }} processes",
+    "filters": {
+      "title": "History filters",
+      "from": "From",
+      "to": "To",
+      "batch": "Production batch",
+      "all-batches": "All batches",
+      "status": "Status",
+      "clear": "Clear filters",
+      "invalid-period": "The start date cannot be later than the end date."
+    },
+    "metrics": {
+      "processes": "Processes in period",
+      "weight": "Processed weight",
+      "completed": "Completed processes",
+      "batches": "Batches involved"
+    },
+    "statuses": {
+      "ALL": "All statuses",
+      "REGISTERED": "Registered",
+      "IN_PROGRESS": "In progress",
+      "COMPLETED": "Completed"
     }
   },
   "raw-material-receptions": {
