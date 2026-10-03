@@ -90,7 +90,7 @@ export class RawMaterialReceptionList {
   }
 
   protected navigateToBatches(): void {
-    this.#router.navigate(['/production']).then();
+    this.#router.navigate(['/production/batches']).then();
   }
 
   protected updateSearchTerm(event: Event): void {

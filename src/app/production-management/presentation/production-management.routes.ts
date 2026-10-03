@@ -17,10 +17,20 @@ const rawMaterialReceptionForm = () =>
   import('./views/raw-material-reception-form/raw-material-reception-form').then(
     (module) => module.RawMaterialReceptionForm,
   );
+const productionOverview = () =>
+  import('./views/production-overview/production-overview').then(
+    (module) => module.ProductionOverview,
+  );
 
 export const productionManagementRoutes: Routes = [
   {
     path: '',
+    pathMatch: 'full',
+    loadComponent: productionOverview,
+    title: applicationTitle('Production overview'),
+  },
+  {
+    path: 'batches',
     loadComponent: productionBatchList,
     title: applicationTitle('Production batches'),
   },
