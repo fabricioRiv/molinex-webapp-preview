@@ -20,6 +20,6 @@ export class PageNotFound implements OnInit {
   }
 
   protected navigateToOverview(): void {
-    this.#router.navigate(['/intelligence/overview']).then();
+    this.#router.navigate(['/overview']).then();
   }
 }
