@@ -1,0 +1,31 @@
+<mat-toolbar class="top-bar" role="banner">
+  <div class="top-bar__identity">
+    <button
+      class="icon-button menu-button"
+      type="button"
+      aria-label="Abrir menú de navegación"
+      (click)="menuToggled.emit()"
+    >
+      <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+    </button>
+    <div>
+      <span class="top-bar__eyebrow">Molinex</span>
+      <strong>Centro de operaciones</strong>
+    </div>
+  </div>
+
+  <div class="top-bar__actions">
+    <label class="search" aria-label="Buscar en Molinex">
+      <span class="material-symbols-outlined" aria-hidden="true">search</span>
+      <input type="search" placeholder="Buscar" />
+      <kbd>Ctrl K</kbd>
+    </label>
+
+    <span class="top-bar__date">{{ formattedDate }}</span>
+
+    <button class="icon-button notification-button" type="button" aria-label="Ver notificaciones">
+      <span class="material-symbols-outlined" aria-hidden="true">notifications</span>
+      <span class="notification-button__badge" aria-label="3 notificaciones">3</span>
+    </button>
+  </div>
+</mat-toolbar>

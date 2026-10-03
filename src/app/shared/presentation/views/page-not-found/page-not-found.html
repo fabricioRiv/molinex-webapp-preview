@@ -1,0 +1,13 @@
+<section class="not-found">
+  <div class="not-found__code">404</div>
+  <span class="not-found__eyebrow">Ruta no disponible</span>
+  <h1>Página no encontrada</h1>
+  <p>
+    No encontramos la ruta <strong>/{{ invalidPath }}</strong
+    >. Verifica la dirección o vuelve al resumen operativo.
+  </p>
+  <button mat-flat-button type="button" (click)="navigateToOverview()">
+    <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+    Volver al resumen
+  </button>
+</section>

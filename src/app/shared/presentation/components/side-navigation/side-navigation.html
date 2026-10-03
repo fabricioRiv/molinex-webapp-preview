@@ -1,0 +1,40 @@
+<aside class="sidebar" aria-label="Navegación principal">
+  <div class="brand">
+    <div class="brand__logo-surface">
+      <img src="/molinex-logo.png" alt="Molinex" />
+    </div>
+    <span>Centro de operaciones</span>
+  </div>
+
+  <nav class="navigation">
+    @for (group of navigationGroups(); track group.label) {
+      <section class="navigation__group" [attr.aria-label]="group.label">
+        <p class="navigation__label">{{ group.label }}</p>
+        @for (item of group.items; track item.path) {
+          <a
+            class="navigation__item"
+            [routerLink]="item.path"
+            routerLinkActive="navigation__item--active"
+            [routerLinkActiveOptions]="{ exact: item.path === '/intelligence/overview' }"
+            ariaCurrentWhenActive="page"
+            (click)="navigated.emit()"
+          >
+            <span class="material-symbols-outlined" aria-hidden="true">{{ item.icon }}</span>
+            <span>{{ item.label }}</span>
+          </a>
+        }
+      </section>
+    }
+  </nav>
+
+  <div class="sidebar__profile">
+    <div class="avatar" aria-hidden="true">FC</div>
+    <div>
+      <strong>Fabricio</strong>
+      <span>Administrador</span>
+    </div>
+    <span class="material-symbols-outlined sidebar__profile-icon" aria-hidden="true">
+      more_vert
+    </span>
+  </div>
+</aside>

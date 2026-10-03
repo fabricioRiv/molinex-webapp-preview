@@ -27,8 +27,8 @@
   --molinex-neutral: #607d8b;
   --molinex-neutral-background: #eceff1;
 
-  --molinex-font-heading: "Poppins", sans-serif;
-  --molinex-font-body: "Inter", sans-serif;
+  --molinex-font-heading: 'Poppins', sans-serif;
+  --molinex-font-body: 'Inter', sans-serif;
 
   --molinex-space-xs: 0.25rem;
   --molinex-space-s: 0.5rem;
@@ -49,6 +49,8 @@ body {
   background: var(--molinex-background);
   color: var(--molinex-text-primary);
   font-family: var(--molinex-font-body);
+  min-height: 100dvh;
+  margin: 0;
 }
 
 h1,
@@ -59,4 +61,34 @@ h5,
 h6,
 button {
   font-family: var(--molinex-font-heading);
-}/* You can add global styles to this file, and also import other style files */
+}
+
+button,
+a,
+input {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--molinex-gold) 72%, white);
+  outline-offset: 2px;
+}
+
+router-outlet + * {
+  display: block;
+  min-width: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

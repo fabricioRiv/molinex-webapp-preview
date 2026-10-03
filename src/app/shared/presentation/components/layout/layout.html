@@ -1,0 +1,21 @@
+<div class="application-shell">
+  <div class="navigation-panel" [class.navigation-panel--open]="navigationOpen()">
+    <app-side-navigation [navigationGroups]="options()" (navigated)="closeNavigation()" />
+  </div>
+
+  @if (navigationOpen()) {
+    <button
+      class="navigation-backdrop"
+      type="button"
+      aria-label="Cerrar menú de navegación"
+      (click)="closeNavigation()"
+    ></button>
+  }
+
+  <div class="application-shell__content">
+    <app-top-bar (menuToggled)="toggleNavigation()" />
+    <main class="page-content" id="main-content">
+      <router-outlet />
+    </main>
+  </div>
+</div>
