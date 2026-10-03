@@ -1,0 +1,71 @@
+:host {
+  display: block;
+}
+
+.not-found {
+  align-items: center;
+  background: var(--molinex-surface);
+  border: 1px solid var(--molinex-border);
+  border-radius: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 65vh;
+  overflow: hidden;
+  padding: 3rem 1.5rem;
+  position: relative;
+  text-align: center;
+}
+
+.not-found__code {
+  color: var(--molinex-blue-light);
+  font-family: var(--molinex-font-heading);
+  font-size: clamp(7rem, 22vw, 15rem);
+  font-weight: 700;
+  letter-spacing: -0.08em;
+  line-height: 0.85;
+  position: absolute;
+  top: 1rem;
+  user-select: none;
+}
+
+.not-found__eyebrow,
+.not-found h1,
+.not-found p,
+.not-found button {
+  position: relative;
+  z-index: 1;
+}
+
+.not-found__eyebrow {
+  color: var(--molinex-green-dark);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  margin-top: 8rem;
+  text-transform: uppercase;
+}
+
+.not-found h1 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  margin: 0.55rem 0 0;
+}
+
+.not-found p {
+  color: var(--molinex-text-secondary);
+  line-height: 1.65;
+  margin: 0.9rem auto 1.5rem;
+  max-width: 34rem;
+}
+
+.not-found button {
+  align-items: center;
+  background: var(--molinex-gold);
+  color: var(--molinex-blue-dark);
+  display: inline-flex;
+  font-weight: 700;
+  gap: 0.45rem;
+}
+
+.not-found button .material-symbols-outlined {
+  font-size: 1.1rem;
+}
