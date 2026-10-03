@@ -134,10 +134,6 @@ th {
   text-transform: uppercase;
 }
 
-.actions-cell {
-  white-space: nowrap;
-}
-
 .cell-detail {
   color: var(--molinex-text-secondary);
   display: block;
@@ -146,10 +142,6 @@ th {
 }
 
 .cell-detail--warning {
-  color: var(--molinex-critical);
-}
-
-.delete-button {
   color: var(--molinex-critical);
 }
 

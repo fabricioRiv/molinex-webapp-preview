@@ -1,9 +1,7 @@
 <section class="production-batch-form">
   <header class="page-header">
     <span class="eyebrow">{{ 'production-batch.eyebrow' | translate }}</span>
-    <h1>
-      {{ (isEditMode ? 'production-batch.edit-title' : 'production-batch.new-title') | translate }}
-    </h1>
+    <h1>{{ 'production-batch.new-title' | translate }}</h1>
   </header>
 
   @if (store.error()) {
@@ -64,14 +62,9 @@
       <button
         mat-flat-button
         type="submit"
-        [disabled]="
-          form.invalid ||
-          store.loading() ||
-          store.rawMaterialReceptions().length === 0 ||
-          (isEditMode && !productionBatch())
-        "
+        [disabled]="form.invalid || store.loading() || store.rawMaterialReceptions().length === 0"
       >
-        {{ (isEditMode ? 'production-batch.update' : 'production-batch.create') | translate }}
+        {{ 'production-batch.create' | translate }}
       </button>
     </div>
   </form>

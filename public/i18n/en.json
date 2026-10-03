@@ -71,10 +71,6 @@
     "received-quantity": "Received quantity",
     "missing-reception": "Reception not found",
     "registered-at": "Registered at",
-    "actions": "Actions",
-    "edit": "Edit production batch",
-    "delete": "Delete production batch",
-    "confirm-delete": "Delete batch {{ code }}?",
     "metrics": {
       "total": "Registered batches",
       "today": "Registered today",
@@ -83,20 +79,16 @@
     "errors": {
       "load-batches": "Production batches could not be loaded.",
       "load-receptions": "Raw material receptions could not be loaded.",
-      "create": "The production batch could not be created.",
-      "update": "The production batch could not be updated.",
-      "delete": "The production batch could not be deleted."
+      "create": "The production batch could not be created."
     }
   },
   "production-batch": {
     "eyebrow": "Production Management",
     "new-title": "Register production batch",
-    "edit-title": "Edit production batch",
     "code": "Batch code",
     "reception": "Raw material reception",
     "registered-at": "Registration date and time",
     "create": "Register batch",
-    "update": "Update batch",
     "cancel": "Cancel",
     "errors": {
       "code": "Enter a batch code of up to 50 characters.",

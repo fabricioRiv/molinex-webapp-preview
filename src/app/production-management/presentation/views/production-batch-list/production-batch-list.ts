@@ -8,9 +8,8 @@ import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { TranslatePipe, TranslateService } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { ProductionManagementStore } from '../../../application/production-management.store';
-import { ProductionBatch } from '../../../domain/model/production-batch.entity';
 
 @Component({
   imports: [
@@ -33,14 +32,12 @@ import { ProductionBatch } from '../../../domain/model/production-batch.entity';
 export class ProductionBatchList {
   protected readonly store = inject(ProductionManagementStore);
   readonly #router = inject(Router);
-  readonly #translate = inject(TranslateService);
   protected readonly displayedColumns = [
     'code',
     'reception',
     'supplier',
     'quantity',
     'registeredAt',
-    'actions',
   ];
   protected readonly sort = viewChild(MatSort);
   protected readonly paginator = viewChild(MatPaginator);
@@ -102,22 +99,6 @@ export class ProductionBatchList {
 
   protected measurementUnitSymbol(unit: string): string {
     return unit === 'METRIC_TON' ? 't' : 'kg';
-  }
-
-  protected editProductionBatch(id: number): void {
-    this.#router.navigate(['/production/batches', id, 'edit']).then();
-  }
-
-  protected deleteProductionBatch(productionBatch: ProductionBatch): void {
-    const confirmed = window.confirm(
-      this.#translate.instant('production-batches.confirm-delete', {
-        code: productionBatch.code,
-      }),
-    );
-
-    if (confirmed) {
-      this.store.deleteProductionBatch(productionBatch.id);
-    }
   }
 
   #isSameLocalDate(first: Date, second: Date): boolean {

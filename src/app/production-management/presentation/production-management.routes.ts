@@ -21,9 +21,4 @@ export const productionManagementRoutes: Routes = [
     loadComponent: productionBatchForm,
     title: applicationTitle('New production batch'),
   },
-  {
-    path: 'batches/:id/edit',
-    loadComponent: productionBatchForm,
-    title: applicationTitle('Edit production batch'),
-  },
 ];
