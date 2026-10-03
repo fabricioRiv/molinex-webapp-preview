@@ -1,0 +1,78 @@
+<section class="production-batch-form">
+  <header class="page-header">
+    <span class="eyebrow">{{ 'production-batch.eyebrow' | translate }}</span>
+    <h1>
+      {{ (isEditMode ? 'production-batch.edit-title' : 'production-batch.new-title') | translate }}
+    </h1>
+  </header>
+
+  @if (store.error()) {
+    <p class="form-error" role="alert">
+      {{ 'production-batches.errors.' + store.error() | translate }}
+    </p>
+  }
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'production-batch.code' | translate }}</mat-label>
+      <input matInput formControlName="code" maxlength="50" required />
+      @if (isInvalidControl(form, 'code')) {
+        <mat-error>{{ 'production-batch.errors.code' | translate }}</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'production-batch.reception' | translate }}</mat-label>
+      <mat-select formControlName="receptionId" required>
+        @for (reception of store.rawMaterialReceptions(); track reception.id) {
+          <mat-option [value]="reception.id">
+            #{{ reception.id }} — {{ reception.supplierName }} — {{ reception.originDescription }}
+          </mat-option>
+        }
+      </mat-select>
+      @if (isInvalidControl(form, 'receptionId')) {
+        <mat-error>{{ 'production-batch.errors.reception' | translate }}</mat-error>
+      }
+    </mat-form-field>
+
+    @if (store.rawMaterialReceptionMap().get(form.controls.receptionId.value); as reception) {
+      <div class="reception-preview">
+        <span class="material-symbols-outlined" aria-hidden="true">local_shipping</span>
+        <div>
+          <strong>{{ reception.supplierName }}</strong>
+          <span>
+            {{ reception.originDescription }} ·
+            {{ reception.quantity.value | number: '1.0-2' }}
+            {{ measurementUnitSymbol(reception.quantity.unit) }}
+          </span>
+        </div>
+      </div>
+    }
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'production-batch.registered-at' | translate }}</mat-label>
+      <input matInput type="datetime-local" formControlName="registeredAt" required />
+      @if (isInvalidControl(form, 'registeredAt')) {
+        <mat-error>{{ 'production-batch.errors.registered-at' | translate }}</mat-error>
+      }
+    </mat-form-field>
+
+    <div class="form-actions">
+      <button mat-button type="button" (click)="navigateToList()">
+        {{ 'production-batch.cancel' | translate }}
+      </button>
+      <button
+        mat-flat-button
+        type="submit"
+        [disabled]="
+          form.invalid ||
+          store.loading() ||
+          store.rawMaterialReceptions().length === 0 ||
+          (isEditMode && !productionBatch())
+        "
+      >
+        {{ (isEditMode ? 'production-batch.update' : 'production-batch.create') | translate }}
+      </button>
+    </div>
+  </form>
+</section>

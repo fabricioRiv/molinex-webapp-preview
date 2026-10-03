@@ -54,6 +54,56 @@
     "pending-maintenances": "Mantenimientos pendientes",
     "generated-at": "Actualizado:"
   },
+  "production-batches": {
+    "eyebrow": "Gestión de Producción",
+    "title": "Lotes de producción",
+    "description": "Registra y vincula cada lote con su recepción de materia prima.",
+    "new": "Nuevo lote",
+    "loading": "Cargando lotes de producción...",
+    "empty": "No hay lotes de producción registrados.",
+    "retry": "Reintentar",
+    "search": "Buscar por código, proveedor, procedencia o recepción",
+    "results": "{{ count }} resultados",
+    "id": "ID",
+    "code": "Código",
+    "reception": "Recepción",
+    "supplier": "Proveedor",
+    "received-quantity": "Cantidad recibida",
+    "missing-reception": "Recepción no encontrada",
+    "registered-at": "Fecha de registro",
+    "actions": "Acciones",
+    "edit": "Editar lote de producción",
+    "delete": "Eliminar lote de producción",
+    "confirm-delete": "¿Eliminar el lote {{ code }}?",
+    "metrics": {
+      "total": "Lotes registrados",
+      "today": "Registrados hoy",
+      "receptions": "Recepciones vinculadas"
+    },
+    "errors": {
+      "load-batches": "No se pudieron cargar los lotes de producción.",
+      "load-receptions": "No se pudieron cargar las recepciones de materia prima.",
+      "create": "No se pudo registrar el lote de producción.",
+      "update": "No se pudo actualizar el lote de producción.",
+      "delete": "No se pudo eliminar el lote de producción."
+    }
+  },
+  "production-batch": {
+    "eyebrow": "Gestión de Producción",
+    "new-title": "Registrar lote de producción",
+    "edit-title": "Editar lote de producción",
+    "code": "Código del lote",
+    "reception": "Recepción de materia prima",
+    "registered-at": "Fecha y hora de registro",
+    "create": "Registrar lote",
+    "update": "Actualizar lote",
+    "cancel": "Cancelar",
+    "errors": {
+      "code": "Ingresa un código de lote de hasta 50 caracteres.",
+      "reception": "Selecciona una recepción de materia prima.",
+      "registered-at": "Ingresa la fecha y hora de registro."
+    }
+  },
   "views": {
     "commercial": {
       "eyebrow": "Relación Comercial",
