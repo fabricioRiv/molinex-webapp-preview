@@ -7,7 +7,7 @@
     <button
       class="navigation-backdrop"
       type="button"
-      aria-label="Cerrar menú de navegación"
+      [attr.aria-label]="'shell.close-navigation' | translate"
       (click)="closeNavigation()"
     ></button>
   }

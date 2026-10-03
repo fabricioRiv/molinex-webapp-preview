@@ -1,15 +1,15 @@
-<aside class="sidebar" aria-label="Navegación principal">
+<aside class="sidebar" [attr.aria-label]="'shell.main-navigation' | translate">
   <div class="brand">
     <div class="brand__logo-surface">
       <img src="/molinex-logo.png" alt="Molinex" />
     </div>
-    <span>Centro de operaciones</span>
+    <span>{{ 'shell.operations-center' | translate }}</span>
   </div>
 
   <nav class="navigation">
     @for (group of navigationGroups(); track group.label) {
-      <section class="navigation__group" [attr.aria-label]="group.label">
-        <p class="navigation__label">{{ group.label }}</p>
+      <section class="navigation__group" [attr.aria-label]="group.label | translate">
+        <p class="navigation__label">{{ group.label | translate }}</p>
         @for (item of group.items; track item.path) {
           <a
             class="navigation__item"
@@ -20,7 +20,7 @@
             (click)="navigated.emit()"
           >
             <span class="material-symbols-outlined" aria-hidden="true">{{ item.icon }}</span>
-            <span>{{ item.label }}</span>
+            <span>{{ item.label | translate }}</span>
           </a>
         }
       </section>
@@ -31,7 +31,7 @@
     <div class="avatar" aria-hidden="true">FC</div>
     <div>
       <strong>Fabricio</strong>
-      <span>Administrador</span>
+      <span>{{ 'shell.administrator' | translate }}</span>
     </div>
     <span class="material-symbols-outlined sidebar__profile-icon" aria-hidden="true">
       more_vert

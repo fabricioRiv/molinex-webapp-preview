@@ -8,6 +8,6 @@ export const identityAccessManagementRoutes: Routes = [
   {
     path: 'users',
     loadComponent: usersOverview,
-    title: applicationTitle('Usuarios y permisos'),
+    title: applicationTitle('Users and permissions'),
   },
 ];

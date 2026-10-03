@@ -8,6 +8,6 @@ export const qualityYieldControlRoutes: Routes = [
   {
     path: '',
     loadComponent: qualityOverview,
-    title: applicationTitle('Calidad y rendimiento'),
+    title: applicationTitle('Quality and yield'),
   },
 ];

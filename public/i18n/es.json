@@ -1,0 +1,87 @@
+{
+  "navigation": {
+    "groups": {
+      "general": "General",
+      "management": "Gestión",
+      "assets": "Activos",
+      "analysis": "Análisis",
+      "administration": "Administración"
+    },
+    "items": {
+      "overview": "Resumen",
+      "commercial": "Comercial",
+      "operations": "Operaciones",
+      "quality": "Calidad y rendimiento",
+      "machinery": "Maquinaria",
+      "maintenance": "Mantenimiento",
+      "intelligence": "Inteligencia",
+      "reports": "Reportes",
+      "users": "Usuarios y permisos"
+    }
+  },
+  "shell": {
+    "operations-center": "Centro de operaciones",
+    "main-navigation": "Navegación principal",
+    "open-navigation": "Abrir menú de navegación",
+    "close-navigation": "Cerrar menú de navegación",
+    "search-label": "Buscar en Molinex",
+    "search-placeholder": "Buscar",
+    "view-notifications": "Ver notificaciones",
+    "notification-count": "{{ count }} notificaciones",
+    "administrator": "Administrador",
+    "preferred-language": "Idioma preferido"
+  },
+  "page-not-found": {
+    "eyebrow": "Ruta no disponible",
+    "title": "Página no encontrada",
+    "content": "No encontramos la ruta <strong>/{{ invalid_path }}</strong>.",
+    "go-overview": "Volver al resumen"
+  },
+  "views": {
+    "operational-overview": {
+      "eyebrow": "Inteligencia Operativa",
+      "title": "Resumen operativo",
+      "description": "Estado actual del molino y acciones prioritarias."
+    },
+    "commercial": {
+      "eyebrow": "Relación Comercial",
+      "title": "Gestión comercial",
+      "description": "Gestiona planes y consultas de clientes."
+    },
+    "production": {
+      "eyebrow": "Gestión de Producción",
+      "title": "Operaciones de producción",
+      "description": "Controla recepciones, lotes y registros de producción."
+    },
+    "quality": {
+      "eyebrow": "Control de Calidad y Rendimiento",
+      "title": "Calidad y rendimiento",
+      "description": "Consulta resultados de calidad, rendimiento y desperdicio."
+    },
+    "machinery": {
+      "eyebrow": "Gestión de Activos y Mantenimiento",
+      "title": "Maquinaria",
+      "description": "Consulta los equipos y su estado operativo."
+    },
+    "maintenance": {
+      "eyebrow": "Gestión de Activos y Mantenimiento",
+      "title": "Mantenimiento",
+      "description": "Planifica y supervisa los mantenimientos."
+    },
+    "intelligence": {
+      "eyebrow": "Inteligencia Operativa",
+      "title": "Inteligencia operativa",
+      "description": "Consulta lecturas, alertas y recomendaciones."
+    },
+    "reports": {
+      "eyebrow": "Reportes y Analítica",
+      "title": "Reportes y analítica",
+      "description": "Consulta indicadores y reportes operativos."
+    },
+    "users": {
+      "eyebrow": "Gestión de Identidades y Accesos",
+      "title": "Usuarios y permisos",
+      "description": "Gestiona usuarios, roles y permisos."
+    }
+  }
+}

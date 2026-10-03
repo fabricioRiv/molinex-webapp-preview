@@ -1,53 +1,12 @@
 <section class="section-overview">
   <div class="hero-card">
     <div class="hero-card__copy">
-      <span class="eyebrow">{{ eyebrow() }}</span>
-      <h1>{{ title() }}</h1>
-      <p>{{ description() }}</p>
-      <div class="hero-card__status">
-        <span class="status-dot" aria-hidden="true"></span>
-        Estructura del módulo preparada
-      </div>
+      <span class="eyebrow">{{ eyebrow() | translate }}</span>
+      <h1>{{ title() | translate }}</h1>
+      <p>{{ description() | translate }}</p>
     </div>
     <div class="hero-card__icon" aria-hidden="true">
       <span class="material-symbols-outlined">{{ icon() }}</span>
     </div>
   </div>
-
-  <div class="section-heading">
-    <div>
-      <span class="eyebrow">Capacidades</span>
-      <h2>Área de trabajo</h2>
-    </div>
-    <span class="preview-chip">Vista preliminar</span>
-  </div>
-
-  <div class="capability-grid">
-    @for (capability of capabilities(); track capability.title) {
-      <article class="capability-card">
-        <div class="capability-card__icon" aria-hidden="true">
-          <span class="material-symbols-outlined">{{ capability.icon }}</span>
-        </div>
-        <h3>{{ capability.title }}</h3>
-        <p>{{ capability.description }}</p>
-        <span class="capability-card__state">
-          <span class="material-symbols-outlined" aria-hidden="true">deployed_code</span>
-          Preparado para implementación
-        </span>
-      </article>
-    }
-  </div>
-
-  <aside class="architecture-note">
-    <div class="architecture-note__icon" aria-hidden="true">
-      <span class="material-symbols-outlined">architecture</span>
-    </div>
-    <div>
-      <strong>Arquitectura por bounded context</strong>
-      <p>
-        Esta vista está aislada dentro de su contexto y se conectará con casos de uso, puertos y
-        adaptadores sin acoplar la presentación al API.
-      </p>
-    </div>
-  </aside>
 </section>

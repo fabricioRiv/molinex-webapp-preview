@@ -14,11 +14,11 @@ export const assetMaintenanceManagementRoutes: Routes = [
   {
     path: 'machinery',
     loadComponent: machineryOverview,
-    title: applicationTitle('Maquinaria'),
+    title: applicationTitle('Machinery'),
   },
   {
     path: 'maintenance',
     loadComponent: maintenanceOverview,
-    title: applicationTitle('Mantenimiento'),
+    title: applicationTitle('Maintenance'),
   },
 ];
