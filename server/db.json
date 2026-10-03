@@ -41,7 +41,30 @@
       "registeredAt": "2026-10-03T10:48:00.000Z"
     }
   ],
-  "production-records": [],
+  "production-records": [
+    {
+      "id": 1,
+      "batchId": 1,
+      "processName": "Cleaning and husking",
+      "processedWeightValue": 8200,
+      "processedWeightUnit": "KILOGRAM",
+      "startedAt": "2026-10-03T08:15:00-05:00",
+      "finishedAt": "2026-10-03T09:40:00-05:00",
+      "status": "COMPLETED",
+      "recordedAt": "2026-10-03T08:10:00-05:00"
+    },
+    {
+      "id": 2,
+      "batchId": 2,
+      "processName": "Polishing",
+      "processedWeightValue": 6100,
+      "processedWeightUnit": "KILOGRAM",
+      "startedAt": "2026-10-03T10:00:00-05:00",
+      "finishedAt": null,
+      "status": "IN_PROGRESS",
+      "recordedAt": "2026-10-03T09:55:00-05:00"
+    }
+  ],
   "quality-results": [],
   "waste-records": [],
   "machines": [],

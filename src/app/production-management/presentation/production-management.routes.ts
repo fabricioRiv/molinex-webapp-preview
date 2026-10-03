@@ -21,6 +21,10 @@ const productionOverview = () =>
   import('./views/production-overview/production-overview').then(
     (module) => module.ProductionOverview,
   );
+const productionRecordForm = () =>
+  import('./views/production-record-form/production-record-form').then(
+    (module) => module.ProductionRecordForm,
+  );
 
 export const productionManagementRoutes: Routes = [
   {
@@ -48,5 +52,10 @@ export const productionManagementRoutes: Routes = [
     path: 'receptions/new',
     loadComponent: rawMaterialReceptionForm,
     title: applicationTitle('New raw material reception'),
+  },
+  {
+    path: 'records/new',
+    loadComponent: productionRecordForm,
+    title: applicationTitle('New production record'),
   },
 ];

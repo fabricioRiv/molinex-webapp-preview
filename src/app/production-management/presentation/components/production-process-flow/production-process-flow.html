@@ -1,0 +1,44 @@
+<article class="batch-flow">
+  <header class="batch-heading">
+    <span class="material-symbols-outlined" aria-hidden="true">inventory_2</span>
+    <div>
+      <strong>{{ batch().code }}</strong>
+      <time [attr.datetime]="batch().registeredAt.toISOString()">
+        {{ batch().registeredAt | date: 'MMM d, HH:mm' }}
+      </time>
+    </div>
+    <a
+      mat-button
+      [routerLink]="['/production/records/new']"
+      [queryParams]="{ batchId: batch().id }"
+    >
+      <span class="material-symbols-outlined" aria-hidden="true">add</span>
+      {{ 'production-overview.processes.record' | translate }}
+    </a>
+  </header>
+
+  @if (records().length === 0) {
+    <p class="empty-processes">{{ 'production-overview.processes.empty' | translate }}</p>
+  } @else {
+    <div class="process-list">
+      @for (record of records(); track record.id) {
+        <div class="process-node" [class]="'process-node process-node--' + record.details.status.toLowerCase()">
+          <span class="status-dot" aria-hidden="true"></span>
+          <div>
+            <strong>{{ record.details.processName }}</strong>
+            <span>
+              {{ record.details.processedWeight.value | number: '1.0-2' }}
+              {{ measurementUnitSymbol(record.details.processedWeight.unit) }}
+            </span>
+          </div>
+          <div class="process-meta">
+            <span>{{ 'production-record.statuses.' + record.details.status | translate }}</span>
+            <time [attr.datetime]="record.details.startedAt.toISOString()">
+              {{ record.details.startedAt | date: 'MMM d, HH:mm' }}
+            </time>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</article>

@@ -44,8 +44,7 @@
   padding: 1rem;
 }
 
-.reception-node,
-.batch-node {
+.reception-node {
   align-items: center;
   display: flex;
   gap: 0.75rem;
@@ -77,15 +76,13 @@
   text-transform: uppercase;
 }
 
-.node-heading time,
-.batch-node time {
+.node-heading time {
   color: var(--molinex-text-secondary);
   display: block;
   font-size: 0.66rem;
 }
 
-.reception-node strong,
-.batch-node strong {
+.reception-node strong {
   color: var(--molinex-text-primary);
   display: block;
   font-size: 0.82rem;
@@ -113,21 +110,8 @@
 }
 
 .batch-list {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
   gap: 0.5rem;
-}
-
-.batch-node {
-  background: var(--molinex-background);
-  border: 1px solid var(--molinex-border);
-  border-radius: 0.65rem;
-  padding: 0.55rem 0.65rem;
-}
-
-.batch-node > .material-symbols-outlined {
-  color: var(--molinex-green-dark);
-  font-size: 1.15rem;
 }
 
 .empty-batches {

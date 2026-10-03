@@ -62,15 +62,10 @@
             } @else {
               <div class="batch-list">
                 @for (batch of batchesByReception().get(reception.id) ?? []; track batch.id) {
-                  <div class="batch-node">
-                    <span class="material-symbols-outlined" aria-hidden="true">inventory_2</span>
-                    <div>
-                      <strong>{{ batch.code }}</strong>
-                      <time [attr.datetime]="batch.registeredAt.toISOString()">
-                        {{ batch.registeredAt | date: 'MMM d, HH:mm' }}
-                      </time>
-                    </div>
-                  </div>
+                  <app-production-process-flow
+                    [batch]="batch"
+                    [records]="recordsByBatch().get(batch.id) ?? []"
+                  />
                 }
               </div>
               <a

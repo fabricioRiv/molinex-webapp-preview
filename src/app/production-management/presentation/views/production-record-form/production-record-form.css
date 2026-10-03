@@ -1,0 +1,104 @@
+:host {
+  display: block;
+}
+
+.production-record-form {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 48rem;
+}
+
+.eyebrow {
+  color: var(--molinex-green-dark);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.page-header h1 {
+  color: var(--molinex-text-primary);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  letter-spacing: -0.035em;
+  margin: 0.45rem 0 0;
+}
+
+.page-header p {
+  color: var(--molinex-text-secondary);
+  margin: 0.65rem 0 0;
+}
+
+form {
+  background: var(--molinex-surface);
+  border: 1px solid var(--molinex-border);
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1.4rem rgba(16, 42, 67, 0.055);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1.5rem;
+}
+
+.weight-fields,
+.time-fields {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 2fr 1fr;
+}
+
+.time-fields {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.batch-context {
+  align-items: center;
+  background: var(--molinex-green-light);
+  border: 1px solid color-mix(in srgb, var(--molinex-green) 28%, white);
+  border-radius: 0.75rem;
+  color: var(--molinex-green-dark);
+  display: flex;
+  gap: 0.75rem;
+  margin: -0.1rem 0 0.8rem;
+  padding: 0.8rem 1rem;
+}
+
+.batch-context span,
+.batch-context strong {
+  display: block;
+}
+
+.batch-context div span {
+  font-size: 0.7rem;
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+}
+
+.form-error {
+  background: var(--molinex-critical-background);
+  border: 1px solid color-mix(in srgb, var(--molinex-critical) 30%, white);
+  border-radius: 0.75rem;
+  color: var(--molinex-critical);
+  margin: 0;
+  padding: 0.9rem 1rem;
+}
+
+@media (max-width: 600px) {
+  form {
+    padding: 1rem;
+  }
+
+  .weight-fields,
+  .time-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .form-actions {
+    align-items: stretch;
+    flex-direction: column-reverse;
+  }
+}
