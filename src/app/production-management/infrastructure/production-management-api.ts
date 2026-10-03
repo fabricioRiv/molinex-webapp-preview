@@ -1,0 +1,37 @@
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { BaseApi } from '../../shared/infrastructure/base-api';
+import { ProductionBatch } from '../domain/model/production-batch.entity';
+import { RawMaterialReception } from '../domain/model/raw-material-reception.entity';
+import { ProductionBatchesApiEndpoint } from './production-batches-api-endpoint';
+import { RawMaterialReceptionsApiEndpoint } from './raw-material-receptions-api-endpoint';
+
+@Injectable({ providedIn: 'root' })
+export class ProductionManagementApi extends BaseApi {
+  readonly #productionBatchesEndpoint = new ProductionBatchesApiEndpoint(this.http);
+  readonly #rawMaterialReceptionsEndpoint = new RawMaterialReceptionsApiEndpoint(this.http);
+
+  getRawMaterialReceptions(): Observable<RawMaterialReception[]> {
+    return this.#rawMaterialReceptionsEndpoint.getAll();
+  }
+
+  getProductionBatches(): Observable<ProductionBatch[]> {
+    return this.#productionBatchesEndpoint.getAll();
+  }
+
+  getProductionBatch(id: number): Observable<ProductionBatch> {
+    return this.#productionBatchesEndpoint.getById(id);
+  }
+
+  createProductionBatch(productionBatch: ProductionBatch): Observable<ProductionBatch> {
+    return this.#productionBatchesEndpoint.create(productionBatch);
+  }
+
+  updateProductionBatch(productionBatch: ProductionBatch): Observable<ProductionBatch> {
+    return this.#productionBatchesEndpoint.update(productionBatch, productionBatch.id);
+  }
+
+  deleteProductionBatch(id: number): Observable<void> {
+    return this.#productionBatchesEndpoint.delete(id);
+  }
+}

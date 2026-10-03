@@ -1,0 +1,172 @@
+<section class="production-batches">
+  <header class="page-header">
+    <div>
+      <span class="eyebrow">{{ 'production-batches.eyebrow' | translate }}</span>
+      <h1>{{ 'production-batches.title' | translate }}</h1>
+      <p>{{ 'production-batches.description' | translate }}</p>
+    </div>
+    <button mat-flat-button type="button" (click)="navigateToNew()">
+      <span class="material-symbols-outlined" aria-hidden="true">add</span>
+      {{ 'production-batches.new' | translate }}
+    </button>
+  </header>
+
+  <div class="summary-grid">
+    <article class="summary-card">
+      <span class="material-symbols-outlined" aria-hidden="true">inventory_2</span>
+      <div>
+        <strong>{{ store.productionBatchCount() }}</strong>
+        <span>{{ 'production-batches.metrics.total' | translate }}</span>
+      </div>
+    </article>
+    <article class="summary-card">
+      <span class="material-symbols-outlined" aria-hidden="true">today</span>
+      <div>
+        <strong>{{ registeredTodayCount() }}</strong>
+        <span>{{ 'production-batches.metrics.today' | translate }}</span>
+      </div>
+    </article>
+    <article class="summary-card">
+      <span class="material-symbols-outlined" aria-hidden="true">local_shipping</span>
+      <div>
+        <strong>{{ linkedReceptionCount() }}</strong>
+        <span>{{ 'production-batches.metrics.receptions' | translate }}</span>
+      </div>
+    </article>
+  </div>
+
+  @if (store.loading() && store.productionBatchCount() === 0) {
+    <div class="state-panel">
+      <mat-spinner diameter="36" />
+      <span>{{ 'production-batches.loading' | translate }}</span>
+    </div>
+  } @else if (store.error()) {
+    <div class="state-panel state-panel--error" role="alert">
+      <span class="material-symbols-outlined" aria-hidden="true">error</span>
+      <span>{{ 'production-batches.errors.' + store.error() | translate }}</span>
+      <button mat-button type="button" (click)="store.reloadProductionData()">
+        {{ 'production-batches.retry' | translate }}
+      </button>
+    </div>
+  } @else if (store.productionBatchCount() === 0) {
+    <div class="state-panel">
+      <span class="material-symbols-outlined" aria-hidden="true">inventory_2</span>
+      <span>{{ 'production-batches.empty' | translate }}</span>
+    </div>
+  } @else {
+    <div class="list-toolbar">
+      <mat-form-field appearance="outline" subscriptSizing="dynamic">
+        <mat-label>{{ 'production-batches.search' | translate }}</mat-label>
+        <span matPrefix class="material-symbols-outlined" aria-hidden="true">search</span>
+        <input matInput type="search" [value]="searchTerm()" (input)="updateSearchTerm($event)" />
+      </mat-form-field>
+      <span>
+        {{
+          'production-batches.results' | translate: { count: filteredProductionBatches().length }
+        }}
+      </span>
+    </div>
+
+    <div class="table-card">
+      <div class="table-scroll">
+        <table
+          mat-table
+          [dataSource]="dataSource()"
+          matSort
+          matSortActive="registeredAt"
+          matSortDirection="desc"
+          matSortDisableClear
+        >
+          <ng-container matColumnDef="code">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              {{ 'production-batches.code' | translate }}
+            </th>
+            <td mat-cell *matCellDef="let productionBatch">
+              <strong>{{ productionBatch.code }}</strong>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="reception">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              {{ 'production-batches.reception' | translate }}
+            </th>
+            <td mat-cell *matCellDef="let productionBatch">
+              <strong>#{{ productionBatch.receptionId }}</strong>
+              @if (store.rawMaterialReceptionMap().get(productionBatch.receptionId); as reception) {
+                <span class="cell-detail">{{ reception.originDescription }}</span>
+              } @else {
+                <span class="cell-detail cell-detail--warning">
+                  {{ 'production-batches.missing-reception' | translate }}
+                </span>
+              }
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="supplier">
+            <th mat-header-cell *matHeaderCellDef>
+              {{ 'production-batches.supplier' | translate }}
+            </th>
+            <td mat-cell *matCellDef="let productionBatch">
+              {{
+                store.rawMaterialReceptionMap().get(productionBatch.receptionId)?.supplierName ??
+                  '—'
+              }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="quantity">
+            <th mat-header-cell *matHeaderCellDef>
+              {{ 'production-batches.received-quantity' | translate }}
+            </th>
+            <td mat-cell *matCellDef="let productionBatch">
+              @if (store.rawMaterialReceptionMap().get(productionBatch.receptionId); as reception) {
+                {{ reception.quantity.value | number: '1.0-2' }}
+                {{ measurementUnitSymbol(reception.quantity.unit) }}
+              } @else {
+                —
+              }
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="registeredAt">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              {{ 'production-batches.registered-at' | translate }}
+            </th>
+            <td mat-cell *matCellDef="let productionBatch">
+              {{ productionBatch.registeredAt | date: 'yyyy-MM-dd HH:mm' }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>
+              {{ 'production-batches.actions' | translate }}
+            </th>
+            <td mat-cell *matCellDef="let productionBatch" class="actions-cell">
+              <button
+                mat-icon-button
+                type="button"
+                [attr.aria-label]="'production-batches.edit' | translate"
+                (click)="editProductionBatch(productionBatch.id)"
+              >
+                <span class="material-symbols-outlined" aria-hidden="true">edit</span>
+              </button>
+              <button
+                mat-icon-button
+                type="button"
+                class="delete-button"
+                [attr.aria-label]="'production-batches.delete' | translate"
+                (click)="deleteProductionBatch(productionBatch)"
+              >
+                <span class="material-symbols-outlined" aria-hidden="true">delete</span>
+              </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </div>
+      <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons />
+    </div>
+  }
+</section>

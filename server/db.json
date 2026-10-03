@@ -3,8 +3,44 @@
   "commercial-inquiries": [],
   "users": [],
   "roles": [],
-  "raw-material-receptions": [],
-  "production-batches": [],
+  "raw-material-receptions": [
+    {
+      "id": 1,
+      "receivedAt": "2026-10-03T06:30:00-05:00",
+      "supplierName": "Agro Norte",
+      "originDescription": "Lambayeque",
+      "quantityValue": 18000,
+      "quantityUnit": "KILOGRAM"
+    },
+    {
+      "id": 2,
+      "receivedAt": "2026-10-03T07:15:00-05:00",
+      "supplierName": "Campos del Sur",
+      "originDescription": "La Libertad",
+      "quantityValue": 14500,
+      "quantityUnit": "KILOGRAM"
+    }
+  ],
+  "production-batches": [
+    {
+      "id": 1,
+      "code": "LOT-2026-001",
+      "receptionId": 1,
+      "registeredAt": "2026-10-03T07:00:00-05:00"
+    },
+    {
+      "id": 2,
+      "code": "LOT-2026-002",
+      "receptionId": 2,
+      "registeredAt": "2026-10-03T08:00:00-05:00"
+    },
+    {
+      "id": 3,
+      "code": "LOT-2026-003",
+      "receptionId": 5,
+      "registeredAt": "2026-10-03T10:48:00.000Z"
+    }
+  ],
   "production-records": [],
   "quality-results": [],
   "waste-records": [],
