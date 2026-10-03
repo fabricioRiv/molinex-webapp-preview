@@ -1,0 +1,85 @@
+<section class="operational-summary">
+  <header class="page-header">
+    <div>
+      <span class="eyebrow">{{ 'operational-summary.eyebrow' | translate }}</span>
+      <h1>{{ 'operational-summary.title' | translate }}</h1>
+      <p>{{ 'operational-summary.description' | translate }}</p>
+    </div>
+  </header>
+
+  @if (store.loading()) {
+    <div class="state-panel" role="status">
+      <mat-spinner diameter="36" />
+      <span>{{ 'operational-summary.loading' | translate }}</span>
+    </div>
+  } @else if (store.error()) {
+    <div class="state-panel state-panel--error" role="alert">
+      <span class="material-symbols-outlined" aria-hidden="true">error</span>
+      <span>{{ store.error()! | translate }}</span>
+      <button mat-stroked-button type="button" (click)="store.loadLatestSummary()">
+        {{ 'operational-summary.retry' | translate }}
+      </button>
+    </div>
+  } @else if (store.summary(); as summary) {
+    <div class="period-row">
+      <span>{{ 'operational-summary.period' | translate }}</span>
+      <strong>{{ summary.period }}</strong>
+    </div>
+
+    <div class="metric-grid">
+      <article class="metric-card">
+        <span class="material-symbols-outlined" aria-hidden="true">conveyor_belt</span>
+        <p>{{ 'operational-summary.processed-volume' | translate }}</p>
+        <strong>{{ summary.processedVolumeKg | number: '1.0-0' }} kg</strong>
+      </article>
+
+      <article class="metric-card">
+        <span class="material-symbols-outlined" aria-hidden="true">percent</span>
+        <p>{{ 'operational-summary.yield' | translate }}</p>
+        <strong>{{ summary.yieldPercentage | number: '1.1-1' }}%</strong>
+      </article>
+
+      <article class="metric-card">
+        <span class="material-symbols-outlined" aria-hidden="true">delete_sweep</span>
+        <p>{{ 'operational-summary.waste' | translate }}</p>
+        <strong>{{ summary.wastePercentage | number: '1.1-1' }}%</strong>
+      </article>
+
+      <article class="metric-card">
+        <span class="material-symbols-outlined" aria-hidden="true">precision_manufacturing</span>
+        <p>{{ 'operational-summary.active-machines' | translate }}</p>
+        <strong>{{ summary.activeMachines }} / {{ summary.totalMachines }}</strong>
+      </article>
+    </div>
+
+    <div class="status-grid">
+      <article class="status-card status-card--alert">
+        <span class="material-symbols-outlined" aria-hidden="true">warning</span>
+        <div>
+          <strong>{{ summary.openAlerts }}</strong>
+          <span>{{ 'operational-summary.open-alerts' | translate }}</span>
+        </div>
+      </article>
+
+      <article class="status-card status-card--maintenance">
+        <span class="material-symbols-outlined" aria-hidden="true">build_circle</span>
+        <div>
+          <strong>{{ summary.pendingMaintenances }}</strong>
+          <span>{{ 'operational-summary.pending-maintenances' | translate }}</span>
+        </div>
+      </article>
+    </div>
+
+    <p class="generated-at">
+      {{ 'operational-summary.generated-at' | translate }}
+      <time [attr.datetime]="summary.generatedAt.toISOString()">
+        {{ summary.generatedAt | date: 'yyyy-MM-dd HH:mm' }}
+      </time>
+    </p>
+  } @else {
+    <div class="state-panel">
+      <span class="material-symbols-outlined" aria-hidden="true">info</span>
+      <span>{{ 'operational-summary.empty' | translate }}</span>
+    </div>
+  }
+</section>

@@ -20,7 +20,7 @@ export class Layout {
         {
           icon: 'space_dashboard',
           label: 'navigation.items.overview',
-          path: '/intelligence/overview',
+          path: '/overview',
         },
       ],
     },

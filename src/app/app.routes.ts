@@ -29,6 +29,10 @@ const reportingAnalyticsRoutes = () =>
   import('./reporting-analytics/presentation/reporting-analytics.routes').then(
     (module) => module.reportingAnalyticsRoutes,
   );
+const operationalSummary = () =>
+  import('./reporting-analytics/presentation/views/operational-summary/operational-summary').then(
+    (module) => module.OperationalSummaryView,
+  );
 const pageNotFound = () =>
   import('./shared/presentation/views/page-not-found/page-not-found').then(
     (module) => module.PageNotFound,
@@ -41,8 +45,13 @@ export const routes: Routes = [
   { path: 'quality', loadChildren: qualityYieldControlRoutes },
   { path: 'assets', loadChildren: assetMaintenanceManagementRoutes },
   { path: 'intelligence', loadChildren: operationalIntelligenceRoutes },
+  {
+    path: 'overview',
+    loadComponent: operationalSummary,
+    title: applicationTitle('Operational overview'),
+  },
   { path: 'reporting', loadChildren: reportingAnalyticsRoutes },
-  { path: '', redirectTo: '/intelligence/overview', pathMatch: 'full' },
+  { path: '', redirectTo: '/overview', pathMatch: 'full' },
   {
     path: '**',
     loadComponent: pageNotFound,

@@ -37,12 +37,24 @@
     "content": "We could not find the path <strong>/{{ invalid_path }}</strong>.",
     "go-overview": "Return to overview"
   },
+  "operational-summary": {
+    "eyebrow": "Reporting & Analytics",
+    "title": "Operational overview",
+    "description": "Latest production, quality, and maintenance indicators.",
+    "loading": "Loading operational overview...",
+    "load-error": "The operational overview could not be loaded.",
+    "retry": "Retry",
+    "empty": "No operational data is available.",
+    "period": "Period:",
+    "processed-volume": "Processed volume",
+    "yield": "Yield",
+    "waste": "Waste",
+    "active-machines": "Active machines",
+    "open-alerts": "Open alerts",
+    "pending-maintenances": "Pending maintenances",
+    "generated-at": "Updated:"
+  },
   "views": {
-    "operational-overview": {
-      "eyebrow": "Operational Intelligence",
-      "title": "Operational overview",
-      "description": "Current mill status and priority actions."
-    },
     "commercial": {
       "eyebrow": "Commercial Engagement",
       "title": "Commercial management",

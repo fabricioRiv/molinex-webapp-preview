@@ -15,7 +15,9 @@
             class="navigation__item"
             [routerLink]="item.path"
             routerLinkActive="navigation__item--active"
-            [routerLinkActiveOptions]="{ exact: item.path === '/intelligence/overview' }"
+            [routerLinkActiveOptions]="{
+              exact: item.path === '/overview' || item.path === '/reporting',
+            }"
             ariaCurrentWhenActive="page"
             (click)="navigated.emit()"
           >

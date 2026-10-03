@@ -37,12 +37,24 @@
     "content": "No encontramos la ruta <strong>/{{ invalid_path }}</strong>.",
     "go-overview": "Volver al resumen"
   },
+  "operational-summary": {
+    "eyebrow": "Reportes y Analítica",
+    "title": "Resumen operativo",
+    "description": "Indicadores recientes de producción, calidad y mantenimiento.",
+    "loading": "Cargando resumen operativo...",
+    "load-error": "No se pudo cargar el resumen operativo.",
+    "retry": "Reintentar",
+    "empty": "No hay información operativa disponible.",
+    "period": "Periodo:",
+    "processed-volume": "Volumen procesado",
+    "yield": "Rendimiento",
+    "waste": "Merma",
+    "active-machines": "Máquinas activas",
+    "open-alerts": "Alertas abiertas",
+    "pending-maintenances": "Mantenimientos pendientes",
+    "generated-at": "Actualizado:"
+  },
   "views": {
-    "operational-overview": {
-      "eyebrow": "Inteligencia Operativa",
-      "title": "Resumen operativo",
-      "description": "Estado actual del molino y acciones prioritarias."
-    },
     "commercial": {
       "eyebrow": "Relación Comercial",
       "title": "Gestión comercial",
