@@ -1,0 +1,2 @@
+export type QualityIndicator =
+  'WHOLE_GRAIN_PERCENTAGE' | 'BROKEN_GRAIN_PERCENTAGE' | 'YIELD_PERCENTAGE';

@@ -102,12 +102,16 @@
   text-align: right;
 }
 
-.process-node > a {
+.process-actions {
+  display: flex;
+}
+
+.process-actions > a {
   height: 2rem;
   width: 2rem;
 }
 
-.process-node > a .material-symbols-outlined {
+.process-actions > a .material-symbols-outlined {
   font-size: 1rem;
 }
 

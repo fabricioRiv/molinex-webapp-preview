@@ -4,5 +4,6 @@ export const environment = {
   rawMaterialReceptionsEndpointPath: '/raw-material-receptions',
   productionBatchesEndpointPath: '/production-batches',
   productionRecordsEndpointPath: '/production-records',
+  qualityResultsEndpointPath: '/quality-results',
   reportSummariesEndpointPath: '/report-summaries',
 };

@@ -65,7 +65,58 @@
       "recordedAt": "2026-10-03T09:55:00-05:00"
     }
   ],
-  "quality-results": [],
+  "quality-results": [
+    {
+      "id": 1,
+      "productionRecordId": 1,
+      "measurements": [
+        {
+          "indicator": "WHOLE_GRAIN_PERCENTAGE",
+          "value": 72.5,
+          "expectedMinimum": 0,
+          "expectedMaximum": 100
+        },
+        {
+          "indicator": "BROKEN_GRAIN_PERCENTAGE",
+          "value": 18.4,
+          "expectedMinimum": 0,
+          "expectedMaximum": 100
+        },
+        {
+          "indicator": "YIELD_PERCENTAGE",
+          "value": 68.4,
+          "expectedMinimum": 0,
+          "expectedMaximum": 100
+        }
+      ],
+      "assessedAt": "2026-10-03T10:00:00-05:00"
+    },
+    {
+      "id": 2,
+      "productionRecordId": 2,
+      "measurements": [
+        {
+          "indicator": "WHOLE_GRAIN_PERCENTAGE",
+          "value": 69.2,
+          "expectedMinimum": 0,
+          "expectedMaximum": 100
+        },
+        {
+          "indicator": "BROKEN_GRAIN_PERCENTAGE",
+          "value": 21.5,
+          "expectedMinimum": 0,
+          "expectedMaximum": 100
+        },
+        {
+          "indicator": "YIELD_PERCENTAGE",
+          "value": 66.8,
+          "expectedMinimum": 0,
+          "expectedMaximum": 100
+        }
+      ],
+      "assessedAt": "2026-10-03T11:15:00-05:00"
+    }
+  ],
   "waste-records": [],
   "machines": [],
   "maintenance-records": [],
