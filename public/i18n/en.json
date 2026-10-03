@@ -1,0 +1,87 @@
+{
+  "navigation": {
+    "groups": {
+      "general": "General",
+      "management": "Management",
+      "assets": "Assets",
+      "analysis": "Analysis",
+      "administration": "Administration"
+    },
+    "items": {
+      "overview": "Overview",
+      "commercial": "Commercial",
+      "operations": "Operations",
+      "quality": "Quality and yield",
+      "machinery": "Machinery",
+      "maintenance": "Maintenance",
+      "intelligence": "Intelligence",
+      "reports": "Reports",
+      "users": "Users and permissions"
+    }
+  },
+  "shell": {
+    "operations-center": "Operations Center",
+    "main-navigation": "Main navigation",
+    "open-navigation": "Open navigation menu",
+    "close-navigation": "Close navigation menu",
+    "search-label": "Search Molinex",
+    "search-placeholder": "Search",
+    "view-notifications": "View notifications",
+    "notification-count": "{{ count }} notifications",
+    "administrator": "Administrator",
+    "preferred-language": "Preferred language"
+  },
+  "page-not-found": {
+    "eyebrow": "Unavailable route",
+    "title": "Page not found",
+    "content": "We could not find the path <strong>/{{ invalid_path }}</strong>.",
+    "go-overview": "Return to overview"
+  },
+  "views": {
+    "operational-overview": {
+      "eyebrow": "Operational Intelligence",
+      "title": "Operational overview",
+      "description": "Current mill status and priority actions."
+    },
+    "commercial": {
+      "eyebrow": "Commercial Engagement",
+      "title": "Commercial management",
+      "description": "Manage plans and customer inquiries."
+    },
+    "production": {
+      "eyebrow": "Production Management",
+      "title": "Production operations",
+      "description": "Track raw material receptions, batches, and production records."
+    },
+    "quality": {
+      "eyebrow": "Quality & Yield Control",
+      "title": "Quality and yield",
+      "description": "Review quality, yield, and waste results."
+    },
+    "machinery": {
+      "eyebrow": "Asset & Maintenance Management",
+      "title": "Machinery",
+      "description": "Review equipment and its operating status."
+    },
+    "maintenance": {
+      "eyebrow": "Asset & Maintenance Management",
+      "title": "Maintenance",
+      "description": "Plan and track maintenance work."
+    },
+    "intelligence": {
+      "eyebrow": "Operational Intelligence",
+      "title": "Operational intelligence",
+      "description": "Review readings, alerts, and recommendations."
+    },
+    "reports": {
+      "eyebrow": "Reporting & Analytics",
+      "title": "Reporting and analytics",
+      "description": "Review operational indicators and reports."
+    },
+    "users": {
+      "eyebrow": "Identity & Access Management",
+      "title": "Users and permissions",
+      "description": "Manage users, roles, and permissions."
+    }
+  }
+}

@@ -8,6 +8,6 @@ export const reportingAnalyticsRoutes: Routes = [
   {
     path: '',
     loadComponent: reportsOverview,
-    title: applicationTitle('Reportes y analítica'),
+    title: applicationTitle('Reporting and analytics'),
   },
 ];

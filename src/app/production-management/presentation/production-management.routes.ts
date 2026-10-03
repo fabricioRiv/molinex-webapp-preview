@@ -10,6 +10,6 @@ export const productionManagementRoutes: Routes = [
   {
     path: '',
     loadComponent: operationsOverview,
-    title: applicationTitle('Operaciones'),
+    title: applicationTitle('Operations'),
   },
 ];

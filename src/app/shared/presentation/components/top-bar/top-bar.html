@@ -3,29 +3,39 @@
     <button
       class="icon-button menu-button"
       type="button"
-      aria-label="Abrir menú de navegación"
+      [attr.aria-label]="'shell.open-navigation' | translate"
       (click)="menuToggled.emit()"
     >
       <span class="material-symbols-outlined" aria-hidden="true">menu</span>
     </button>
     <div>
       <span class="top-bar__eyebrow">Molinex</span>
-      <strong>Centro de operaciones</strong>
+      <strong>{{ 'shell.operations-center' | translate }}</strong>
     </div>
   </div>
 
   <div class="top-bar__actions">
-    <label class="search" aria-label="Buscar en Molinex">
+    <label class="search" [attr.aria-label]="'shell.search-label' | translate">
       <span class="material-symbols-outlined" aria-hidden="true">search</span>
-      <input type="search" placeholder="Buscar" />
+      <input type="search" [placeholder]="'shell.search-placeholder' | translate" />
       <kbd>Ctrl K</kbd>
     </label>
 
-    <span class="top-bar__date">{{ formattedDate }}</span>
+    <span class="top-bar__date">{{ formattedDate() }}</span>
 
-    <button class="icon-button notification-button" type="button" aria-label="Ver notificaciones">
+    <app-language-switcher />
+
+    <button
+      class="icon-button notification-button"
+      type="button"
+      [attr.aria-label]="'shell.view-notifications' | translate"
+    >
       <span class="material-symbols-outlined" aria-hidden="true">notifications</span>
-      <span class="notification-button__badge" aria-label="3 notificaciones">3</span>
+      <span
+        class="notification-button__badge"
+        [attr.aria-label]="'shell.notification-count' | translate: { count: 3 }"
+        >3</span
+      >
     </button>
   </div>
 </mat-toolbar>

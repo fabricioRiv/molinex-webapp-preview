@@ -10,6 +10,6 @@ export const commercialEngagementRoutes: Routes = [
   {
     path: '',
     loadComponent: commercialOverview,
-    title: applicationTitle('Gestión comercial'),
+    title: applicationTitle('Commercial management'),
   },
 ];

@@ -46,6 +46,6 @@ export const routes: Routes = [
   {
     path: '**',
     loadComponent: pageNotFound,
-    title: applicationTitle('Página no encontrada'),
+    title: applicationTitle('Page not found'),
   },
 ];

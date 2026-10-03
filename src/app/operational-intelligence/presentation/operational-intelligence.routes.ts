@@ -14,11 +14,11 @@ export const operationalIntelligenceRoutes: Routes = [
   {
     path: 'overview',
     loadComponent: operationalOverview,
-    title: applicationTitle('Resumen operativo'),
+    title: applicationTitle('Operational overview'),
   },
   {
     path: 'analysis',
     loadComponent: intelligenceOverview,
-    title: applicationTitle('Inteligencia operativa'),
+    title: applicationTitle('Operational intelligence'),
   },
 ];
