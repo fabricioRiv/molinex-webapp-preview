@@ -25,62 +25,58 @@ import { ProductionManagementStore } from '../../../application/production-manag
     MatTableModule,
     TranslatePipe,
   ],
-  selector: 'app-production-batch-list',
-  styleUrl: './production-batch-list.css',
-  templateUrl: './production-batch-list.html',
+  selector: 'app-raw-material-reception-list',
+  styleUrl: './raw-material-reception-list.css',
+  templateUrl: './raw-material-reception-list.html',
 })
-export class ProductionBatchList {
+export class RawMaterialReceptionList {
   protected readonly store = inject(ProductionManagementStore);
   readonly #router = inject(Router);
   protected readonly displayedColumns = [
-    'code',
-    'reception',
+    'id',
+    'receivedAt',
     'supplier',
+    'origin',
     'quantity',
-    'registeredAt',
   ];
   protected readonly sort = viewChild(MatSort);
   protected readonly paginator = viewChild(MatPaginator);
   protected readonly searchTerm = signal('');
-  protected readonly linkedReceptionCount = computed(() => {
-    const receptionMap = this.store.rawMaterialReceptionMap();
-    return new Set(
-      this.store
-        .productionBatches()
-        .filter((batch) => receptionMap.has(batch.receptionId))
-        .map((batch) => batch.receptionId),
-    ).size;
-  });
-  protected readonly registeredTodayCount = computed(() => {
+  protected readonly receivedTodayCount = computed(() => {
     const today = new Date();
     return this.store
-      .productionBatches()
-      .filter((batch) => this.#isSameLocalDate(batch.registeredAt, today)).length;
+      .rawMaterialReceptions()
+      .filter((reception) => this.#isSameLocalDate(reception.receivedAt, today)).length;
   });
-  protected readonly filteredProductionBatches = computed(() => {
+  protected readonly supplierCount = computed(
+    () =>
+      new Set(
+        this.store
+          .rawMaterialReceptions()
+          .map((reception) => reception.supplierName.trim().toLocaleLowerCase()),
+      ).size,
+  );
+  protected readonly filteredReceptions = computed(() => {
     const searchTerm = this.searchTerm().trim().toLocaleLowerCase();
-    if (!searchTerm) return this.store.productionBatches();
+    if (!searchTerm) return this.store.rawMaterialReceptions();
 
-    const receptionMap = this.store.rawMaterialReceptionMap();
-    return this.store.productionBatches().filter((batch) => {
-      const reception = receptionMap.get(batch.receptionId);
-      return [
-        batch.code,
-        batch.receptionId.toString(),
-        reception?.supplierName ?? '',
-        reception?.originDescription ?? '',
-      ].some((value) => value.toLocaleLowerCase().includes(searchTerm));
-    });
+    return this.store.rawMaterialReceptions().filter((reception) =>
+      [reception.id.toString(), reception.supplierName, reception.originDescription].some((value) =>
+        value.toLocaleLowerCase().includes(searchTerm),
+      ),
+    );
   });
-
   protected readonly dataSource = computed(() => {
-    const source = new MatTableDataSource(this.filteredProductionBatches());
+    const source = new MatTableDataSource(this.filteredReceptions());
     const sort = this.sort();
     const paginator = this.paginator();
 
-    source.sortingDataAccessor = (batch, column) => {
-      if (column === 'reception') return batch.receptionId;
-      return column === 'registeredAt' ? batch.registeredAt.getTime() : batch.code;
+    source.sortingDataAccessor = (reception, column) => {
+      if (column === 'receivedAt') return reception.receivedAt.getTime();
+      if (column === 'supplier') return reception.supplierName;
+      if (column === 'origin') return reception.originDescription;
+      if (column === 'quantity') return reception.quantity.value;
+      return reception.id;
     };
 
     if (sort) source.sort = sort;
@@ -90,11 +86,11 @@ export class ProductionBatchList {
   });
 
   protected navigateToNew(): void {
-    this.#router.navigate(['/production/batches/new']).then();
+    this.#router.navigate(['/production/receptions/new']).then();
   }
 
-  protected navigateToReceptions(): void {
-    this.#router.navigate(['/production/receptions']).then();
+  protected navigateToBatches(): void {
+    this.#router.navigate(['/production']).then();
   }
 
   protected updateSearchTerm(event: Event): void {

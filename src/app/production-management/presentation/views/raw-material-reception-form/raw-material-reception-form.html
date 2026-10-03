@@ -1,0 +1,68 @@
+<section class="raw-material-reception-form">
+  <header class="page-header">
+    <span class="eyebrow">{{ 'raw-material-reception.eyebrow' | translate }}</span>
+    <h1>{{ 'raw-material-reception.new-title' | translate }}</h1>
+  </header>
+
+  @if (store.error() === 'create-reception') {
+    <p class="form-error" role="alert">
+      {{ 'raw-material-receptions.errors.create-reception' | translate }}
+    </p>
+  }
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'raw-material-reception.received-at' | translate }}</mat-label>
+      <input matInput type="datetime-local" formControlName="receivedAt" required />
+      @if (isInvalidControl(form, 'receivedAt')) {
+        <mat-error>{{ 'raw-material-reception.errors.received-at' | translate }}</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'raw-material-reception.supplier' | translate }}</mat-label>
+      <input matInput formControlName="supplierName" maxlength="100" required />
+      @if (isInvalidControl(form, 'supplierName')) {
+        <mat-error>{{ 'raw-material-reception.errors.supplier' | translate }}</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'raw-material-reception.origin' | translate }}</mat-label>
+      <input matInput formControlName="originDescription" maxlength="150" required />
+      @if (isInvalidControl(form, 'originDescription')) {
+        <mat-error>{{ 'raw-material-reception.errors.origin' | translate }}</mat-error>
+      }
+    </mat-form-field>
+
+    <div class="quantity-fields">
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'raw-material-reception.quantity' | translate }}</mat-label>
+        <input matInput type="number" min="0.01" step="0.01" formControlName="quantityValue" required />
+        @if (isInvalidControl(form, 'quantityValue')) {
+          <mat-error>{{ 'raw-material-reception.errors.quantity' | translate }}</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'raw-material-reception.unit' | translate }}</mat-label>
+        <mat-select formControlName="quantityUnit" required>
+          @for (unit of measurementUnits; track unit) {
+            <mat-option [value]="unit">
+              {{ 'raw-material-reception.units.' + unit | translate }}
+            </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="form-actions">
+      <button mat-button type="button" (click)="navigateToList()">
+        {{ 'raw-material-reception.cancel' | translate }}
+      </button>
+      <button mat-flat-button type="submit" [disabled]="form.invalid || store.loading()">
+        {{ 'raw-material-reception.create' | translate }}
+      </button>
+    </div>
+  </form>
+</section>

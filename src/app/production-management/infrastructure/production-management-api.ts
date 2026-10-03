@@ -15,6 +15,12 @@ export class ProductionManagementApi extends BaseApi {
     return this.#rawMaterialReceptionsEndpoint.getAll();
   }
 
+  createRawMaterialReception(
+    rawMaterialReception: RawMaterialReception,
+  ): Observable<RawMaterialReception> {
+    return this.#rawMaterialReceptionsEndpoint.create(rawMaterialReception);
+  }
+
   getProductionBatches(): Observable<ProductionBatch[]> {
     return this.#productionBatchesEndpoint.getAll();
   }
