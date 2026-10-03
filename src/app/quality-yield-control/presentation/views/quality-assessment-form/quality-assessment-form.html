@@ -1,0 +1,117 @@
+<section class="quality-assessment-form">
+  <header class="page-header">
+    <span class="eyebrow">{{ 'quality-assessment.eyebrow' | translate }}</span>
+    <h1>{{ 'quality-assessment.title' | translate }}</h1>
+    <p>{{ 'quality-assessment.description' | translate }}</p>
+  </header>
+
+  @if (store.error() === 'create-assessment') {
+    <p class="form-error" role="alert">{{ 'quality-assessment.errors.create' | translate }}</p>
+  }
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'quality-assessment.production-process' | translate }}</mat-label>
+      <mat-select formControlName="productionRecordId" required>
+        @for (record of store.productionRecords(); track record.id) {
+          <mat-option [value]="record.id">
+            {{ record.processName }} · {{ 'quality-assessment.batch' | translate }} #{{
+              record.batchId
+            }}
+          </mat-option>
+        }
+      </mat-select>
+      @if (isInvalidControl(form, 'productionRecordId')) {
+        <mat-error>{{ 'quality-assessment.errors.production-process' | translate }}</mat-error>
+      }
+    </mat-form-field>
+
+    <fieldset>
+      <legend>{{ 'quality-assessment.measurements-title' | translate }}</legend>
+      <p>{{ 'quality-assessment.measurements-help' | translate }}</p>
+
+      <div class="measurement-grid">
+        <mat-form-field appearance="outline">
+          <mat-label>{{ 'quality-assessment.whole-grain' | translate }}</mat-label>
+          <input
+            matInput
+            type="number"
+            step="0.01"
+            [min]="minimumPercentage"
+            [max]="maximumPercentage"
+            formControlName="wholeGrainPercentage"
+            required
+          />
+          <span matTextSuffix>%</span>
+          @if (isInvalidControl(form, 'wholeGrainPercentage')) {
+            <mat-error>{{ 'quality-assessment.errors.percentage' | translate }}</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{ 'quality-assessment.broken-grain' | translate }}</mat-label>
+          <input
+            matInput
+            type="number"
+            step="0.01"
+            [min]="minimumPercentage"
+            [max]="maximumPercentage"
+            formControlName="brokenGrainPercentage"
+            required
+          />
+          <span matTextSuffix>%</span>
+          @if (isInvalidControl(form, 'brokenGrainPercentage')) {
+            <mat-error>{{ 'quality-assessment.errors.percentage' | translate }}</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{ 'quality-assessment.yield' | translate }}</mat-label>
+          <input
+            matInput
+            type="number"
+            step="0.01"
+            [min]="minimumPercentage"
+            [max]="maximumPercentage"
+            formControlName="yieldPercentage"
+            required
+          />
+          <span matTextSuffix>%</span>
+          @if (isInvalidControl(form, 'yieldPercentage')) {
+            <mat-error>{{ 'quality-assessment.errors.percentage' | translate }}</mat-error>
+          }
+        </mat-form-field>
+      </div>
+
+      @if (
+        form.hasError('invalidComposition') &&
+        (form.controls.wholeGrainPercentage.touched || form.controls.brokenGrainPercentage.touched)
+      ) {
+        <p class="composition-error" role="alert">
+          {{ 'quality-assessment.errors.composition' | translate }}
+        </p>
+      }
+    </fieldset>
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'quality-assessment.assessed-at' | translate }}</mat-label>
+      <input matInput type="datetime-local" formControlName="assessedAt" required />
+      @if (isInvalidControl(form, 'assessedAt')) {
+        <mat-error>{{ 'quality-assessment.errors.assessed-at' | translate }}</mat-error>
+      }
+    </mat-form-field>
+
+    <div class="form-actions">
+      <button mat-button type="button" (click)="navigateToOverview()">
+        {{ 'quality-assessment.cancel' | translate }}
+      </button>
+      <button
+        mat-flat-button
+        type="submit"
+        [disabled]="form.invalid || store.loading() || store.productionRecords().length === 0"
+      >
+        {{ 'quality-assessment.create' | translate }}
+      </button>
+    </div>
+  </form>
+</section>

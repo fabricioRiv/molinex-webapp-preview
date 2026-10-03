@@ -136,7 +136,8 @@
     "processes": {
       "record": "Registrar proceso",
       "empty": "Este lote aún no tiene procesos productivos registrados.",
-      "edit": "Editar proceso productivo"
+      "edit": "Editar proceso productivo",
+      "assess-quality": "Registrar resultados de calidad"
     }
   },
   "production-record": {
@@ -258,6 +259,49 @@
       "supplier": "Ingresa un proveedor de hasta 100 caracteres.",
       "origin": "Ingresa una procedencia de hasta 150 caracteres.",
       "quantity": "Ingresa una cantidad mayor que cero."
+    }
+  },
+  "quality-overview": {
+    "eyebrow": "Control de Calidad y Rendimiento",
+    "title": "Resultados de calidad",
+    "description": "Consulta la composición del grano y el rendimiento de cada proceso productivo.",
+    "new-assessment": "Registrar resultados",
+    "loading": "Cargando resultados de calidad...",
+    "load-error": "No se pudo cargar la información de calidad.",
+    "retry": "Reintentar",
+    "empty": "No hay resultados de calidad registrados.",
+    "metrics": {
+      "whole-grain": "Promedio de grano entero",
+      "broken-grain": "Promedio de grano partido",
+      "yield": "Rendimiento promedio"
+    },
+    "assessments": {
+      "eyebrow": "Controles recientes",
+      "title": "Evaluaciones de calidad",
+      "count": "{{ count }} evaluaciones",
+      "process": "Proceso productivo"
+    }
+  },
+  "quality-assessment": {
+    "eyebrow": "Control de Calidad y Rendimiento",
+    "title": "Registrar resultados de calidad",
+    "description": "Asocia las mediciones de calidad con un proceso productivo existente.",
+    "production-process": "Proceso productivo",
+    "batch": "Lote",
+    "measurements-title": "Mediciones de calidad",
+    "measurements-help": "Ingresa porcentajes de 0 a 100. El grano entero y partido no pueden superar juntos el 100%.",
+    "whole-grain": "Grano entero",
+    "broken-grain": "Grano partido",
+    "yield": "Rendimiento",
+    "assessed-at": "Fecha y hora de evaluación",
+    "create": "Registrar resultados",
+    "cancel": "Cancelar",
+    "errors": {
+      "production-process": "Selecciona un proceso productivo.",
+      "percentage": "Ingresa un porcentaje de 0 a 100.",
+      "composition": "El grano entero y partido no pueden superar juntos el 100%.",
+      "assessed-at": "Ingresa la fecha y hora de evaluación.",
+      "create": "No se pudieron registrar los resultados de calidad."
     }
   },
   "views": {

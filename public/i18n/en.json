@@ -136,7 +136,8 @@
     "processes": {
       "record": "Record process",
       "empty": "No production processes recorded for this batch.",
-      "edit": "Edit production process"
+      "edit": "Edit production process",
+      "assess-quality": "Record quality results"
     }
   },
   "production-record": {
@@ -258,6 +259,49 @@
       "supplier": "Enter a supplier of up to 100 characters.",
       "origin": "Enter an origin of up to 150 characters.",
       "quantity": "Enter a quantity greater than zero."
+    }
+  },
+  "quality-overview": {
+    "eyebrow": "Quality & Yield Control",
+    "title": "Quality results",
+    "description": "Review grain composition and yield for each production process.",
+    "new-assessment": "Record quality results",
+    "loading": "Loading quality results...",
+    "load-error": "Quality information could not be loaded.",
+    "retry": "Retry",
+    "empty": "No quality results have been recorded.",
+    "metrics": {
+      "whole-grain": "Average whole grain",
+      "broken-grain": "Average broken grain",
+      "yield": "Average yield"
+    },
+    "assessments": {
+      "eyebrow": "Recent controls",
+      "title": "Quality assessments",
+      "count": "{{ count }} assessments",
+      "process": "Production process"
+    }
+  },
+  "quality-assessment": {
+    "eyebrow": "Quality & Yield Control",
+    "title": "Record quality results",
+    "description": "Associate the quality measurements with an existing production process.",
+    "production-process": "Production process",
+    "batch": "Batch",
+    "measurements-title": "Quality measurements",
+    "measurements-help": "Enter percentages from 0 to 100. Whole and broken grain together cannot exceed 100%.",
+    "whole-grain": "Whole grain",
+    "broken-grain": "Broken grain",
+    "yield": "Yield",
+    "assessed-at": "Assessment date and time",
+    "create": "Record results",
+    "cancel": "Cancel",
+    "errors": {
+      "production-process": "Select a production process.",
+      "percentage": "Enter a percentage from 0 to 100.",
+      "composition": "Whole and broken grain together cannot exceed 100%.",
+      "assessed-at": "Enter the assessment date and time.",
+      "create": "The quality results could not be recorded."
     }
   },
   "views": {
