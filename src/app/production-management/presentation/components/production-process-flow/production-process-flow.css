@@ -13,7 +13,7 @@
   align-items: center;
   display: grid;
   gap: 0.55rem;
-  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
 }
 
 .batch-heading > .material-symbols-outlined {
@@ -100,6 +100,15 @@
 
 .process-meta {
   text-align: right;
+}
+
+.process-node > a {
+  height: 2rem;
+  width: 2rem;
+}
+
+.process-node > a .material-symbols-outlined {
+  font-size: 1rem;
 }
 
 .process-meta > span {

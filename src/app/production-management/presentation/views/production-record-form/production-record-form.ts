@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, effect, inject } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -9,6 +9,7 @@ import {
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
@@ -35,6 +36,7 @@ function chronologicalOrderValidator(control: AbstractControl): ValidationErrors
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    MatProgressSpinner,
     MatSelectModule,
     ReactiveFormsModule,
     TranslatePipe,
@@ -48,6 +50,16 @@ export class ProductionRecordForm extends BaseForm {
   readonly #formBuilder = inject(FormBuilder);
   readonly #route = inject(ActivatedRoute);
   readonly #router = inject(Router);
+  protected readonly recordId = this.#readRecordId();
+  protected readonly editing = this.recordId !== null;
+  protected readonly existingRecord = computed(() =>
+    this.recordId === null
+      ? null
+      : (this.store.productionRecords().find((record) => record.id === this.recordId) ?? null),
+  );
+  protected readonly recordNotFound = computed(
+    () => this.editing && !this.store.loading() && this.existingRecord() === null,
+  );
   protected readonly measurementUnits: readonly MeasurementUnit[] = ['KILOGRAM', 'METRIC_TON'];
   protected readonly statuses: readonly ProductionStatus[] = [
     'REGISTERED',
@@ -66,6 +78,29 @@ export class ProductionRecordForm extends BaseForm {
     },
     { validators: chronologicalOrderValidator },
   );
+  #formPopulated = false;
+
+  constructor() {
+    super();
+    effect(() => {
+      const record = this.existingRecord();
+      if (!record || this.#formPopulated) return;
+
+      this.form.patchValue({
+        batchId: record.batchId,
+        processName: record.details.processName,
+        processedWeightValue: record.details.processedWeight.value,
+        processedWeightUnit: record.details.processedWeight.unit,
+        startedAt: this.#toDateTimeLocal(record.details.startedAt),
+        finishedAt: record.details.finishedAt
+          ? this.#toDateTimeLocal(record.details.finishedAt)
+          : '',
+        status: record.details.status,
+      });
+      this.form.controls.batchId.disable({ emitEvent: false });
+      this.#formPopulated = true;
+    });
+  }
 
   protected submit(): void {
     if (this.form.invalid) {
@@ -74,9 +109,12 @@ export class ProductionRecordForm extends BaseForm {
     }
 
     const value = this.form.getRawValue();
+    const existingRecord = this.existingRecord();
+    if (this.editing && !existingRecord) return;
+
     const productionRecord = new ProductionRecord({
-      id: 0,
-      batchId: value.batchId,
+      id: existingRecord?.id ?? 0,
+      batchId: existingRecord?.batchId ?? value.batchId,
       details: new ProductionDetails({
         processName: value.processName,
         processedWeight: new Weight(value.processedWeightValue, value.processedWeightUnit),
@@ -84,10 +122,14 @@ export class ProductionRecordForm extends BaseForm {
         finishedAt: value.finishedAt ? new Date(value.finishedAt) : null,
         status: value.status,
       }),
-      recordedAt: new Date(),
+      recordedAt: existingRecord?.recordedAt ?? new Date(),
     });
 
-    this.store.addProductionRecord(productionRecord);
+    if (this.editing) {
+      this.store.updateProductionRecord(productionRecord);
+    } else {
+      this.store.addProductionRecord(productionRecord);
+    }
     this.navigateToOverview();
   }
 
@@ -105,6 +147,14 @@ export class ProductionRecordForm extends BaseForm {
   #requestedBatchId(): number {
     const batchId = Number(this.#route.snapshot.queryParamMap.get('batchId'));
     return Number.isInteger(batchId) && batchId > 0 ? batchId : 0;
+  }
+
+  #readRecordId(): number | null {
+    const routeValue = this.#route.snapshot.paramMap.get('id');
+    if (!routeValue) return null;
+
+    const recordId = Number(routeValue);
+    return Number.isInteger(recordId) && recordId > 0 ? recordId : null;
   }
 
   #toDateTimeLocal(date: Date): string {

@@ -43,4 +43,8 @@ export class ProductionManagementApi extends BaseApi {
   createProductionRecord(productionRecord: ProductionRecord): Observable<ProductionRecord> {
     return this.#productionRecordsEndpoint.create(productionRecord);
   }
+
+  updateProductionRecord(productionRecord: ProductionRecord): Observable<ProductionRecord> {
+    return this.#productionRecordsEndpoint.update(productionRecord, productionRecord.id);
+  }
 }

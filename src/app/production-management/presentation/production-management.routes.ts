@@ -58,4 +58,9 @@ export const productionManagementRoutes: Routes = [
     loadComponent: productionRecordForm,
     title: applicationTitle('New production record'),
   },
+  {
+    path: 'records/:id/edit',
+    loadComponent: productionRecordForm,
+    title: applicationTitle('Edit production record'),
+  },
 ];
