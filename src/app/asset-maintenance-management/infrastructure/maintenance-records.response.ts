@@ -13,4 +13,8 @@ export interface MaintenanceRecordResource extends BaseResource<string> {
   responsiblePrincipalId: string;
   responsibleDisplayName: string;
   anomalyId: string | null;
+  failure: string | null;
+  cause: string | null;
+  actionTaken: string | null;
+  downtimeMinutes: number | null;
 }

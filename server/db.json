@@ -174,7 +174,11 @@
       "description": "Inspection and cleaning of the intake system and drive belts.",
       "responsiblePrincipalId": "b3d36b83-013b-4655-ad0c-574704f0945e",
       "responsibleDisplayName": "Carlos Mendoza",
-      "anomalyId": null
+      "anomalyId": null,
+      "failure": null,
+      "cause": null,
+      "actionTaken": null,
+      "downtimeMinutes": null
     },
     {
       "id": "9b25b1bf-0135-4863-b551-fb8eb45acd03",
@@ -184,7 +188,25 @@
       "description": "Check husking rollers, bearings, and belt tension after the operating cycle.",
       "responsiblePrincipalId": "b3d36b83-013b-4655-ad0c-574704f0945e",
       "responsibleDisplayName": "Carlos Mendoza",
-      "anomalyId": null
+      "anomalyId": null,
+      "failure": null,
+      "cause": null,
+      "actionTaken": null,
+      "downtimeMinutes": null
+    },
+    {
+      "id": "f35426e1-2e06-472d-aafd-dd399f12df80",
+      "machineId": "9085c5fc-e374-4628-aef9-9e44bd407a25",
+      "type": "CORRECTIVE",
+      "performedAt": "2026-10-03T14:20:00-05:00",
+      "description": "Replaced the worn drive belt and adjusted pulley alignment.",
+      "responsiblePrincipalId": "b3d36b83-013b-4655-ad0c-574704f0945e",
+      "responsibleDisplayName": "Carlos Mendoza",
+      "anomalyId": null,
+      "failure": "Drive belt slipped and stopped the husking mechanism.",
+      "cause": "Belt wear and pulley misalignment.",
+      "actionTaken": "Replaced the worn drive belt and adjusted pulley alignment.",
+      "downtimeMinutes": 75
     }
   ],
   "operational-readings": [],

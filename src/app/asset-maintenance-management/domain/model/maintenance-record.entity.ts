@@ -1,4 +1,5 @@
 import { BaseEntity } from '../../../shared/domain/model/base-entity';
+import { CorrectiveMaintenanceDetails } from './corrective-maintenance-details';
 import { MaintenanceDescription } from './maintenance-description';
 import { MaintenanceType } from './maintenance-type';
 import { TechnicianReference } from './technician-reference';
@@ -11,6 +12,7 @@ export class MaintenanceRecord implements BaseEntity<string> {
   readonly #description: MaintenanceDescription;
   readonly #responsible: TechnicianReference;
   readonly #anomalyId: string | null;
+  readonly #correctiveDetails: CorrectiveMaintenanceDetails | null;
 
   constructor(props: {
     id: string;
@@ -20,6 +22,7 @@ export class MaintenanceRecord implements BaseEntity<string> {
     description: MaintenanceDescription;
     responsible: TechnicianReference;
     anomalyId?: string | null;
+    correctiveDetails?: CorrectiveMaintenanceDetails | null;
   }) {
     if (!props.machineId.trim() || Number.isNaN(props.performedAt.getTime())) {
       throw new Error('A valid machine and maintenance date are required.');
@@ -31,6 +34,10 @@ export class MaintenanceRecord implements BaseEntity<string> {
     this.#description = props.description;
     this.#responsible = props.responsible;
     this.#anomalyId = props.anomalyId ?? null;
+    this.#correctiveDetails = props.correctiveDetails ?? null;
+    if (props.type === 'CORRECTIVE' && !this.#correctiveDetails) {
+      throw new Error('Corrective maintenance details are required.');
+    }
   }
 
   get id(): string {
@@ -63,5 +70,9 @@ export class MaintenanceRecord implements BaseEntity<string> {
 
   get anomalyId(): string | null {
     return this.#anomalyId;
+  }
+
+  get correctiveDetails(): CorrectiveMaintenanceDetails | null {
+    return this.#correctiveDetails;
   }
 }

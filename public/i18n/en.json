@@ -424,20 +424,22 @@
   "maintenance": {
     "eyebrow": "Asset & Maintenance Management",
     "title": "Maintenance control",
-    "description": "Schedule preventive activities and review the maintenance history of each machine.",
+    "description": "Schedule preventive activities and document corrective interventions for each machine.",
     "machinery": "Machinery inventory",
     "schedule-preventive": "Schedule preventive maintenance",
+    "record-corrective": "Record corrective maintenance",
     "loading": "Loading maintenance records...",
-    "empty": "No preventive maintenance has been recorded.",
+    "empty": "No maintenance activities have been recorded.",
     "retry": "Retry",
     "metrics": {
       "preventive": "Preventive records",
+      "corrective": "Corrective records",
       "upcoming": "Upcoming activities",
       "machines": "Machines covered"
     },
     "history": {
       "eyebrow": "Equipment history",
-      "title": "Preventive maintenance",
+      "title": "Maintenance history",
       "machine-title": "History for {{ machine }}",
       "count": "{{ count }} activities"
     },
@@ -449,6 +451,15 @@
     "statuses": {
       "upcoming": "Scheduled",
       "completed": "Completed"
+    },
+    "types": {
+      "corrective": "Corrective"
+    },
+    "corrective": {
+      "failure": "Failure",
+      "cause": "Cause",
+      "action": "Action taken",
+      "downtime": "Downtime"
     },
     "errors": {
       "load": "Maintenance records could not be loaded."
@@ -472,6 +483,33 @@
       "responsible": "Enter the responsible technician's name.",
       "observations": "Describe the preventive activity in up to 500 characters.",
       "create": "Preventive maintenance could not be scheduled."
+    }
+  },
+  "corrective-maintenance-form": {
+    "eyebrow": "Asset & Maintenance Management",
+    "title": "Record corrective maintenance",
+    "description": "Document the intervention performed after a machine failure or breakdown.",
+    "machine": "Affected machine",
+    "performed-at": "Intervention date and time",
+    "responsible": "Responsible technician",
+    "failure": "Failure detected",
+    "cause": "Identified cause",
+    "action": "Corrective action taken",
+    "downtime": "Downtime",
+    "anomaly": "Related anomaly identifier",
+    "anomaly-help": "Optional reference from Operational Intelligence.",
+    "create": "Record corrective maintenance",
+    "cancel": "Cancel",
+    "errors": {
+      "machine": "Select the affected machine.",
+      "unknown-machine": "The selected machine is not registered.",
+      "performed-at": "Enter the intervention date and time.",
+      "responsible": "Enter the responsible technician's name.",
+      "failure": "Describe the detected failure.",
+      "cause": "Describe the identified cause.",
+      "action": "Describe the corrective action taken.",
+      "downtime": "Enter a downtime of zero minutes or greater.",
+      "create": "Corrective maintenance could not be recorded."
     }
   },
   "views": {
