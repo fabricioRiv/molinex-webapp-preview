@@ -1,0 +1,115 @@
+<section class="traceability-panel" aria-labelledby="production-traceability-title">
+  <header class="section-heading">
+    <span class="eyebrow">{{ 'production-overview.traceability.eyebrow' | translate }}</span>
+    <h2 id="production-traceability-title">
+      {{ 'production-overview.traceability.title' | translate }}
+    </h2>
+    <p>{{ 'production-overview.traceability.description' | translate }}</p>
+  </header>
+
+  @if (receptions().length === 0) {
+    <div class="empty-traceability">
+      <span class="material-symbols-outlined" aria-hidden="true">route</span>
+      <p>{{ 'production-overview.traceability.empty' | translate }}</p>
+      <a mat-flat-button routerLink="/production/receptions/new">
+        {{ 'production-overview.register-reception' | translate }}
+      </a>
+    </div>
+  } @else {
+    <div class="traceability-list">
+      @for (reception of receptions(); track reception.id) {
+        <article class="traceability-card">
+          <div class="reception-node">
+            <span class="node-icon material-symbols-outlined" aria-hidden="true">
+              local_shipping
+            </span>
+            <div class="reception-node__content">
+              <div class="node-heading">
+                <span>
+                  {{ 'production-overview.traceability.reception' | translate }}
+                  #{{ reception.id }}
+                </span>
+                <time [attr.datetime]="reception.receivedAt.toISOString()">
+                  {{ reception.receivedAt | date: 'MMM d, yyyy · HH:mm' }}
+                </time>
+              </div>
+              <strong>{{ reception.supplierName }}</strong>
+              <p>
+                {{ reception.originDescription }} ·
+                {{ reception.quantity.value | number: '1.0-2' }}
+                {{ measurementUnitSymbol(reception.quantity.unit) }}
+              </p>
+            </div>
+          </div>
+
+          <div class="connection" aria-hidden="true">
+            <span></span>
+            <span class="material-symbols-outlined">arrow_forward</span>
+          </div>
+
+          <div class="batch-nodes">
+            @if ((batchesByReception().get(reception.id) ?? []).length === 0) {
+              <div class="empty-batches">
+                <span>{{ 'production-overview.traceability.no-batches' | translate }}</span>
+                <a
+                  mat-button
+                  [routerLink]="['/production/batches/new']"
+                  [queryParams]="{ receptionId: reception.id }"
+                >
+                  {{ 'production-overview.traceability.assign-batch' | translate }}
+                </a>
+              </div>
+            } @else {
+              <div class="batch-list">
+                @for (batch of batchesByReception().get(reception.id) ?? []; track batch.id) {
+                  <app-production-process-flow
+                    [batch]="batch"
+                    [records]="recordsByBatch().get(batch.id) ?? []"
+                  />
+                }
+              </div>
+              <a
+                class="add-batch-link"
+                mat-button
+                [routerLink]="['/production/batches/new']"
+                [queryParams]="{ receptionId: reception.id }"
+              >
+                <span class="material-symbols-outlined" aria-hidden="true">add</span>
+                {{ 'production-overview.traceability.add-batch' | translate }}
+              </a>
+            }
+          </div>
+        </article>
+      }
+    </div>
+  }
+
+  @if (unlinkedBatches().length > 0) {
+    <div class="integrity-warning" role="status">
+      <span class="material-symbols-outlined" aria-hidden="true">warning</span>
+      <div>
+        <strong>{{ 'production-overview.traceability.unlinked-title' | translate }}</strong>
+        <p>
+          {{
+            'production-overview.traceability.unlinked-description'
+              | translate: { count: unlinkedBatches().length }
+          }}
+        </p>
+        <div class="unlinked-codes">
+          @for (batch of unlinkedBatches(); track batch.id) {
+            <span>{{ batch.code }} → #{{ batch.receptionId }}</span>
+          }
+        </div>
+      </div>
+    </div>
+  }
+
+  <footer class="traceability-footer">
+    <a mat-button routerLink="/production/receptions">
+      {{ 'production-overview.traceability.view-receptions' | translate }}
+    </a>
+    <a mat-button routerLink="/production/batches">
+      {{ 'production-overview.traceability.view-batches' | translate }}
+    </a>
+  </footer>
+</section>

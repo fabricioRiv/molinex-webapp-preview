@@ -1,0 +1,109 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.sidebar {
+  background:
+    radial-gradient(circle at 8% 5%, rgba(242, 183, 5, 0.15), transparent 23%),
+    linear-gradient(180deg, var(--molinex-blue-dark) 0%, #052b4e 100%);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
+  padding: 1.25rem 1rem 1rem;
+}
+
+.brand {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+  padding: 0 0.25rem 1.25rem;
+}
+
+.brand__logo-surface {
+  align-items: center;
+  background: #ffffff;
+  border-radius: 0.75rem;
+  display: flex;
+  height: 3.25rem;
+  padding: 0.5rem 0.75rem;
+}
+
+.brand img {
+  display: block;
+  height: auto;
+  max-height: 2.25rem;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.brand > span {
+  color: rgba(255, 255, 255, 0.65);
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  margin: 0.75rem 0.25rem 0;
+  text-transform: uppercase;
+}
+
+.navigation {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1.5rem 0;
+}
+
+.navigation__group {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.navigation__label {
+  color: rgba(255, 255, 255, 0.48);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  margin: 0 0.75rem 0.3rem;
+  text-transform: uppercase;
+}
+
+.navigation__item {
+  align-items: center;
+  border-radius: 0.65rem;
+  color: rgba(255, 255, 255, 0.78);
+  display: flex;
+  font-size: 0.88rem;
+  font-weight: 500;
+  gap: 0.8rem;
+  min-height: 2.7rem;
+  padding: 0.55rem 0.75rem;
+  text-decoration: none;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.navigation__item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  transform: translateX(2px);
+}
+
+.navigation__item--active {
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0.22rem 0 var(--molinex-gold);
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.navigation__item--active:hover {
+  background: rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+}
+
+.material-symbols-outlined {
+  font-size: 1.25rem;
+}

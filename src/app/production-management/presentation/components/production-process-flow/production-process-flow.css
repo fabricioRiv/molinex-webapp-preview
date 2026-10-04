@@ -1,0 +1,139 @@
+:host {
+  display: block;
+}
+
+.batch-flow {
+  background: var(--molinex-background);
+  border: 1px solid var(--molinex-border);
+  border-radius: 0.7rem;
+  padding: 0.65rem;
+}
+
+.batch-heading {
+  align-items: center;
+  display: grid;
+  gap: 0.55rem;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+}
+
+.batch-heading > .material-symbols-outlined {
+  color: var(--molinex-green-dark);
+  font-size: 1.15rem;
+}
+
+.batch-heading strong,
+.batch-heading time {
+  display: block;
+}
+
+.batch-heading strong {
+  color: var(--molinex-text-primary);
+  font-size: 0.8rem;
+}
+
+.batch-heading time {
+  color: var(--molinex-text-secondary);
+  font-size: 0.65rem;
+}
+
+.batch-heading a {
+  font-size: 0.68rem;
+  min-width: auto;
+  padding: 0 0.45rem;
+}
+
+.batch-heading a .material-symbols-outlined {
+  font-size: 0.95rem;
+  margin-right: 0.2rem;
+}
+
+.process-list {
+  border-left: 1px dashed color-mix(in srgb, var(--molinex-green) 45%, white);
+  display: grid;
+  gap: 0.4rem;
+  margin: 0.55rem 0 0 0.55rem;
+  padding-left: 0.8rem;
+}
+
+.process-node {
+  align-items: center;
+  background: var(--molinex-surface);
+  border: 1px solid var(--molinex-border);
+  border-radius: 0.55rem;
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  padding: 0.5rem 0.6rem;
+}
+
+.status-dot {
+  background: var(--molinex-text-secondary);
+  border-radius: 50%;
+  height: 0.5rem;
+  width: 0.5rem;
+}
+
+.process-node--in_progress .status-dot {
+  background: #d69e2e;
+}
+
+.process-node--completed .status-dot {
+  background: var(--molinex-green);
+}
+
+.process-node strong,
+.process-node span,
+.process-node time {
+  display: block;
+}
+
+.process-node strong {
+  color: var(--molinex-text-primary);
+  font-size: 0.72rem;
+}
+
+.process-node div > span,
+.process-meta time {
+  color: var(--molinex-text-secondary);
+  font-size: 0.62rem;
+}
+
+.process-meta {
+  text-align: right;
+}
+
+.process-actions {
+  display: flex;
+}
+
+.process-actions > a {
+  height: 2rem;
+  width: 2rem;
+}
+
+.process-actions > a .material-symbols-outlined {
+  font-size: 1rem;
+}
+
+.process-meta > span {
+  color: var(--molinex-green-dark);
+  font-size: 0.62rem;
+  font-weight: 700;
+}
+
+.empty-processes {
+  color: var(--molinex-text-secondary);
+  font-size: 0.66rem;
+  margin: 0.45rem 0 0 1.7rem;
+}
+
+@media (max-width: 520px) {
+  .batch-heading {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .batch-heading a {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+}

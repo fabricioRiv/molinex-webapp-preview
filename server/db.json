@@ -1,0 +1,624 @@
+{
+  "plans": [],
+  "commercial-inquiries": [],
+  "users": [],
+  "roles": [],
+  "raw-material-receptions": [
+    {
+      "id": 1,
+      "receivedAt": "2026-10-03T06:30:00-05:00",
+      "supplierName": "Agro Norte",
+      "originDescription": "Lambayeque",
+      "quantityValue": 18000,
+      "quantityUnit": "KILOGRAM"
+    },
+    {
+      "id": 2,
+      "receivedAt": "2026-10-03T07:15:00-05:00",
+      "supplierName": "Campos del Sur",
+      "originDescription": "La Libertad",
+      "quantityValue": 14500,
+      "quantityUnit": "KILOGRAM"
+    },
+    {
+      "id": 3,
+      "receivedAt": "2026-10-02T06:50:00-05:00",
+      "supplierName": "Arroceros del Valle",
+      "originDescription": "Piura",
+      "quantityValue": 16200,
+      "quantityUnit": "KILOGRAM"
+    },
+    {
+      "id": 4,
+      "receivedAt": "2026-10-02T08:10:00-05:00",
+      "supplierName": "Cooperativa San Martín",
+      "originDescription": "San Martín",
+      "quantityValue": 19800,
+      "quantityUnit": "KILOGRAM"
+    },
+    {
+      "id": 5,
+      "receivedAt": "2026-10-03T06:40:00-05:00",
+      "supplierName": "Valle Verde",
+      "originDescription": "Tumbes",
+      "quantityValue": 12500,
+      "quantityUnit": "KILOGRAM"
+    },
+    {
+      "id": 6,
+      "receivedAt": "2026-10-03T08:25:00-05:00",
+      "supplierName": "Agrícola Santa Rosa",
+      "originDescription": "Cajamarca",
+      "quantityValue": 17300,
+      "quantityUnit": "KILOGRAM"
+    },
+    {
+      "id": 7,
+      "receivedAt": "2026-10-04T06:20:00-05:00",
+      "supplierName": "Productores del Alto Mayo",
+      "originDescription": "San Martín",
+      "quantityValue": 15400,
+      "quantityUnit": "KILOGRAM"
+    },
+    {
+      "id": 8,
+      "receivedAt": "2026-10-04T07:35:00-05:00",
+      "supplierName": "Agro Norte",
+      "originDescription": "Lambayeque",
+      "quantityValue": 16800,
+      "quantityUnit": "KILOGRAM"
+    }
+  ],
+  "production-batches": [
+    {
+      "id": 1,
+      "code": "LOT-2026-001",
+      "receptionId": 1,
+      "registeredAt": "2026-10-03T07:00:00-05:00"
+    },
+    {
+      "id": 2,
+      "code": "LOT-2026-002",
+      "receptionId": 2,
+      "registeredAt": "2026-10-03T08:00:00-05:00"
+    },
+    {
+      "id": 3,
+      "code": "LOT-2026-003",
+      "receptionId": 3,
+      "registeredAt": "2026-10-02T07:20:00-05:00"
+    },
+    {
+      "id": 4,
+      "code": "LOT-2026-004",
+      "receptionId": 4,
+      "registeredAt": "2026-10-02T08:45:00-05:00"
+    },
+    {
+      "id": 5,
+      "code": "LOT-2026-005",
+      "receptionId": 5,
+      "registeredAt": "2026-10-03T07:10:00-05:00"
+    },
+    {
+      "id": 6,
+      "code": "LOT-2026-006",
+      "receptionId": 6,
+      "registeredAt": "2026-10-03T09:00:00-05:00"
+    },
+    {
+      "id": 7,
+      "code": "LOT-2026-007",
+      "receptionId": 7,
+      "registeredAt": "2026-10-04T06:50:00-05:00"
+    },
+    {
+      "id": 8,
+      "code": "LOT-2026-008",
+      "receptionId": 8,
+      "registeredAt": "2026-10-04T08:05:00-05:00"
+    }
+  ],
+  "production-records": [
+    {
+      "id": 1,
+      "batchId": 1,
+      "processName": "Cleaning and husking",
+      "processedWeightValue": 8200,
+      "processedWeightUnit": "KILOGRAM",
+      "startedAt": "2026-10-03T08:15:00-05:00",
+      "finishedAt": "2026-10-03T09:40:00-05:00",
+      "status": "COMPLETED",
+      "recordedAt": "2026-10-03T08:10:00-05:00"
+    },
+    {
+      "id": 2,
+      "batchId": 2,
+      "processName": "Polishing",
+      "processedWeightValue": 6100,
+      "processedWeightUnit": "KILOGRAM",
+      "startedAt": "2026-10-03T10:00:00-05:00",
+      "finishedAt": "2026-10-03T11:20:00-05:00",
+      "status": "COMPLETED",
+      "recordedAt": "2026-10-03T09:55:00-05:00"
+    },
+    {
+      "id": 3,
+      "batchId": 3,
+      "processName": "Whitening and grading",
+      "processedWeightValue": 9800,
+      "processedWeightUnit": "KILOGRAM",
+      "startedAt": "2026-10-02T08:00:00-05:00",
+      "finishedAt": "2026-10-02T09:35:00-05:00",
+      "status": "COMPLETED",
+      "recordedAt": "2026-10-02T07:55:00-05:00"
+    },
+    {
+      "id": 4,
+      "batchId": 4,
+      "processName": "Drying",
+      "processedWeightValue": 11200,
+      "processedWeightUnit": "KILOGRAM",
+      "startedAt": "2026-10-02T09:20:00-05:00",
+      "finishedAt": null,
+      "status": "IN_PROGRESS",
+      "recordedAt": "2026-10-02T09:15:00-05:00"
+    },
+    {
+      "id": 5,
+      "batchId": 5,
+      "processName": "Cleaning and husking",
+      "processedWeightValue": 8700,
+      "processedWeightUnit": "KILOGRAM",
+      "startedAt": "2026-10-03T07:45:00-05:00",
+      "finishedAt": "2026-10-03T09:05:00-05:00",
+      "status": "COMPLETED",
+      "recordedAt": "2026-10-03T07:40:00-05:00"
+    },
+    {
+      "id": 6,
+      "batchId": 6,
+      "processName": "Polishing and grading",
+      "processedWeightValue": 10250,
+      "processedWeightUnit": "KILOGRAM",
+      "startedAt": "2026-10-03T09:40:00-05:00",
+      "finishedAt": "2026-10-03T11:10:00-05:00",
+      "status": "COMPLETED",
+      "recordedAt": "2026-10-03T09:35:00-05:00"
+    },
+    {
+      "id": 7,
+      "batchId": 7,
+      "processName": "Cleaning and husking",
+      "processedWeightValue": 7600,
+      "processedWeightUnit": "KILOGRAM",
+      "startedAt": "2026-10-04T07:30:00-05:00",
+      "finishedAt": "2026-10-04T08:50:00-05:00",
+      "status": "COMPLETED",
+      "recordedAt": "2026-10-04T07:25:00-05:00"
+    }
+  ],
+  "quality-results": [
+    {
+      "id": 1,
+      "productionRecordId": 1,
+      "measurements": [
+        {
+          "indicator": "WHOLE_GRAIN_PERCENTAGE",
+          "value": 72.5,
+          "expectedMinimum": 0,
+          "expectedMaximum": 100
+        },
+        {
+          "indicator": "BROKEN_GRAIN_PERCENTAGE",
+          "value": 18.4,
+          "expectedMinimum": 0,
+          "expectedMaximum": 100
+        },
+        {
+          "indicator": "YIELD_PERCENTAGE",
+          "value": 68.4,
+          "expectedMinimum": 0,
+          "expectedMaximum": 100
+        }
+      ],
+      "assessedAt": "2026-10-03T10:00:00-05:00"
+    },
+    {
+      "id": 2,
+      "productionRecordId": 2,
+      "measurements": [
+        {
+          "indicator": "WHOLE_GRAIN_PERCENTAGE",
+          "value": 69.2,
+          "expectedMinimum": 0,
+          "expectedMaximum": 100
+        },
+        {
+          "indicator": "BROKEN_GRAIN_PERCENTAGE",
+          "value": 21.5,
+          "expectedMinimum": 0,
+          "expectedMaximum": 100
+        },
+        {
+          "indicator": "YIELD_PERCENTAGE",
+          "value": 66.8,
+          "expectedMinimum": 0,
+          "expectedMaximum": 100
+        }
+      ],
+      "assessedAt": "2026-10-03T11:15:00-05:00"
+    },
+    {
+      "id": 3,
+      "productionRecordId": 3,
+      "measurements": [
+        {
+          "indicator": "WHOLE_GRAIN_PERCENTAGE",
+          "value": 74.1,
+          "expectedMinimum": 0,
+          "expectedMaximum": 100
+        },
+        {
+          "indicator": "BROKEN_GRAIN_PERCENTAGE",
+          "value": 16.8,
+          "expectedMinimum": 0,
+          "expectedMaximum": 100
+        },
+        {
+          "indicator": "YIELD_PERCENTAGE",
+          "value": 70.2,
+          "expectedMinimum": 0,
+          "expectedMaximum": 100
+        }
+      ],
+      "assessedAt": "2026-10-02T09:50:00-05:00"
+    },
+    {
+      "id": 4,
+      "productionRecordId": 5,
+      "measurements": [
+        {
+          "indicator": "WHOLE_GRAIN_PERCENTAGE",
+          "value": 73,
+          "expectedMinimum": 0,
+          "expectedMaximum": 100
+        },
+        {
+          "indicator": "BROKEN_GRAIN_PERCENTAGE",
+          "value": 17.9,
+          "expectedMinimum": 0,
+          "expectedMaximum": 100
+        },
+        {
+          "indicator": "YIELD_PERCENTAGE",
+          "value": 69.1,
+          "expectedMinimum": 0,
+          "expectedMaximum": 100
+        }
+      ],
+      "assessedAt": "2026-10-03T09:20:00-05:00"
+    },
+    {
+      "id": 5,
+      "productionRecordId": 6,
+      "measurements": [
+        {
+          "indicator": "WHOLE_GRAIN_PERCENTAGE",
+          "value": 75.2,
+          "expectedMinimum": 0,
+          "expectedMaximum": 100
+        },
+        {
+          "indicator": "BROKEN_GRAIN_PERCENTAGE",
+          "value": 15.7,
+          "expectedMinimum": 0,
+          "expectedMaximum": 100
+        },
+        {
+          "indicator": "YIELD_PERCENTAGE",
+          "value": 71,
+          "expectedMinimum": 0,
+          "expectedMaximum": 100
+        }
+      ],
+      "assessedAt": "2026-10-03T11:25:00-05:00"
+    },
+    {
+      "id": 6,
+      "productionRecordId": 7,
+      "measurements": [
+        {
+          "indicator": "WHOLE_GRAIN_PERCENTAGE",
+          "value": 68.3,
+          "expectedMinimum": 0,
+          "expectedMaximum": 100
+        },
+        {
+          "indicator": "BROKEN_GRAIN_PERCENTAGE",
+          "value": 22.1,
+          "expectedMinimum": 0,
+          "expectedMaximum": 100
+        },
+        {
+          "indicator": "YIELD_PERCENTAGE",
+          "value": 65.7,
+          "expectedMinimum": 0,
+          "expectedMaximum": 100
+        }
+      ],
+      "assessedAt": "2026-10-04T09:05:00-05:00"
+    }
+  ],
+  "waste-records": [
+    {
+      "id": "a72dff13-4b04-472f-876a-d5fe5c649df2",
+      "productionRecordId": 1,
+      "quantityValue": 410,
+      "quantityUnit": "KILOGRAM",
+      "baseWeightValue": 8200,
+      "baseWeightUnit": "KILOGRAM",
+      "percentage": 5,
+      "recordedAt": "2026-10-03T09:45:00-05:00"
+    },
+    {
+      "id": "99752d92-08c9-4487-9889-474347047013",
+      "productionRecordId": 2,
+      "quantityValue": 335.5,
+      "quantityUnit": "KILOGRAM",
+      "baseWeightValue": 6100,
+      "baseWeightUnit": "KILOGRAM",
+      "percentage": 5.5,
+      "recordedAt": "2026-10-03T11:20:00-05:00"
+    },
+    {
+      "id": "b5d2c9a6-38e3-4c7e-9677-8b4ac8c66ad0",
+      "productionRecordId": 3,
+      "quantityValue": 372.4,
+      "quantityUnit": "KILOGRAM",
+      "baseWeightValue": 9800,
+      "baseWeightUnit": "KILOGRAM",
+      "percentage": 3.8,
+      "recordedAt": "2026-10-02T09:40:00-05:00"
+    },
+    {
+      "id": "c7f1e2a8-2ab1-4c7d-9bb2-2c8c6db5e1e4",
+      "productionRecordId": 5,
+      "quantityValue": 400.2,
+      "quantityUnit": "KILOGRAM",
+      "baseWeightValue": 8700,
+      "baseWeightUnit": "KILOGRAM",
+      "percentage": 4.6,
+      "recordedAt": "2026-10-03T09:10:00-05:00"
+    },
+    {
+      "id": "d83e3349-cafe-4430-b21b-87a09218198d",
+      "productionRecordId": 6,
+      "quantityValue": 399.75,
+      "quantityUnit": "KILOGRAM",
+      "baseWeightValue": 10250,
+      "baseWeightUnit": "KILOGRAM",
+      "percentage": 3.9,
+      "recordedAt": "2026-10-03T11:15:00-05:00"
+    },
+    {
+      "id": "e41a8ee4-520c-45b4-8a17-7da725f63c4a",
+      "productionRecordId": 7,
+      "quantityValue": 463.6,
+      "quantityUnit": "KILOGRAM",
+      "baseWeightValue": 7600,
+      "baseWeightUnit": "KILOGRAM",
+      "percentage": 6.1,
+      "recordedAt": "2026-10-04T08:55:00-05:00"
+    }
+  ],
+  "machines": [
+    {
+      "id": "f893f27c-940b-4be4-9155-e1a4f273cd01",
+      "code": "MOL-CLN-01",
+      "name": "Pre-cleaning unit",
+      "model": "Zaccaria PLZ-2",
+      "status": "OPERATIONAL",
+      "statusChangedAt": "2026-10-03T07:30:00-05:00"
+    },
+    {
+      "id": "9085c5fc-e374-4628-aef9-9e44bd407a25",
+      "code": "MOL-HSK-01",
+      "name": "Rice husker",
+      "model": "Satake THU-35A",
+      "status": "REQUIRES_ATTENTION",
+      "statusChangedAt": "2026-10-03T09:20:00-05:00"
+    },
+    {
+      "id": "a4e65b2e-7747-44d9-9ae3-b82e2cce8995",
+      "code": "MOL-POL-01",
+      "name": "Rice polisher",
+      "model": "Bühler TopWhite II",
+      "status": "UNDER_MAINTENANCE",
+      "statusChangedAt": "2026-10-03T10:10:00-05:00"
+    },
+    {
+      "id": "b9fd0146-f8d7-4553-83a5-3d7514244c61",
+      "code": "MOL-DRY-01",
+      "name": "Column dryer",
+      "model": "Kepler Weber ADS-60",
+      "status": "OPERATIONAL",
+      "statusChangedAt": "2026-10-02T06:45:00-05:00"
+    },
+    {
+      "id": "c3610ef6-9ebf-47d2-a38e-99c593b797b2",
+      "code": "MOL-GRD-01",
+      "name": "Optical grain sorter",
+      "model": "Satake REZS-4500",
+      "status": "OPERATIONAL",
+      "statusChangedAt": "2026-10-03T10:30:00-05:00"
+    },
+    {
+      "id": "d7625a4a-90e1-4471-9283-5995ffbd1883",
+      "code": "MOL-PKG-01",
+      "name": "Automatic bagging unit",
+      "model": "Paglierani VT-600",
+      "status": "OUT_OF_SERVICE",
+      "statusChangedAt": "2026-10-03T15:10:00-05:00"
+    }
+  ],
+  "maintenance-records": [
+    {
+      "id": "145fb408-c3b4-4f2d-a504-f512419d570e",
+      "machineId": "f893f27c-940b-4be4-9155-e1a4f273cd01",
+      "type": "PREVENTIVE",
+      "performedAt": "2026-10-01T08:00:00-05:00",
+      "description": "Inspection and cleaning of the intake system and drive belts.",
+      "responsiblePrincipalId": "b3d36b83-013b-4655-ad0c-574704f0945e",
+      "responsibleDisplayName": "Carlos Mendoza",
+      "anomalyId": null,
+      "failure": null,
+      "cause": null,
+      "actionTaken": null,
+      "downtimeMinutes": null
+    },
+    {
+      "id": "9b25b1bf-0135-4863-b551-fb8eb45acd03",
+      "machineId": "9085c5fc-e374-4628-aef9-9e44bd407a25",
+      "type": "PREVENTIVE",
+      "performedAt": "2026-10-05T09:30:00-05:00",
+      "description": "Check husking rollers, bearings, and belt tension after the operating cycle.",
+      "responsiblePrincipalId": "b3d36b83-013b-4655-ad0c-574704f0945e",
+      "responsibleDisplayName": "Carlos Mendoza",
+      "anomalyId": null,
+      "failure": null,
+      "cause": null,
+      "actionTaken": null,
+      "downtimeMinutes": null
+    },
+    {
+      "id": "f35426e1-2e06-472d-aafd-dd399f12df80",
+      "machineId": "9085c5fc-e374-4628-aef9-9e44bd407a25",
+      "type": "CORRECTIVE",
+      "performedAt": "2026-10-03T14:20:00-05:00",
+      "description": "Replaced the worn drive belt and adjusted pulley alignment.",
+      "responsiblePrincipalId": "b3d36b83-013b-4655-ad0c-574704f0945e",
+      "responsibleDisplayName": "Carlos Mendoza",
+      "anomalyId": null,
+      "failure": "Drive belt slipped and stopped the husking mechanism.",
+      "cause": "Belt wear and pulley misalignment.",
+      "actionTaken": "Replaced the worn drive belt and adjusted pulley alignment.",
+      "downtimeMinutes": 75
+    },
+    {
+      "id": "a10ce04b-847c-4cf1-9e32-1fe924b84d61",
+      "machineId": "a4e65b2e-7747-44d9-9ae3-b82e2cce8995",
+      "type": "PREVENTIVE",
+      "performedAt": "2026-09-30T10:15:00-05:00",
+      "description": "Lubricated bearings and calibrated polishing pressure.",
+      "responsiblePrincipalId": "8b091d76-ce96-4468-a1be-54be5bc3b6f2",
+      "responsibleDisplayName": "Lucía Torres",
+      "anomalyId": null,
+      "failure": null,
+      "cause": null,
+      "actionTaken": null,
+      "downtimeMinutes": null
+    },
+    {
+      "id": "b2c7e4c0-d2e2-4798-81cd-824708966ceb",
+      "machineId": "a4e65b2e-7747-44d9-9ae3-b82e2cce8995",
+      "type": "CORRECTIVE",
+      "performedAt": "2026-10-04T07:50:00-05:00",
+      "description": "Inspected abnormal vibration in the polishing chamber.",
+      "responsiblePrincipalId": "8b091d76-ce96-4468-a1be-54be5bc3b6f2",
+      "responsibleDisplayName": "Lucía Torres",
+      "anomalyId": "ANM-2026-014",
+      "failure": "Excessive vibration during the polishing cycle.",
+      "cause": "Unbalanced polishing rotor pending replacement.",
+      "actionTaken": "Stopped the machine and isolated the polishing chamber.",
+      "downtimeMinutes": 140
+    },
+    {
+      "id": "c39c2518-8238-4037-a3aa-6778d47a5319",
+      "machineId": "b9fd0146-f8d7-4553-83a5-3d7514244c61",
+      "type": "PREVENTIVE",
+      "performedAt": "2026-10-01T12:30:00-05:00",
+      "description": "Cleaned temperature sensors and verified burner operation.",
+      "responsiblePrincipalId": "e4511299-40e9-42d5-a97c-9fddbb67030f",
+      "responsibleDisplayName": "Jorge Salazar",
+      "anomalyId": null,
+      "failure": null,
+      "cause": null,
+      "actionTaken": null,
+      "downtimeMinutes": null
+    },
+    {
+      "id": "d48dcb63-7e51-4c95-a071-289c4f72fe92",
+      "machineId": "c3610ef6-9ebf-47d2-a38e-99c593b797b2",
+      "type": "PREVENTIVE",
+      "performedAt": "2026-10-02T11:00:00-05:00",
+      "description": "Calibrated optical sensors and cleaned the inspection channels.",
+      "responsiblePrincipalId": "e4511299-40e9-42d5-a97c-9fddbb67030f",
+      "responsibleDisplayName": "Jorge Salazar",
+      "anomalyId": null,
+      "failure": null,
+      "cause": null,
+      "actionTaken": null,
+      "downtimeMinutes": null
+    },
+    {
+      "id": "e56dc57a-13ac-4b0e-a351-7632cdaece03",
+      "machineId": "d7625a4a-90e1-4471-9283-5995ffbd1883",
+      "type": "CORRECTIVE",
+      "performedAt": "2026-10-03T15:10:00-05:00",
+      "description": "Diagnosed a failure in the bag sealing assembly.",
+      "responsiblePrincipalId": "8b091d76-ce96-4468-a1be-54be5bc3b6f2",
+      "responsibleDisplayName": "Lucía Torres",
+      "anomalyId": "ANM-2026-013",
+      "failure": "The sealing jaw did not reach the configured temperature.",
+      "cause": "Burned heating element in the sealing assembly.",
+      "actionTaken": "Disconnected the damaged element and requested a replacement.",
+      "downtimeMinutes": 95
+    },
+    {
+      "id": "f6070953-a68c-4e7e-8446-4826eaff40f4",
+      "machineId": "f893f27c-940b-4be4-9155-e1a4f273cd01",
+      "type": "PREVENTIVE",
+      "performedAt": "2026-10-04T06:40:00-05:00",
+      "description": "Verified sieve fastening and removed accumulated impurities.",
+      "responsiblePrincipalId": "b3d36b83-013b-4655-ad0c-574704f0945e",
+      "responsibleDisplayName": "Carlos Mendoza",
+      "anomalyId": null,
+      "failure": null,
+      "cause": null,
+      "actionTaken": null,
+      "downtimeMinutes": null
+    },
+    {
+      "id": "a718259a-4daa-49bd-97af-016515758bb3",
+      "machineId": "b9fd0146-f8d7-4553-83a5-3d7514244c61",
+      "type": "CORRECTIVE",
+      "performedAt": "2026-10-02T15:25:00-05:00",
+      "description": "Restored the signal from the outlet temperature sensor.",
+      "responsiblePrincipalId": "e4511299-40e9-42d5-a97c-9fddbb67030f",
+      "responsibleDisplayName": "Jorge Salazar",
+      "anomalyId": "ANM-2026-012",
+      "failure": "Intermittent outlet temperature reading.",
+      "cause": "Loose terminal in the sensor connector.",
+      "actionTaken": "Secured the terminal and verified stable readings.",
+      "downtimeMinutes": 35
+    }
+  ],
+  "operational-readings": [],
+  "alerts": [],
+  "recommendations": [],
+  "report-summaries": [
+    {
+      "id": 1,
+      "period": "2026-10-04",
+      "generatedAt": "2026-10-04T09:20:00-05:00",
+      "processedVolumeKg": 50650,
+      "yieldPercentage": 68.5,
+      "wastePercentage": 4.7,
+      "activeMachines": 3,
+      "totalMachines": 6,
+      "openAlerts": 0,
+      "pendingMaintenances": 2
+    }
+  ]
+}

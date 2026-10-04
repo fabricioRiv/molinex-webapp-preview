@@ -1,59 +1,104 @@
-# MolinexWebapp
+# Molinex Web Application
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.1.
+Molinex is a web application for managing and monitoring rice mill operations. It centralizes production, quality control, machinery maintenance, operational alerts, reporting, and access management.
 
-## Development server
+This repository contains the Single-Page Application (SPA) developed by the Vanguard Open Source team.
 
-To start a local development server, run:
+## Technology Stack
 
-```bash
-ng serve
-```
+- Angular 22
+- TypeScript
+- Angular Material
+- ngx-translate
+- JSON Server
+- Vitest
+- npm
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Prerequisites
 
-## Code scaffolding
+- Node.js 24 or later
+- npm 11 or later
+- Angular CLI 22
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Getting Started
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+Clone the repository and install the dependencies:
 
 ```bash
-ng build
+git clone https://github.com/Vanguard-open-source/molinex-webapp.git
+cd molinex-webapp
+npm install
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Start the Angular application:
 
 ```bash
-ng test
+npm start
 ```
 
-## Running end-to-end tests
+The application will be available at:
 
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
+```text
+http://localhost:4200
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Fake API
 
-## Additional Resources
+The development environment uses JSON Server to simulate the backend REST API.
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Run `server/start.sh` from its IntelliJ run configuration or execute the following command from the project root in PowerShell:
+
+```powershell
+& ".\node_modules\.bin\json-server.cmd" --watch server\db.json --routes server\routes.json --port 3000
+```
+
+The fake API will be available at:
+
+```text
+http://localhost:3000/api/v1
+```
+
+## Architecture
+
+The frontend follows Domain-Driven Design principles and organizes the application around the following bounded contexts:
+
+- Commercial Engagement
+- Identity and Access Management
+- Production Management
+- Quality and Yield Control
+- Asset and Maintenance Management
+- Operational Intelligence
+- Reporting and Analytics
+
+Production Management and Quality and Yield Control share common domain concepts through a Shared Kernel.
+
+Each bounded context is organized using the following layers:
+
+- Domain
+- Application
+- Infrastructure
+- Presentation
+
+## Documentation
+
+The product documentation, user stories, wireflows, mockups, C4 diagrams, and Domain-Driven Design artifacts are maintained in the following repository:
+
+[Molinex Project Report](https://github.com/Vanguard-open-source/molinex-report)
+
+## Development Workflow
+
+The project uses Git Flow:
+
+- `main`: stable production-ready code.
+- `develop`: integration branch.
+- `feature/*`: feature development branches.
+
+Commit messages follow the Conventional Commits specification.
+
+## Team
+
+Vanguard Open Source Development Team
+
+## License
+
+This project is licensed under the MIT License.

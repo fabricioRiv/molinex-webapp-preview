@@ -1,0 +1,117 @@
+<section class="machinery-overview">
+  <header class="page-header">
+    <div>
+      <span class="eyebrow">{{ 'machinery.eyebrow' | translate }}</span>
+      <h1>{{ 'machinery.title' | translate }}</h1>
+      <p>{{ 'machinery.description' | translate }}</p>
+    </div>
+    <div class="header-actions">
+      <a mat-button routerLink="/assets/maintenance">
+        <span class="material-symbols-outlined" aria-hidden="true">build_circle</span>
+        {{ 'machinery.maintenance-history' | translate }}
+      </a>
+      <a mat-flat-button routerLink="/assets/machinery/new">
+        <span class="material-symbols-outlined" aria-hidden="true">add</span>
+        {{ 'machinery.new' | translate }}
+      </a>
+    </div>
+  </header>
+
+  <div class="metrics-grid">
+    <article class="metric-card metric-card--operational">
+      <span>{{ 'machinery.metrics.operational' | translate }}</span>
+      <strong>{{ store.countByStatus('OPERATIONAL') }}</strong>
+    </article>
+    <article class="metric-card metric-card--attention">
+      <span>{{ 'machinery.metrics.attention' | translate }}</span>
+      <strong>{{ store.countByStatus('REQUIRES_ATTENTION') }}</strong>
+    </article>
+    <article class="metric-card metric-card--maintenance">
+      <span>{{ 'machinery.metrics.maintenance' | translate }}</span>
+      <strong>{{ store.countByStatus('UNDER_MAINTENANCE') }}</strong>
+    </article>
+    <article class="metric-card metric-card--offline">
+      <span>{{ 'machinery.metrics.out-of-service' | translate }}</span>
+      <strong>{{ store.countByStatus('OUT_OF_SERVICE') }}</strong>
+    </article>
+  </div>
+
+  <section class="inventory-panel" aria-labelledby="machinery-inventory-title">
+    <div class="inventory-heading">
+      <div>
+        <span class="eyebrow">{{ 'machinery.inventory.eyebrow' | translate }}</span>
+        <h2 id="machinery-inventory-title">{{ 'machinery.inventory.title' | translate }}</h2>
+      </div>
+      <label class="search-field">
+        <span class="material-symbols-outlined" aria-hidden="true">search</span>
+        <span class="visually-hidden">{{ 'machinery.search' | translate }}</span>
+        <input
+          type="search"
+          [placeholder]="'machinery.search' | translate"
+          (input)="updateSearch($event)"
+        />
+      </label>
+    </div>
+
+    @if (store.loading() && store.machineCount() === 0) {
+      <div class="state-panel">
+        <mat-spinner diameter="36" />
+        <span>{{ 'machinery.loading' | translate }}</span>
+      </div>
+    } @else if (store.error() === 'load-machines') {
+      <div class="state-panel state-panel--error" role="alert">
+        <span class="material-symbols-outlined" aria-hidden="true">error</span>
+        <span>{{ 'machinery.errors.load' | translate }}</span>
+        <button mat-button type="button" (click)="store.reloadMachines()">
+          {{ 'machinery.retry' | translate }}
+        </button>
+      </div>
+    } @else if (filteredMachines().length === 0) {
+      <div class="state-panel">
+        <span class="material-symbols-outlined" aria-hidden="true">precision_manufacturing</span>
+        <span>{{
+          (store.machineCount() === 0 ? 'machinery.empty' : 'machinery.no-results') | translate
+        }}</span>
+      </div>
+    } @else {
+      <div class="machine-grid">
+        @for (machine of filteredMachines(); track machine.id) {
+          <article class="machine-card">
+            <header>
+              <span class="machine-icon material-symbols-outlined" aria-hidden="true"
+                >precision_manufacturing</span
+              >
+              <div>
+                <span>{{ machine.code.value }}</span>
+                <h3>{{ machine.name }}</h3>
+              </div>
+              <span
+                class="status-badge"
+                [class]="'status-badge status-badge--' + machine.status.toLowerCase()"
+              >
+                {{ 'machinery.statuses.' + machine.status | translate }}
+              </span>
+            </header>
+            <dl>
+              <div>
+                <dt>{{ 'machinery.model' | translate }}</dt>
+                <dd>{{ machine.model }}</dd>
+              </div>
+              <div>
+                <dt>{{ 'machinery.status-changed-at' | translate }}</dt>
+                <dd>{{ machine.statusChangedAt | date: 'MMM d, yyyy · HH:mm' }}</dd>
+              </div>
+            </dl>
+            <a
+              mat-button
+              routerLink="/assets/maintenance"
+              [queryParams]="{ machineId: machine.id }"
+            >
+              {{ 'machinery.view-maintenance-history' | translate }}
+            </a>
+          </article>
+        }
+      </div>
+    }
+  </section>
+</section>

@@ -1,1 +1,111 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --molinex-blue: #0b4f8a;
+  --molinex-blue-dark: #073763;
+  --molinex-blue-light: #eaf4fb;
+
+  --molinex-green: #4f8a2b;
+  --molinex-green-dark: #35651d;
+  --molinex-green-light: #eef7e8;
+
+  --molinex-gold: #f2b705;
+  --molinex-gold-dark: #a86f00;
+
+  --molinex-text-primary: #102a43;
+  --molinex-text-secondary: #486581;
+  --molinex-border: #d9e2ec;
+  --molinex-background: #f5f7fa;
+  --molinex-surface: #ffffff;
+
+  --molinex-success: #2e7d32;
+  --molinex-success-background: #e8f5e9;
+  --molinex-info: #1976d2;
+  --molinex-info-background: #e3f2fd;
+  --molinex-warning: #a86f00;
+  --molinex-warning-background: #fff4d6;
+  --molinex-critical: #c62828;
+  --molinex-critical-background: #fdecec;
+  --molinex-neutral: #607d8b;
+  --molinex-neutral-background: #eceff1;
+
+  --molinex-font-heading: 'Poppins', sans-serif;
+  --molinex-font-body: 'Inter', sans-serif;
+
+  --molinex-space-xs: 0.25rem;
+  --molinex-space-s: 0.5rem;
+  --molinex-space-m: 1rem;
+  --molinex-space-l: 1.5rem;
+  --molinex-space-xl: 2rem;
+  --molinex-space-2xl: 3rem;
+  --molinex-space-3xl: 4rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  background:
+    radial-gradient(circle at 88% 8%, rgba(79, 138, 43, 0.06), transparent 22rem),
+    linear-gradient(135deg, #f8fafc 0%, var(--molinex-background) 48%, #f3f7f2 100%);
+  color: var(--molinex-text-primary);
+  font-family: var(--molinex-font-body);
+  min-height: 100dvh;
+  margin: 0;
+}
+
+.page-header h1::after {
+  background: linear-gradient(
+    90deg,
+    var(--molinex-gold) 0 42%,
+    var(--molinex-green) 42% 72%,
+    var(--molinex-blue) 72%
+  );
+  border-radius: 999px;
+  content: '';
+  display: block;
+  height: 0.22rem;
+  margin-top: 0.65rem;
+  width: 3.6rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button {
+  font-family: var(--molinex-font-heading);
+}
+
+button,
+a,
+input {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--molinex-gold) 72%, white);
+  outline-offset: 2px;
+}
+
+router-outlet + * {
+  display: block;
+  min-width: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

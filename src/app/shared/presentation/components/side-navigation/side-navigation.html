@@ -1,0 +1,31 @@
+<aside class="sidebar" [attr.aria-label]="'shell.main-navigation' | translate">
+  <div class="brand">
+    <div class="brand__logo-surface">
+      <img src="/molinex-logo.png" alt="Molinex" />
+    </div>
+    <span>{{ 'shell.operations-center' | translate }}</span>
+  </div>
+
+  <nav class="navigation">
+    @for (group of navigationGroups(); track group.label) {
+      <section class="navigation__group" [attr.aria-label]="group.label | translate">
+        <p class="navigation__label">{{ group.label | translate }}</p>
+        @for (item of group.items; track item.path) {
+          <a
+            class="navigation__item"
+            [routerLink]="item.path"
+            routerLinkActive="navigation__item--active"
+            [routerLinkActiveOptions]="{
+              exact: item.path === '/overview' || item.path === '/reporting',
+            }"
+            ariaCurrentWhenActive="page"
+            (click)="navigated.emit()"
+          >
+            <span class="material-symbols-outlined" aria-hidden="true">{{ item.icon }}</span>
+            <span>{{ item.label | translate }}</span>
+          </a>
+        }
+      </section>
+    }
+  </nav>
+</aside>

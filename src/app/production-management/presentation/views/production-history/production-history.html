@@ -1,0 +1,163 @@
+<section class="production-history">
+  <header class="page-header">
+    <div>
+      <span class="eyebrow">{{ 'production-history.eyebrow' | translate }}</span>
+      <h1>{{ 'production-history.title' | translate }}</h1>
+      <p>{{ 'production-history.description' | translate }}</p>
+    </div>
+    <a mat-stroked-button routerLink="/production">
+      <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+      {{ 'production-history.back' | translate }}
+    </a>
+  </header>
+
+  <section class="filter-panel" aria-labelledby="history-filters-title">
+    <div class="filter-heading">
+      <div>
+        <span class="material-symbols-outlined" aria-hidden="true">filter_alt</span>
+        <h2 id="history-filters-title">{{ 'production-history.filters.title' | translate }}</h2>
+      </div>
+      <button mat-button type="button" (click)="clearFilters()">
+        {{ 'production-history.filters.clear' | translate }}
+      </button>
+    </div>
+
+    <div class="filter-grid">
+      <mat-form-field appearance="outline" subscriptSizing="dynamic">
+        <mat-label>{{ 'production-history.filters.from' | translate }}</mat-label>
+        <input matInput type="date" [value]="dateFrom()" (input)="updateDateFrom($event)" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" subscriptSizing="dynamic">
+        <mat-label>{{ 'production-history.filters.to' | translate }}</mat-label>
+        <input matInput type="date" [value]="dateTo()" (input)="updateDateTo($event)" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" subscriptSizing="dynamic">
+        <mat-label>{{ 'production-history.filters.batch' | translate }}</mat-label>
+        <mat-select [value]="batchId()" (selectionChange)="batchId.set($event.value)">
+          <mat-option [value]="0">{{ 'production-history.filters.all-batches' | translate }}</mat-option>
+          @for (batch of store.productionBatches(); track batch.id) {
+            <mat-option [value]="batch.id">{{ batch.code }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" subscriptSizing="dynamic">
+        <mat-label>{{ 'production-history.filters.status' | translate }}</mat-label>
+        <mat-select [value]="status()" (selectionChange)="status.set($event.value)">
+          @for (statusOption of statuses; track statusOption) {
+            <mat-option [value]="statusOption">
+              {{ 'production-history.statuses.' + statusOption | translate }}
+            </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    @if (invalidPeriod()) {
+      <p class="period-error" role="alert">
+        {{ 'production-history.filters.invalid-period' | translate }}
+      </p>
+    }
+  </section>
+
+  <div class="summary-grid">
+    <article class="summary-card">
+      <span class="material-symbols-outlined" aria-hidden="true">precision_manufacturing</span>
+      <div>
+        <strong>{{ filteredRecords().length }}</strong>
+        <span>{{ 'production-history.metrics.processes' | translate }}</span>
+      </div>
+    </article>
+    <article class="summary-card">
+      <span class="material-symbols-outlined" aria-hidden="true">scale</span>
+      <div>
+        <strong>{{ processedWeightKilograms() | number: '1.0-2' }} kg</strong>
+        <span>{{ 'production-history.metrics.weight' | translate }}</span>
+      </div>
+    </article>
+    <article class="summary-card">
+      <span class="material-symbols-outlined" aria-hidden="true">task_alt</span>
+      <div>
+        <strong>{{ completedCount() }}</strong>
+        <span>{{ 'production-history.metrics.completed' | translate }}</span>
+      </div>
+    </article>
+    <article class="summary-card">
+      <span class="material-symbols-outlined" aria-hidden="true">inventory_2</span>
+      <div>
+        <strong>{{ involvedBatchCount() }}</strong>
+        <span>{{ 'production-history.metrics.batches' | translate }}</span>
+      </div>
+    </article>
+  </div>
+
+  @if (store.loading() && store.productionRecordCount() === 0) {
+    <div class="state-panel">
+      <mat-spinner diameter="36" />
+      <span>{{ 'production-history.loading' | translate }}</span>
+    </div>
+  } @else if (store.error()) {
+    <div class="state-panel state-panel--error" role="alert">
+      <span class="material-symbols-outlined" aria-hidden="true">error</span>
+      <span>{{ 'production-history.load-error' | translate }}</span>
+      <button mat-button type="button" (click)="store.reloadProductionData()">
+        {{ 'production-history.retry' | translate }}
+      </button>
+    </div>
+  } @else if (!invalidPeriod() && filteredRecords().length === 0) {
+    <div class="state-panel">
+      <span class="material-symbols-outlined" aria-hidden="true">history</span>
+      <span>{{ 'production-history.empty' | translate }}</span>
+    </div>
+  } @else if (!invalidPeriod()) {
+    <div class="timeline">
+      @for (group of historyGroups(); track group.date) {
+        <section class="history-day">
+          <header class="day-heading">
+            <time [attr.datetime]="group.date">{{ group.date | date: 'fullDate' }}</time>
+            <span>{{ 'production-history.results' | translate: { count: group.records.length } }}</span>
+          </header>
+
+          <div class="day-records">
+            @for (record of group.records; track record.id) {
+              <article class="history-record">
+                <span
+                  class="timeline-marker"
+                  [class]="'timeline-marker timeline-marker--' + record.details.status.toLowerCase()"
+                  aria-hidden="true"
+                ></span>
+                <div class="record-main">
+                  <div class="record-heading">
+                    <div>
+                      <strong>{{ record.details.processName }}</strong>
+                      <span>{{ batchMap().get(record.batchId)?.code ?? ('#' + record.batchId) }}</span>
+                    </div>
+                    <span class="status-badge">
+                      {{ 'production-history.statuses.' + record.details.status | translate }}
+                    </span>
+                  </div>
+                  <div class="record-details">
+                    <span>
+                      <span class="material-symbols-outlined" aria-hidden="true">scale</span>
+                      {{ record.details.processedWeight.value | number: '1.0-2' }}
+                      {{ measurementUnitSymbol(record.details.processedWeight.unit) }}
+                    </span>
+                    <span>
+                      <span class="material-symbols-outlined" aria-hidden="true">schedule</span>
+                      {{ record.details.startedAt | date: 'HH:mm' }}
+                      @if (record.details.finishedAt) {
+                        – {{ record.details.finishedAt | date: 'HH:mm' }}
+                      }
+                    </span>
+                  </div>
+                </div>
+              </article>
+            }
+          </div>
+        </section>
+      }
+    </div>
+  }
+</section>

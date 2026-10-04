@@ -1,0 +1,75 @@
+import { Routes } from '@angular/router';
+import { applicationTitle } from '../../shared/presentation/application-title';
+
+const productionBatchList = () =>
+  import('./views/production-batch-list/production-batch-list').then(
+    (module) => module.ProductionBatchList,
+  );
+const productionBatchForm = () =>
+  import('./views/production-batch-form/production-batch-form').then(
+    (module) => module.ProductionBatchForm,
+  );
+const rawMaterialReceptionList = () =>
+  import('./views/raw-material-reception-list/raw-material-reception-list').then(
+    (module) => module.RawMaterialReceptionList,
+  );
+const rawMaterialReceptionForm = () =>
+  import('./views/raw-material-reception-form/raw-material-reception-form').then(
+    (module) => module.RawMaterialReceptionForm,
+  );
+const productionOverview = () =>
+  import('./views/production-overview/production-overview').then(
+    (module) => module.ProductionOverview,
+  );
+const productionRecordForm = () =>
+  import('./views/production-record-form/production-record-form').then(
+    (module) => module.ProductionRecordForm,
+  );
+const productionHistory = () =>
+  import('./views/production-history/production-history').then(
+    (module) => module.ProductionHistory,
+  );
+
+export const productionManagementRoutes: Routes = [
+  {
+    path: '',
+    pathMatch: 'full',
+    loadComponent: productionOverview,
+    title: applicationTitle('Production overview'),
+  },
+  {
+    path: 'batches',
+    loadComponent: productionBatchList,
+    title: applicationTitle('Production batches'),
+  },
+  {
+    path: 'batches/new',
+    loadComponent: productionBatchForm,
+    title: applicationTitle('New production batch'),
+  },
+  {
+    path: 'receptions',
+    loadComponent: rawMaterialReceptionList,
+    title: applicationTitle('Raw material receptions'),
+  },
+  {
+    path: 'receptions/new',
+    loadComponent: rawMaterialReceptionForm,
+    title: applicationTitle('New raw material reception'),
+  },
+  {
+    path: 'records/new',
+    loadComponent: productionRecordForm,
+    title: applicationTitle('New production record'),
+  },
+  {
+    path: 'records/:id/edit',
+    loadComponent: productionRecordForm,
+    title: applicationTitle('Edit production record'),
+  },
+  {
+    path: 'history',
+    loadComponent: productionHistory,
+    title: applicationTitle('Production history'),
+  },
+];

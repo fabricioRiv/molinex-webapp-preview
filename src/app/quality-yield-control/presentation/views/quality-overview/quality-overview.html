@@ -1,0 +1,123 @@
+<section class="quality-overview">
+  <header class="page-header">
+    <div>
+      <span class="eyebrow">{{ 'quality-overview.eyebrow' | translate }}</span>
+      <h1>{{ 'quality-overview.title' | translate }}</h1>
+      <p>{{ 'quality-overview.description' | translate }}</p>
+    </div>
+    <div class="header-actions">
+      <a mat-button routerLink="/quality/waste">
+        <span class="material-symbols-outlined" aria-hidden="true">delete_sweep</span>
+        {{ 'quality-overview.view-waste' | translate }}
+      </a>
+      <a mat-flat-button routerLink="/quality/assessments/new">
+        <span class="material-symbols-outlined" aria-hidden="true">add</span>
+        {{ 'quality-overview.new-assessment' | translate }}
+      </a>
+    </div>
+  </header>
+
+  <div class="metrics-grid">
+    <article class="metric-card metric-card--whole">
+      <span>{{ 'quality-overview.metrics.whole-grain' | translate }}</span>
+      <strong>{{ averageWholeGrain() | number: '1.0-2' }}%</strong>
+    </article>
+    <article class="metric-card metric-card--broken">
+      <span>{{ 'quality-overview.metrics.broken-grain' | translate }}</span>
+      <strong>{{ averageBrokenGrain() | number: '1.0-2' }}%</strong>
+    </article>
+    <article class="metric-card metric-card--yield">
+      <span>{{ 'quality-overview.metrics.yield' | translate }}</span>
+      <strong>{{ averageYield() | number: '1.0-2' }}%</strong>
+    </article>
+  </div>
+
+  @if (store.loading() && store.assessmentCount() === 0) {
+    <div class="state-panel">
+      <mat-spinner diameter="36" />
+      <span>{{ 'quality-overview.loading' | translate }}</span>
+    </div>
+  } @else if (store.error()) {
+    <div class="state-panel state-panel--error" role="alert">
+      <span class="material-symbols-outlined" aria-hidden="true">error</span>
+      <span>{{ 'quality-overview.load-error' | translate }}</span>
+      <button mat-button type="button" (click)="store.reload()">
+        {{ 'quality-overview.retry' | translate }}
+      </button>
+    </div>
+  } @else if (store.assessmentCount() === 0) {
+    <div class="state-panel">
+      <span class="material-symbols-outlined" aria-hidden="true">fact_check</span>
+      <span>{{ 'quality-overview.empty' | translate }}</span>
+    </div>
+  } @else {
+    <section class="assessment-section" aria-labelledby="recent-assessments-title">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">{{ 'quality-overview.assessments.eyebrow' | translate }}</span>
+          <h2 id="recent-assessments-title">
+            {{ 'quality-overview.assessments.title' | translate }}
+          </h2>
+        </div>
+        <span>
+          {{ 'quality-overview.assessments.count' | translate: { count: store.assessmentCount() } }}
+        </span>
+      </div>
+
+      <div class="assessment-grid">
+        @for (assessment of recentAssessments(); track assessment.id) {
+          <article class="assessment-card">
+            <header>
+              <div>
+                <span>{{ 'quality-overview.assessments.process' | translate }}</span>
+                <strong>
+                  {{
+                    store.productionRecordMap().get(assessment.productionRecordId)?.processName ??
+                      '#' + assessment.productionRecordId
+                  }}
+                </strong>
+              </div>
+              <time [attr.datetime]="assessment.assessedAt.toISOString()">
+                {{ assessment.assessedAt | date: 'MMM d, yyyy · HH:mm' }}
+              </time>
+            </header>
+
+            <div class="composition-bar" aria-hidden="true">
+              <span
+                class="composition-bar__whole"
+                [style.width.%]="measurementValue(assessment.id, 'WHOLE_GRAIN_PERCENTAGE')"
+              ></span>
+              <span
+                class="composition-bar__broken"
+                [style.width.%]="measurementValue(assessment.id, 'BROKEN_GRAIN_PERCENTAGE')"
+              ></span>
+            </div>
+
+            <dl>
+              <div>
+                <dt>{{ 'quality-overview.metrics.whole-grain' | translate }}</dt>
+                <dd>
+                  {{ measurementValue(assessment.id, 'WHOLE_GRAIN_PERCENTAGE') | number: '1.0-2' }}%
+                </dd>
+              </div>
+              <div>
+                <dt>{{ 'quality-overview.metrics.broken-grain' | translate }}</dt>
+                <dd>
+                  {{
+                    measurementValue(assessment.id, 'BROKEN_GRAIN_PERCENTAGE') | number: '1.0-2'
+                  }}%
+                </dd>
+              </div>
+              <div>
+                <dt>{{ 'quality-overview.metrics.yield' | translate }}</dt>
+                <dd>
+                  {{ measurementValue(assessment.id, 'YIELD_PERCENTAGE') | number: '1.0-2' }}%
+                </dd>
+              </div>
+            </dl>
+          </article>
+        }
+      </div>
+    </section>
+  }
+</section>

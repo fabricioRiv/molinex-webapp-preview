@@ -1,0 +1,25 @@
+<mat-toolbar class="top-bar" role="banner">
+  <div class="top-bar__identity">
+    <button
+      class="icon-button menu-button"
+      type="button"
+      [attr.aria-label]="'shell.open-navigation' | translate"
+      (click)="menuToggled.emit()"
+    >
+      <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+    </button>
+    <div>
+      <span class="top-bar__eyebrow">Molinex</span>
+      <strong>{{ 'shell.operations-center' | translate }}</strong>
+    </div>
+  </div>
+
+  <div class="top-bar__actions">
+    <span class="top-bar__date">
+      <span class="material-symbols-outlined" aria-hidden="true">calendar_today</span>
+      {{ formattedDate() }}
+    </span>
+
+    <app-language-switcher />
+  </div>
+</mat-toolbar>

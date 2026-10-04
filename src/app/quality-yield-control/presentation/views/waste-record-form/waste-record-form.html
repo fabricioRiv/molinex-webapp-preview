@@ -1,0 +1,101 @@
+<section class="waste-record-form">
+  <header class="page-header">
+    <span class="eyebrow">{{ 'waste-record-form.eyebrow' | translate }}</span>
+    <h1>{{ 'waste-record-form.title' | translate }}</h1>
+    <p>{{ 'waste-record-form.description' | translate }}</p>
+  </header>
+
+  @if (store.error() === 'create-waste') {
+    <p class="form-error" role="alert">{{ 'waste-record-form.errors.create' | translate }}</p>
+  }
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'waste-record-form.production-process' | translate }}</mat-label>
+      <mat-select formControlName="productionRecordId" required>
+        @for (record of store.productionRecords(); track record.id) {
+          <mat-option [value]="record.id">
+            {{ record.processName }} · {{ 'waste-record-form.batch' | translate }} #{{
+              record.batchId
+            }}
+          </mat-option>
+        }
+      </mat-select>
+      @if (isInvalidControl(form, 'productionRecordId')) {
+        <mat-error>{{ 'waste-record-form.errors.production-process' | translate }}</mat-error>
+      }
+    </mat-form-field>
+
+    @if (selectedProductionRecord(); as productionRecord) {
+      <div class="process-context">
+        <span>{{ 'waste-record-form.processed-weight' | translate }}</span>
+        <strong>
+          {{ productionRecord.processedWeightValue }}
+          {{ unitSymbol(productionRecord.processedWeightUnit) }}
+        </strong>
+      </div>
+    }
+
+    <div class="quantity-grid">
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'waste-record-form.quantity' | translate }}</mat-label>
+        <input
+          matInput
+          type="number"
+          min="0.01"
+          step="0.01"
+          formControlName="quantityValue"
+          required
+        />
+        @if (form.controls.quantityValue.hasError('exceedsProcessedWeight')) {
+          <mat-error>{{ 'waste-record-form.errors.exceeds-weight' | translate }}</mat-error>
+        } @else if (isInvalidControl(form, 'quantityValue')) {
+          <mat-error>{{ 'waste-record-form.errors.quantity' | translate }}</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'waste-record-form.unit' | translate }}</mat-label>
+        <mat-select formControlName="quantityUnit" required>
+          @for (unit of units; track unit) {
+            <mat-option [value]="unit">{{
+              'waste-record-form.units.' + unit | translate
+            }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    @if (previewPercentage() !== null) {
+      <div
+        class="percentage-preview"
+        [class.percentage-preview--invalid]="previewPercentage()! > 100"
+      >
+        <span>{{ 'waste-record-form.calculated-percentage' | translate }}</span>
+        <strong>{{ previewPercentage() | number: '1.0-2' }}%</strong>
+        <small>{{ 'waste-record-form.percentage-help' | translate }}</small>
+      </div>
+    }
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'waste-record-form.recorded-at' | translate }}</mat-label>
+      <input matInput type="datetime-local" formControlName="recordedAt" required />
+      @if (isInvalidControl(form, 'recordedAt')) {
+        <mat-error>{{ 'waste-record-form.errors.recorded-at' | translate }}</mat-error>
+      }
+    </mat-form-field>
+
+    <div class="form-actions">
+      <button mat-button type="button" (click)="navigateToWasteOverview()">
+        {{ 'waste-record-form.cancel' | translate }}
+      </button>
+      <button
+        mat-flat-button
+        type="submit"
+        [disabled]="form.invalid || store.loading() || store.productionRecords().length === 0"
+      >
+        {{ 'waste-record-form.create' | translate }}
+      </button>
+    </div>
+  </form>
+</section>

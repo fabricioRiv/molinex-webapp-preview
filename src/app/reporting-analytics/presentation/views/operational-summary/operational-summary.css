@@ -1,0 +1,196 @@
+:host {
+  display: block;
+}
+
+.operational-summary {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.page-header {
+  align-items: flex-end;
+  display: flex;
+  justify-content: space-between;
+}
+
+.eyebrow {
+  color: var(--molinex-green-dark);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.page-header h1 {
+  color: var(--molinex-text-primary);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  letter-spacing: -0.035em;
+  margin: 0.45rem 0 0;
+}
+
+.page-header p {
+  color: var(--molinex-text-secondary);
+  margin: 0.65rem 0 0;
+}
+
+.period-row {
+  align-items: center;
+  color: var(--molinex-text-secondary);
+  display: flex;
+  font-size: 0.82rem;
+  gap: 0.4rem;
+}
+
+.period-row strong {
+  color: var(--molinex-text-primary);
+}
+
+.metric-grid {
+  background: var(--molinex-surface);
+  border: 1px solid var(--molinex-border);
+  border-radius: 1rem;
+  display: grid;
+  gap: 0;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  overflow: hidden;
+}
+
+.metric-card {
+  border-right: 1px solid var(--molinex-border);
+  padding: 1.4rem;
+  position: relative;
+}
+
+.metric-card:last-child {
+  border-right: 0;
+}
+
+.metric-card::after {
+  background: var(--molinex-gold);
+  bottom: 0;
+  content: '';
+  height: 0.18rem;
+  left: 1.4rem;
+  position: absolute;
+  width: 2rem;
+}
+
+.metric-card > .material-symbols-outlined {
+  color: var(--molinex-blue);
+  font-size: 1.55rem;
+}
+
+.metric-card p {
+  color: var(--molinex-text-secondary);
+  font-size: 0.78rem;
+  margin: 0.8rem 0 0.35rem;
+}
+
+.metric-card strong {
+  color: var(--molinex-text-primary);
+  font-family: var(--molinex-font-heading);
+  font-size: clamp(1.35rem, 3vw, 1.85rem);
+}
+
+.status-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.status-card {
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: 1rem;
+  display: flex;
+  gap: 1rem;
+  padding: 1.25rem;
+}
+
+.status-card--alert {
+  background: #fff5e6;
+  border-color: #f7d8a8;
+  color: #8a4b08;
+}
+
+.status-card--maintenance {
+  background: var(--molinex-blue-light);
+  border-color: #c4dfef;
+  color: var(--molinex-blue-dark);
+}
+
+.status-card > .material-symbols-outlined {
+  font-size: 2rem;
+}
+
+.status-card strong,
+.status-card span {
+  display: block;
+}
+
+.status-card strong {
+  font-size: 1.45rem;
+}
+
+.status-card div span {
+  font-size: 0.78rem;
+  margin-top: 0.15rem;
+}
+
+.generated-at {
+  color: var(--molinex-text-secondary);
+  font-size: 0.72rem;
+  margin: 0;
+  text-align: right;
+}
+
+.state-panel {
+  align-items: center;
+  background: var(--molinex-surface);
+  border: 1px solid var(--molinex-border);
+  border-radius: 1rem;
+  color: var(--molinex-text-secondary);
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+  min-height: 12rem;
+  padding: 1.5rem;
+}
+
+.state-panel--error {
+  color: var(--molinex-critical);
+}
+
+@media (max-width: 900px) {
+  .metric-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .metric-card:nth-child(2) {
+    border-right: 0;
+  }
+
+  .metric-card:nth-child(-n + 2) {
+    border-bottom: 1px solid var(--molinex-border);
+  }
+}
+
+@media (max-width: 560px) {
+  .metric-grid,
+  .status-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .metric-card {
+    border-bottom: 1px solid var(--molinex-border);
+    border-right: 0;
+  }
+
+  .metric-card:last-child {
+    border-bottom: 0;
+  }
+
+  .generated-at {
+    text-align: left;
+  }
+}

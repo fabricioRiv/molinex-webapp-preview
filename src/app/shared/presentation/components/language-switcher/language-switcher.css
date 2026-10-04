@@ -1,0 +1,18 @@
+:host {
+  display: inline-flex;
+}
+
+.language-switcher {
+  border-color: var(--molinex-border);
+  border-radius: 0.65rem;
+}
+
+mat-button-toggle {
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.mat-button-toggle-checked {
+  background: var(--molinex-blue-light);
+  color: var(--molinex-blue);
+}

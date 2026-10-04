@@ -1,0 +1,10 @@
+<section class="not-found">
+  <div class="not-found__code">404</div>
+  <span class="not-found__eyebrow">{{ 'page-not-found.eyebrow' | translate }}</span>
+  <h1>{{ 'page-not-found.title' | translate }}</h1>
+  <p [innerHTML]="'page-not-found.content' | translate: { invalid_path: invalidPath }"></p>
+  <button mat-flat-button type="button" (click)="navigateToOverview()">
+    <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+    {{ 'page-not-found.go-overview' | translate }}
+  </button>
+</section>

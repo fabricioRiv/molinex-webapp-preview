@@ -1,0 +1,72 @@
+:host {
+  display: block;
+  min-height: 100dvh;
+}
+
+.application-shell {
+  background: var(--molinex-background);
+  display: grid;
+  grid-template-columns: 17rem minmax(0, 1fr);
+  min-height: 100dvh;
+}
+
+.navigation-panel {
+  height: 100dvh;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.application-shell__content {
+  background:
+    radial-gradient(circle at 94% 4%, rgba(242, 183, 5, 0.075), transparent 18rem), transparent;
+  min-width: 0;
+}
+
+.page-content {
+  margin: 0 auto;
+  max-width: 96rem;
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+}
+
+.navigation-backdrop {
+  background: rgba(5, 43, 78, 0.48);
+  border: 0;
+  display: none;
+  inset: 0;
+  padding: 0;
+  position: fixed;
+  z-index: 40;
+  backdrop-filter: blur(2px);
+}
+
+@media (max-width: 1023px) {
+  .application-shell {
+    display: block;
+  }
+
+  .navigation-panel {
+    box-shadow: 1rem 0 2.5rem rgba(7, 55, 99, 0.22);
+    left: 0;
+    max-width: min(18rem, 86vw);
+    position: fixed;
+    top: 0;
+    transform: translateX(-105%);
+    transition: transform 200ms ease;
+    width: 100%;
+  }
+
+  .navigation-panel--open {
+    transform: translateX(0);
+  }
+
+  .navigation-backdrop {
+    display: block;
+  }
+}
+
+@media (max-width: 560px) {
+  .page-content {
+    padding: 1rem;
+  }
+}

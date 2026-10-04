@@ -1,0 +1,553 @@
+{
+  "navigation": {
+    "groups": {
+      "general": "General",
+      "management": "Management",
+      "plant": "Mill floor",
+      "assets": "Assets",
+      "analysis": "Analysis",
+      "administration": "Administration"
+    },
+    "items": {
+      "overview": "Overview",
+      "commercial": "Commercial",
+      "operations": "Operations",
+      "quality": "Quality and yield",
+      "machinery": "Machinery",
+      "maintenance": "Maintenance",
+      "intelligence": "Intelligence",
+      "reports": "Reports",
+      "users": "Users and permissions"
+    }
+  },
+  "shell": {
+    "operations-center": "Main mill",
+    "main-navigation": "Main navigation",
+    "open-navigation": "Open navigation menu",
+    "close-navigation": "Close navigation menu",
+    "preferred-language": "Preferred language"
+  },
+  "page-not-found": {
+    "eyebrow": "Unavailable route",
+    "title": "Page not found",
+    "content": "We could not find the path <strong>/{{ invalid_path }}</strong>.",
+    "go-overview": "Return to overview"
+  },
+  "operational-summary": {
+    "eyebrow": "Today at the mill",
+    "title": "Operational overview",
+    "description": "Latest production, quality, and maintenance indicators.",
+    "loading": "Loading operational overview...",
+    "load-error": "The operational overview could not be loaded.",
+    "retry": "Retry",
+    "empty": "No operational data is available.",
+    "period": "Period:",
+    "processed-volume": "Processed volume",
+    "yield": "Yield",
+    "waste": "Waste",
+    "active-machines": "Active machines",
+    "open-alerts": "Open alerts",
+    "pending-maintenances": "Pending maintenances",
+    "generated-at": "Updated:"
+  },
+  "production-batches": {
+    "eyebrow": "Lot traceability",
+    "title": "Production batches",
+    "description": "Register and trace batches to their raw material reception.",
+    "new": "New batch",
+    "view-receptions": "Raw material receptions",
+    "loading": "Loading production batches...",
+    "empty": "No production batches are registered.",
+    "retry": "Retry",
+    "search": "Search by code, supplier, origin, or reception",
+    "results": "{{ count }} results",
+    "id": "ID",
+    "code": "Code",
+    "reception": "Reception",
+    "supplier": "Supplier",
+    "received-quantity": "Received quantity",
+    "missing-reception": "Reception not found",
+    "registered-at": "Registered at",
+    "metrics": {
+      "total": "Registered batches",
+      "today": "Registered today",
+      "receptions": "Linked receptions"
+    },
+    "errors": {
+      "load-batches": "Production batches could not be loaded.",
+      "load-receptions": "Raw material receptions could not be loaded.",
+      "create-batch": "The production batch could not be created."
+    }
+  },
+  "production-batch": {
+    "eyebrow": "New production batch",
+    "new-title": "Register production batch",
+    "code": "Batch code",
+    "reception": "Raw material reception",
+    "registered-at": "Registration date and time",
+    "create": "Register batch",
+    "cancel": "Cancel",
+    "errors": {
+      "code": "Enter a batch code of up to 50 characters.",
+      "reception": "Select a raw material reception.",
+      "registered-at": "Enter the registration date and time."
+    }
+  },
+  "production-overview": {
+    "eyebrow": "Mill flow",
+    "title": "Production operations",
+    "description": "Monitor raw material intake and batch traceability.",
+    "register-reception": "Register reception",
+    "view-history": "Production history",
+    "loading": "Loading production operations...",
+    "load-error": "Production information could not be loaded.",
+    "retry": "Retry",
+    "metrics": {
+      "receptions": "Raw material receptions",
+      "batches": "Production batches",
+      "today": "{{ count }} today",
+      "traceability": "Batch traceability",
+      "linked": "{{ linked }} of {{ total }} linked"
+    },
+    "traceability": {
+      "eyebrow": "Traceability",
+      "title": "From reception to production batch",
+      "description": "Follow each raw material reception and the batches created from it.",
+      "empty": "Register a raw material reception to start its traceability.",
+      "reception": "Reception",
+      "no-batches": "No production batch assigned",
+      "assign-batch": "Assign batch",
+      "add-batch": "Add batch",
+      "unlinked-title": "Batches without a valid reception",
+      "unlinked-description": "{{ count }} batches are waiting to be linked to their reception.",
+      "view-receptions": "View all receptions",
+      "view-batches": "View all batches"
+    },
+    "activity": {
+      "eyebrow": "Operations",
+      "title": "Recent activity",
+      "empty": "No production activity has been registered.",
+      "reception": "Reception"
+    },
+    "processes": {
+      "record": "Record process",
+      "empty": "No production processes recorded for this batch.",
+      "edit": "Edit production process",
+      "assess-quality": "Record quality results"
+    }
+  },
+  "production-record": {
+    "eyebrow": "Process log",
+    "new-title": "Record production process",
+    "edit-title": "Edit production process",
+    "description": "Associate the process information with its production batch.",
+    "edit-description": "Correct the permitted process data while keeping its production batch.",
+    "batch": "Production batch",
+    "selected-batch": "Selected batch",
+    "batch-locked": "The related batch cannot be changed during an update.",
+    "process-name": "Process name",
+    "processed-weight": "Processed weight",
+    "unit": "Unit of measurement",
+    "started-at": "Start date and time",
+    "finished-at": "Finish date and time (optional)",
+    "status": "Process status",
+    "create": "Record process",
+    "update": "Save changes",
+    "cancel": "Cancel",
+    "loading": "Loading production process...",
+    "back": "Return to production",
+    "units": {
+      "KILOGRAM": "Kilograms",
+      "METRIC_TON": "Metric tons"
+    },
+    "statuses": {
+      "REGISTERED": "Registered",
+      "IN_PROGRESS": "In progress",
+      "COMPLETED": "Completed"
+    },
+    "errors": {
+      "batch": "Select a production batch.",
+      "process-name": "Enter a process name of up to 100 characters.",
+      "processed-weight": "Enter a processed weight greater than zero.",
+      "started-at": "Enter the process start date and time.",
+      "finished-at": "The finish time cannot precede the start time.",
+      "create": "The production process could not be recorded.",
+      "update": "The production process could not be updated.",
+      "not-found": "The requested production process was not found."
+    }
+  },
+  "production-history": {
+    "eyebrow": "Shift log",
+    "title": "Production history",
+    "description": "Review production processes by period, batch, and status.",
+    "back": "Production overview",
+    "loading": "Loading production history...",
+    "load-error": "Production history could not be loaded.",
+    "retry": "Retry",
+    "empty": "No production processes match the selected filters.",
+    "results": "{{ count }} processes",
+    "filters": {
+      "title": "History filters",
+      "from": "From",
+      "to": "To",
+      "batch": "Production batch",
+      "all-batches": "All batches",
+      "status": "Status",
+      "clear": "Clear filters",
+      "invalid-period": "The start date cannot be later than the end date."
+    },
+    "metrics": {
+      "processes": "Processes in period",
+      "weight": "Processed weight",
+      "completed": "Completed processes",
+      "batches": "Batches involved"
+    },
+    "statuses": {
+      "ALL": "All statuses",
+      "REGISTERED": "Registered",
+      "IN_PROGRESS": "In progress",
+      "COMPLETED": "Completed"
+    }
+  },
+  "raw-material-receptions": {
+    "eyebrow": "Raw material intake",
+    "title": "Raw material receptions",
+    "description": "Review the raw material received before registering production batches.",
+    "new": "New reception",
+    "view-batches": "Production batches",
+    "loading": "Loading raw material receptions...",
+    "empty": "No raw material receptions are registered.",
+    "retry": "Retry",
+    "search": "Search by identifier, supplier, or origin",
+    "results": "{{ count }} results",
+    "id": "ID",
+    "received-at": "Reception date",
+    "supplier": "Supplier",
+    "origin": "Origin",
+    "quantity": "Quantity received",
+    "metrics": {
+      "total": "Registered receptions",
+      "today": "Received today",
+      "suppliers": "Suppliers"
+    },
+    "errors": {
+      "load-batches": "Production batches could not be loaded.",
+      "load-receptions": "Raw material receptions could not be loaded.",
+      "create-reception": "The raw material reception could not be registered."
+    }
+  },
+  "raw-material-reception": {
+    "eyebrow": "New intake",
+    "new-title": "Register raw material reception",
+    "received-at": "Reception date and time",
+    "supplier": "Supplier",
+    "origin": "Origin",
+    "quantity": "Quantity received",
+    "unit": "Unit of measurement",
+    "create": "Register reception",
+    "cancel": "Cancel",
+    "units": {
+      "KILOGRAM": "Kilograms",
+      "METRIC_TON": "Metric tons"
+    },
+    "errors": {
+      "received-at": "Enter the reception date and time.",
+      "supplier": "Enter a supplier of up to 100 characters.",
+      "origin": "Enter an origin of up to 150 characters.",
+      "quantity": "Enter a quantity greater than zero."
+    }
+  },
+  "quality-overview": {
+    "eyebrow": "Grain performance",
+    "title": "Quality results",
+    "description": "Review grain composition and yield for each production process.",
+    "new-assessment": "Record quality results",
+    "view-waste": "Production waste",
+    "loading": "Loading quality results...",
+    "load-error": "Quality information could not be loaded.",
+    "retry": "Retry",
+    "empty": "No quality results have been recorded.",
+    "metrics": {
+      "whole-grain": "Average whole grain",
+      "broken-grain": "Average broken grain",
+      "yield": "Average yield"
+    },
+    "assessments": {
+      "eyebrow": "Recent controls",
+      "title": "Quality assessments",
+      "count": "{{ count }} assessments",
+      "process": "Production process"
+    }
+  },
+  "quality-assessment": {
+    "eyebrow": "New quality check",
+    "title": "Record quality results",
+    "description": "Associate the quality measurements with an existing production process.",
+    "production-process": "Production process",
+    "batch": "Batch",
+    "measurements-title": "Quality measurements",
+    "measurements-help": "Enter percentages from 0 to 100. Whole and broken grain together cannot exceed 100%.",
+    "whole-grain": "Whole grain",
+    "broken-grain": "Broken grain",
+    "yield": "Yield",
+    "assessed-at": "Assessment date and time",
+    "create": "Record results",
+    "cancel": "Cancel",
+    "errors": {
+      "production-process": "Select a production process.",
+      "percentage": "Enter a percentage from 0 to 100.",
+      "composition": "Whole and broken grain together cannot exceed 100%.",
+      "assessed-at": "Enter the assessment date and time.",
+      "create": "The quality results could not be recorded."
+    }
+  },
+  "waste-overview": {
+    "eyebrow": "Loss tracking",
+    "title": "Production waste",
+    "description": "Review waste generated by each production process and batch.",
+    "back": "Quality results",
+    "new": "Record waste",
+    "loading": "Loading production waste...",
+    "empty": "No production waste has been recorded.",
+    "no-results": "No waste records match the selected filters.",
+    "retry": "Retry",
+    "metrics": {
+      "records": "Filtered records",
+      "weight": "Total waste",
+      "average": "Average waste"
+    },
+    "filters": {
+      "batch": "Batch",
+      "all-batches": "All batches",
+      "from": "From",
+      "to": "To",
+      "clear": "Clear filters"
+    },
+    "records": {
+      "eyebrow": "Traceability",
+      "title": "Waste records",
+      "count": "{{ count }} records",
+      "date": "Date",
+      "batch": "Batch",
+      "process": "Production process",
+      "quantity": "Quantity",
+      "percentage": "Waste percentage"
+    },
+    "errors": {
+      "load": "Production waste could not be loaded."
+    }
+  },
+  "waste-record-form": {
+    "eyebrow": "New waste record",
+    "title": "Record production waste",
+    "description": "Associate the discarded quantity with an existing production process.",
+    "production-process": "Production process",
+    "batch": "Batch",
+    "processed-weight": "Processed weight",
+    "quantity": "Waste quantity",
+    "unit": "Unit of measurement",
+    "calculated-percentage": "Calculated waste",
+    "percentage-help": "Calculated from the processed weight.",
+    "recorded-at": "Record date and time",
+    "create": "Record waste",
+    "cancel": "Cancel",
+    "units": {
+      "KILOGRAM": "Kilograms",
+      "METRIC_TON": "Metric tons"
+    },
+    "errors": {
+      "production-process": "Select a production process.",
+      "quantity": "Enter a quantity greater than zero.",
+      "exceeds-weight": "Waste cannot exceed the processed weight.",
+      "recorded-at": "Enter the record date and time.",
+      "create": "Production waste could not be recorded."
+    }
+  },
+  "machinery": {
+    "eyebrow": "Equipment floor",
+    "title": "Machinery inventory",
+    "description": "Review registered equipment and its current operating condition.",
+    "new": "Register machinery",
+    "maintenance-history": "Maintenance",
+    "view-maintenance-history": "View maintenance history",
+    "search": "Search by code, name, or model",
+    "loading": "Loading machinery...",
+    "empty": "No machinery has been registered.",
+    "no-results": "No machinery matches the search.",
+    "retry": "Retry",
+    "model": "Model",
+    "status-changed-at": "Status updated",
+    "metrics": {
+      "operational": "Operational",
+      "attention": "Requires attention",
+      "maintenance": "Under maintenance",
+      "out-of-service": "Out of service"
+    },
+    "inventory": {
+      "eyebrow": "Equipment",
+      "title": "Registered machinery"
+    },
+    "statuses": {
+      "OPERATIONAL": "Operational",
+      "REQUIRES_ATTENTION": "Requires attention",
+      "UNDER_MAINTENANCE": "Under maintenance",
+      "OUT_OF_SERVICE": "Out of service"
+    },
+    "errors": {
+      "load": "The machinery inventory could not be loaded."
+    }
+  },
+  "machine-form": {
+    "eyebrow": "New machine",
+    "title": "Register machinery",
+    "description": "Add a machine to the rice mill equipment inventory.",
+    "code": "Machine code",
+    "name": "Machine name",
+    "model": "Manufacturer and model",
+    "status": "Operating status",
+    "status-changed-at": "Status date and time",
+    "create": "Register machinery",
+    "cancel": "Cancel",
+    "errors": {
+      "code": "Enter a machine code of up to 30 characters.",
+      "duplicate-code": "A machine with this code is already registered.",
+      "name": "Enter a machine name of up to 100 characters.",
+      "model": "Enter a manufacturer and model of up to 100 characters.",
+      "status-changed-at": "Enter the status date and time.",
+      "create": "The machinery could not be registered."
+    }
+  },
+  "maintenance": {
+    "eyebrow": "Care schedule",
+    "title": "Maintenance control",
+    "description": "Schedule preventive activities and document corrective interventions for each machine.",
+    "machinery": "Machinery inventory",
+    "schedule-preventive": "Schedule preventive maintenance",
+    "record-corrective": "Record corrective maintenance",
+    "loading": "Loading maintenance records...",
+    "empty": "No maintenance activities have been recorded.",
+    "retry": "Retry",
+    "metrics": {
+      "preventive": "Preventive records",
+      "corrective": "Corrective records",
+      "upcoming": "Upcoming activities",
+      "machines": "Machines covered"
+    },
+    "history": {
+      "eyebrow": "Equipment history",
+      "title": "Maintenance history",
+      "machine-title": "History for {{ machine }}",
+      "count": "{{ count }} activities"
+    },
+    "filter": {
+      "machine": "Machine history",
+      "all-machines": "All machines",
+      "clear": "View all"
+    },
+    "statuses": {
+      "upcoming": "Scheduled",
+      "completed": "Completed"
+    },
+    "types": {
+      "corrective": "Corrective"
+    },
+    "corrective": {
+      "failure": "Failure",
+      "cause": "Cause",
+      "action": "Action taken",
+      "downtime": "Downtime"
+    },
+    "errors": {
+      "load": "Maintenance records could not be loaded."
+    }
+  },
+  "preventive-maintenance-form": {
+    "eyebrow": "Prevent before stopping",
+    "title": "Schedule preventive maintenance",
+    "description": "Plan a preventive activity for a registered machine and assign its responsible technician.",
+    "machine": "Machine",
+    "scheduled-at": "Scheduled date and time",
+    "responsible": "Responsible technician",
+    "observations": "Activity and observations",
+    "create": "Schedule maintenance",
+    "cancel": "Cancel",
+    "errors": {
+      "machine": "Select a registered machine.",
+      "unknown-machine": "The selected machine is not registered.",
+      "no-machines": "Register a machine before scheduling maintenance.",
+      "scheduled-at": "Enter the scheduled date and time.",
+      "responsible": "Enter the responsible technician's name.",
+      "observations": "Describe the preventive activity in up to 500 characters.",
+      "create": "Preventive maintenance could not be scheduled."
+    }
+  },
+  "corrective-maintenance-form": {
+    "eyebrow": "Back in operation",
+    "title": "Record corrective maintenance",
+    "description": "Document the intervention performed after a machine failure or breakdown.",
+    "machine": "Affected machine",
+    "performed-at": "Intervention date and time",
+    "responsible": "Responsible technician",
+    "failure": "Failure detected",
+    "cause": "Identified cause",
+    "action": "Corrective action taken",
+    "downtime": "Downtime",
+    "anomaly": "Related anomaly identifier",
+    "anomaly-help": "Optional. Use it when the intervention started from an alert.",
+    "create": "Record corrective maintenance",
+    "cancel": "Cancel",
+    "errors": {
+      "machine": "Select the affected machine.",
+      "unknown-machine": "The selected machine is not registered.",
+      "performed-at": "Enter the intervention date and time.",
+      "responsible": "Enter the responsible technician's name.",
+      "failure": "Describe the detected failure.",
+      "cause": "Describe the identified cause.",
+      "action": "Describe the corrective action taken.",
+      "downtime": "Enter a downtime of zero minutes or greater.",
+      "create": "Corrective maintenance could not be recorded."
+    }
+  },
+  "views": {
+    "commercial": {
+      "eyebrow": "Commercial Engagement",
+      "title": "Commercial management",
+      "description": "Manage plans and customer inquiries."
+    },
+    "production": {
+      "eyebrow": "Production Management",
+      "title": "Production operations",
+      "description": "Track raw material receptions, batches, and production records."
+    },
+    "quality": {
+      "eyebrow": "Quality & Yield Control",
+      "title": "Quality and yield",
+      "description": "Review quality, yield, and waste results."
+    },
+    "machinery": {
+      "eyebrow": "Asset & Maintenance Management",
+      "title": "Machinery",
+      "description": "Review equipment and its operating status."
+    },
+    "maintenance": {
+      "eyebrow": "Asset & Maintenance Management",
+      "title": "Maintenance",
+      "description": "Plan and track maintenance work."
+    },
+    "intelligence": {
+      "eyebrow": "Operational Intelligence",
+      "title": "Operational intelligence",
+      "description": "Review readings, alerts, and recommendations."
+    },
+    "reports": {
+      "eyebrow": "Reporting & Analytics",
+      "title": "Reporting and analytics",
+      "description": "Review operational indicators and reports."
+    },
+    "users": {
+      "eyebrow": "Identity & Access Management",
+      "title": "Users and permissions",
+      "description": "Manage users, roles, and permissions."
+    }
+  }
+}

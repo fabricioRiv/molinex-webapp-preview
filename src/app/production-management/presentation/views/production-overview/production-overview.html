@@ -1,0 +1,127 @@
+<section class="production-overview">
+  <header class="page-header">
+    <div>
+      <span class="eyebrow">{{ 'production-overview.eyebrow' | translate }}</span>
+      <h1>{{ 'production-overview.title' | translate }}</h1>
+      <p>{{ 'production-overview.description' | translate }}</p>
+    </div>
+    <div class="header-actions">
+      <a mat-stroked-button routerLink="/production/history">
+        <span class="material-symbols-outlined" aria-hidden="true">history</span>
+        {{ 'production-overview.view-history' | translate }}
+      </a>
+      <a mat-flat-button routerLink="/production/receptions/new">
+        <span class="material-symbols-outlined" aria-hidden="true">add</span>
+        {{ 'production-overview.register-reception' | translate }}
+      </a>
+    </div>
+  </header>
+
+  @if (store.loading() && recentActivity().length === 0) {
+    <div class="state-panel">
+      <mat-spinner diameter="36" />
+      <span>{{ 'production-overview.loading' | translate }}</span>
+    </div>
+  } @else if (store.error()) {
+    <div class="state-panel state-panel--error" role="alert">
+      <span class="material-symbols-outlined" aria-hidden="true">error</span>
+      <span>{{ 'production-overview.load-error' | translate }}</span>
+      <button mat-button type="button" (click)="store.reloadProductionData()">
+        {{ 'production-overview.retry' | translate }}
+      </button>
+    </div>
+  } @else {
+    <div class="metrics-grid">
+      <article class="metric-card">
+        <span class="metric-card__icon material-symbols-outlined" aria-hidden="true">
+          local_shipping
+        </span>
+        <div>
+          <span>{{ 'production-overview.metrics.receptions' | translate }}</span>
+          <strong>{{ store.rawMaterialReceptions().length }}</strong>
+          <small>
+            {{ 'production-overview.metrics.today' | translate: { count: receivedTodayCount() } }}
+          </small>
+        </div>
+      </article>
+
+      <article class="metric-card">
+        <span class="metric-card__icon material-symbols-outlined" aria-hidden="true">
+          inventory_2
+        </span>
+        <div>
+          <span>{{ 'production-overview.metrics.batches' | translate }}</span>
+          <strong>{{ store.productionBatchCount() }}</strong>
+          <small>
+            {{
+              'production-overview.metrics.today'
+                | translate: { count: registeredTodayCount() }
+            }}
+          </small>
+        </div>
+      </article>
+
+      <article class="metric-card metric-card--traceability">
+        <span class="metric-card__icon material-symbols-outlined" aria-hidden="true">route</span>
+        <div>
+          <span>{{ 'production-overview.metrics.traceability' | translate }}</span>
+          <strong>{{ traceabilityPercentage() | number: '1.0-0' }}%</strong>
+          <small>
+            {{
+              'production-overview.metrics.linked'
+                | translate: { linked: linkedBatchCount(), total: store.productionBatchCount() }
+            }}
+          </small>
+        </div>
+      </article>
+    </div>
+
+    <div class="overview-grid">
+      <app-production-traceability
+        [receptions]="store.rawMaterialReceptions()"
+        [batches]="store.productionBatches()"
+        [records]="store.productionRecords()"
+      />
+
+      <section class="activity-panel" aria-labelledby="recent-activity-title">
+        <div class="section-heading">
+          <span class="eyebrow">{{ 'production-overview.activity.eyebrow' | translate }}</span>
+          <h2 id="recent-activity-title">{{ 'production-overview.activity.title' | translate }}</h2>
+        </div>
+
+        @if (recentActivity().length === 0) {
+          <p class="empty-activity">{{ 'production-overview.activity.empty' | translate }}</p>
+        } @else {
+          <ol class="activity-list">
+            @for (activity of recentActivity(); track activity.kind + '-' + activity.id) {
+              <li>
+                <span class="activity-icon material-symbols-outlined" aria-hidden="true">
+                  {{ activity.kind === 'reception' ? 'local_shipping' : 'inventory_2' }}
+                </span>
+                <div>
+                  @if (activity.kind === 'reception') {
+                    <strong>{{ activity.supplierName }}</strong>
+                    <span>
+                      {{ activity.originDescription }} ·
+                      {{ activity.quantityValue | number: '1.0-2' }}
+                      {{ measurementUnitSymbol(activity.quantityUnit) }}
+                    </span>
+                  } @else {
+                    <strong>{{ activity.code }}</strong>
+                    <span>
+                      {{ 'production-overview.activity.reception' | translate }}
+                      #{{ activity.receptionId }}
+                    </span>
+                  }
+                </div>
+                <time [attr.datetime]="activity.occurredAt.toISOString()">
+                  {{ activity.occurredAt | date: 'MMM d, HH:mm' }}
+                </time>
+              </li>
+            }
+          </ol>
+        }
+      </section>
+    </div>
+  }
+</section>

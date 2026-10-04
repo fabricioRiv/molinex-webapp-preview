@@ -1,0 +1,164 @@
+<section class="maintenance-overview">
+  <header class="page-header">
+    <div>
+      <span class="eyebrow">{{ 'maintenance.eyebrow' | translate }}</span>
+      <h1>{{ 'maintenance.title' | translate }}</h1>
+      <p>{{ 'maintenance.description' | translate }}</p>
+    </div>
+    <div class="header-actions">
+      <a mat-button routerLink="/assets/machinery">{{ 'maintenance.machinery' | translate }}</a>
+      <a mat-flat-button routerLink="/assets/maintenance/preventive/new">
+        <span class="material-symbols-outlined" aria-hidden="true">event</span>
+        {{ 'maintenance.schedule-preventive' | translate }}
+      </a>
+      <a mat-flat-button routerLink="/assets/maintenance/corrective/new">
+        <span class="material-symbols-outlined" aria-hidden="true">handyman</span>
+        {{ 'maintenance.record-corrective' | translate }}
+      </a>
+    </div>
+  </header>
+
+  <div class="metrics-grid">
+    <article class="metric-card">
+      <span>{{ 'maintenance.metrics.preventive' | translate }}</span>
+      <strong>{{ preventiveCount() }}</strong>
+    </article>
+    <article class="metric-card metric-card--corrective">
+      <span>{{ 'maintenance.metrics.corrective' | translate }}</span>
+      <strong>{{ correctiveCount() }}</strong>
+    </article>
+    <article class="metric-card metric-card--upcoming">
+      <span>{{ 'maintenance.metrics.upcoming' | translate }}</span>
+      <strong>{{ upcomingCount() }}</strong>
+    </article>
+    <article class="metric-card metric-card--coverage">
+      <span>{{ 'maintenance.metrics.machines' | translate }}</span>
+      <strong>{{ coveredMachineCount() }}</strong>
+    </article>
+  </div>
+
+  <section class="history-panel" aria-labelledby="preventive-history-title">
+    <div class="panel-heading">
+      <div>
+        <span class="eyebrow">{{ 'maintenance.history.eyebrow' | translate }}</span>
+        <h2 id="preventive-history-title">
+          @if (selectedMachine(); as machine) {
+            {{ 'maintenance.history.machine-title' | translate: { machine: machine.name } }}
+          } @else {
+            {{ 'maintenance.history.title' | translate }}
+          }
+        </h2>
+      </div>
+      <span>{{
+        'maintenance.history.count' | translate: { count: maintenanceRecords().length }
+      }}</span>
+    </div>
+
+    <div class="history-filter">
+      <mat-form-field appearance="outline" subscriptSizing="dynamic">
+        <mat-label>{{ 'maintenance.filter.machine' | translate }}</mat-label>
+        <mat-select [value]="selectedMachineId()" (valueChange)="updateMachineFilter($event)">
+          <mat-option [value]="null">{{
+            'maintenance.filter.all-machines' | translate
+          }}</mat-option>
+          @for (machine of store.machines(); track machine.id) {
+            <mat-option [value]="machine.id"
+              >{{ machine.code.value }} · {{ machine.name }}</mat-option
+            >
+          }
+        </mat-select>
+      </mat-form-field>
+      @if (selectedMachineId()) {
+        <button mat-button type="button" (click)="updateMachineFilter(null)">
+          {{ 'maintenance.filter.clear' | translate }}
+        </button>
+      }
+    </div>
+
+    @if (store.loading() && store.maintenanceRecords().length === 0) {
+      <div class="state-panel">
+        <mat-spinner diameter="36" />{{ 'maintenance.loading' | translate }}
+      </div>
+    } @else if (store.error() === 'load-maintenance') {
+      <div class="state-panel state-panel--error" role="alert">
+        {{ 'maintenance.errors.load' | translate }}
+        <button mat-button type="button" (click)="store.reloadMaintenance()">
+          {{ 'maintenance.retry' | translate }}
+        </button>
+      </div>
+    } @else if (maintenanceRecords().length === 0) {
+      <div class="state-panel">
+        <span class="material-symbols-outlined" aria-hidden="true">event_available</span
+        >{{ 'maintenance.empty' | translate }}
+      </div>
+    } @else {
+      <div class="maintenance-timeline">
+        @for (record of maintenanceRecords(); track record.id) {
+          <article
+            class="maintenance-card"
+            [class.maintenance-card--upcoming]="isUpcoming(record.performedAt)"
+            [class.maintenance-card--corrective]="record.type === 'CORRECTIVE'"
+          >
+            <div class="timeline-marker">
+              <span class="material-symbols-outlined" aria-hidden="true">{{
+                record.type === 'CORRECTIVE'
+                  ? 'handyman'
+                  : isUpcoming(record.performedAt)
+                    ? 'event_upcoming'
+                    : 'task_alt'
+              }}</span>
+            </div>
+            <div class="maintenance-card__content">
+              <header>
+                <div>
+                  <span>{{ store.machineMap().get(record.machineId)?.code?.value ?? '—' }}</span>
+                  <h3>{{ store.machineMap().get(record.machineId)?.name ?? record.machineId }}</h3>
+                </div>
+                <span class="schedule-badge">{{
+                  (record.type === 'CORRECTIVE'
+                    ? 'maintenance.types.corrective'
+                    : isUpcoming(record.performedAt)
+                      ? 'maintenance.statuses.upcoming'
+                      : 'maintenance.statuses.completed'
+                  ) | translate
+                }}</span>
+              </header>
+              @if (record.correctiveDetails; as details) {
+                <dl class="corrective-details">
+                  <div>
+                    <dt>{{ 'maintenance.corrective.failure' | translate }}</dt>
+                    <dd>{{ details.failure }}</dd>
+                  </div>
+                  <div>
+                    <dt>{{ 'maintenance.corrective.cause' | translate }}</dt>
+                    <dd>{{ details.cause }}</dd>
+                  </div>
+                  <div>
+                    <dt>{{ 'maintenance.corrective.action' | translate }}</dt>
+                    <dd>{{ details.actionTaken }}</dd>
+                  </div>
+                  <div>
+                    <dt>{{ 'maintenance.corrective.downtime' | translate }}</dt>
+                    <dd>{{ details.downtimeMinutes }} min</dd>
+                  </div>
+                </dl>
+              } @else {
+                <p>{{ record.description.value }}</p>
+              }
+              <footer>
+                <span
+                  ><span class="material-symbols-outlined" aria-hidden="true">calendar_month</span
+                  >{{ record.performedAt | date: 'MMM d, yyyy · HH:mm' }}</span
+                >
+                <span
+                  ><span class="material-symbols-outlined" aria-hidden="true">engineering</span
+                  >{{ record.responsible.displayName }}</span
+                >
+              </footer>
+            </div>
+          </article>
+        }
+      </div>
+    }
+  </section>
+</section>
