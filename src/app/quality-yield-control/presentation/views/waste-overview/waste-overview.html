@@ -1,0 +1,128 @@
+<section class="waste-overview">
+  <header class="page-header">
+    <div>
+      <span class="eyebrow">{{ 'waste-overview.eyebrow' | translate }}</span>
+      <h1>{{ 'waste-overview.title' | translate }}</h1>
+      <p>{{ 'waste-overview.description' | translate }}</p>
+    </div>
+    <div class="header-actions">
+      <a mat-button routerLink="/quality">{{ 'waste-overview.back' | translate }}</a>
+      <a mat-flat-button routerLink="/quality/waste/new">
+        <span class="material-symbols-outlined" aria-hidden="true">add</span>
+        {{ 'waste-overview.new' | translate }}
+      </a>
+    </div>
+  </header>
+
+  <div class="metrics-grid">
+    <article class="metric-card">
+      <span>{{ 'waste-overview.metrics.records' | translate }}</span>
+      <strong>{{ filteredWasteRecords().length }}</strong>
+    </article>
+    <article class="metric-card">
+      <span>{{ 'waste-overview.metrics.weight' | translate }}</span>
+      <strong>{{ totalWasteInKilograms() | number: '1.0-2' }} kg</strong>
+    </article>
+    <article class="metric-card">
+      <span>{{ 'waste-overview.metrics.average' | translate }}</span>
+      <strong>{{ averageWastePercentage() | number: '1.0-2' }}%</strong>
+    </article>
+  </div>
+
+  <section class="waste-panel" aria-labelledby="waste-records-title">
+    <div class="panel-heading">
+      <div>
+        <span class="eyebrow">{{ 'waste-overview.records.eyebrow' | translate }}</span>
+        <h2 id="waste-records-title">{{ 'waste-overview.records.title' | translate }}</h2>
+      </div>
+      <span>{{
+        'waste-overview.records.count' | translate: { count: filteredWasteRecords().length }
+      }}</span>
+    </div>
+
+    <div class="filters" aria-label="Waste record filters">
+      <mat-form-field appearance="outline" subscriptSizing="dynamic">
+        <mat-label>{{ 'waste-overview.filters.batch' | translate }}</mat-label>
+        <mat-select [value]="batchFilter()" (valueChange)="updateBatchFilter($event)">
+          <mat-option [value]="null">{{
+            'waste-overview.filters.all-batches' | translate
+          }}</mat-option>
+          @for (batchId of availableBatchIds(); track batchId) {
+            <mat-option [value]="batchId">#{{ batchId }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" subscriptSizing="dynamic">
+        <mat-label>{{ 'waste-overview.filters.from' | translate }}</mat-label>
+        <input matInput type="date" [value]="fromFilter()" (input)="updateFromFilter($event)" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" subscriptSizing="dynamic">
+        <mat-label>{{ 'waste-overview.filters.to' | translate }}</mat-label>
+        <input matInput type="date" [value]="toFilter()" (input)="updateToFilter($event)" />
+      </mat-form-field>
+      <button mat-button type="button" (click)="clearFilters()">
+        {{ 'waste-overview.filters.clear' | translate }}
+      </button>
+    </div>
+
+    @if (store.loading() && store.wasteRecordCount() === 0) {
+      <div class="state-panel">
+        <mat-spinner diameter="36" />{{ 'waste-overview.loading' | translate }}
+      </div>
+    } @else if (store.error() === 'load-waste') {
+      <div class="state-panel state-panel--error" role="alert">
+        {{ 'waste-overview.errors.load' | translate }}
+        <button mat-button type="button" (click)="store.reload()">
+          {{ 'waste-overview.retry' | translate }}
+        </button>
+      </div>
+    } @else if (filteredWasteRecords().length === 0) {
+      <div class="state-panel">
+        <span class="material-symbols-outlined" aria-hidden="true">delete_sweep</span>
+        {{
+          (store.wasteRecordCount() === 0 ? 'waste-overview.empty' : 'waste-overview.no-results')
+            | translate
+        }}
+      </div>
+    } @else {
+      <div class="table-shell">
+        <table>
+          <thead>
+            <tr>
+              <th>{{ 'waste-overview.records.date' | translate }}</th>
+              <th>{{ 'waste-overview.records.batch' | translate }}</th>
+              <th>{{ 'waste-overview.records.process' | translate }}</th>
+              <th>{{ 'waste-overview.records.quantity' | translate }}</th>
+              <th>{{ 'waste-overview.records.percentage' | translate }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (record of filteredWasteRecords(); track record.id) {
+              <tr>
+                <td>{{ record.recordedAt | date: 'MMM d, yyyy · HH:mm' }}</td>
+                <td>
+                  #{{ store.productionRecordMap().get(record.productionRecordId)?.batchId ?? '—' }}
+                </td>
+                <td>
+                  {{
+                    store.productionRecordMap().get(record.productionRecordId)?.processName ??
+                      '#' + record.productionRecordId
+                  }}
+                </td>
+                <td>
+                  {{ record.quantity.value | number: '1.0-2' }}
+                  {{ unitSymbol(record.quantity.unit) }}
+                </td>
+                <td>
+                  <span class="percentage-pill"
+                    >{{ record.percentage?.value ?? 0 | number: '1.0-2' }}%</span
+                  >
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    }
+  </section>
+</section>

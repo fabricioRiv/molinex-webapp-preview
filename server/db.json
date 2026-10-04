@@ -117,7 +117,28 @@
       "assessedAt": "2026-10-03T11:15:00-05:00"
     }
   ],
-  "waste-records": [],
+  "waste-records": [
+    {
+      "id": "a72dff13-4b04-472f-876a-d5fe5c649df2",
+      "productionRecordId": 1,
+      "quantityValue": 410,
+      "quantityUnit": "KILOGRAM",
+      "baseWeightValue": 8200,
+      "baseWeightUnit": "KILOGRAM",
+      "percentage": 5,
+      "recordedAt": "2026-10-03T09:45:00-05:00"
+    },
+    {
+      "id": "99752d92-08c9-4487-9889-474347047013",
+      "productionRecordId": 2,
+      "quantityValue": 335.5,
+      "quantityUnit": "KILOGRAM",
+      "baseWeightValue": 6100,
+      "baseWeightUnit": "KILOGRAM",
+      "percentage": 5.5,
+      "recordedAt": "2026-10-03T11:20:00-05:00"
+    }
+  ],
   "machines": [
     {
       "id": "f893f27c-940b-4be4-9155-e1a4f273cd01",
