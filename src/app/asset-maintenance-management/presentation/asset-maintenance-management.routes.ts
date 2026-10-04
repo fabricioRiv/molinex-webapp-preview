@@ -11,6 +11,10 @@ const maintenanceOverview = () =>
   import('./views/maintenance-overview/maintenance-overview').then(
     (module) => module.MaintenanceOverview,
   );
+const preventiveMaintenanceForm = () =>
+  import('./views/preventive-maintenance-form/preventive-maintenance-form').then(
+    (module) => module.PreventiveMaintenanceForm,
+  );
 
 export const assetMaintenanceManagementRoutes: Routes = [
   {
@@ -26,7 +30,13 @@ export const assetMaintenanceManagementRoutes: Routes = [
   },
   {
     path: 'maintenance',
+    pathMatch: 'full',
     loadComponent: maintenanceOverview,
     title: applicationTitle('Maintenance'),
+  },
+  {
+    path: 'maintenance/preventive/new',
+    loadComponent: preventiveMaintenanceForm,
+    title: applicationTitle('Schedule preventive maintenance'),
   },
 ];

@@ -5,10 +5,16 @@
       <h1>{{ 'machinery.title' | translate }}</h1>
       <p>{{ 'machinery.description' | translate }}</p>
     </div>
-    <a mat-flat-button routerLink="/assets/machinery/new">
-      <span class="material-symbols-outlined" aria-hidden="true">add</span>
-      {{ 'machinery.new' | translate }}
-    </a>
+    <div class="header-actions">
+      <a mat-button routerLink="/assets/maintenance">
+        <span class="material-symbols-outlined" aria-hidden="true">build_circle</span>
+        {{ 'machinery.maintenance-history' | translate }}
+      </a>
+      <a mat-flat-button routerLink="/assets/machinery/new">
+        <span class="material-symbols-outlined" aria-hidden="true">add</span>
+        {{ 'machinery.new' | translate }}
+      </a>
+    </div>
   </header>
 
   <div class="metrics-grid">
@@ -96,6 +102,13 @@
                 <dd>{{ machine.statusChangedAt | date: 'MMM d, yyyy · HH:mm' }}</dd>
               </div>
             </dl>
+            <a
+              mat-button
+              routerLink="/assets/maintenance"
+              [queryParams]="{ machineId: machine.id }"
+            >
+              {{ 'machinery.view-maintenance-history' | translate }}
+            </a>
           </article>
         }
       </div>
