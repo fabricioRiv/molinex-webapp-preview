@@ -25,9 +25,8 @@ export class Layout {
       ],
     },
     {
-      label: 'navigation.groups.management',
+      label: 'navigation.groups.plant',
       items: [
-        { icon: 'handshake', label: 'navigation.items.commercial', path: '/commercial' },
         { icon: 'conveyor_belt', label: 'navigation.items.operations', path: '/production' },
         { icon: 'fact_check', label: 'navigation.items.quality', path: '/quality' },
       ],
@@ -44,27 +43,6 @@ export class Layout {
           icon: 'build_circle',
           label: 'navigation.items.maintenance',
           path: '/assets/maintenance',
-        },
-      ],
-    },
-    {
-      label: 'navigation.groups.analysis',
-      items: [
-        {
-          icon: 'monitoring',
-          label: 'navigation.items.intelligence',
-          path: '/intelligence/analysis',
-        },
-        { icon: 'bar_chart_4_bars', label: 'navigation.items.reports', path: '/reporting' },
-      ],
-    },
-    {
-      label: 'navigation.groups.administration',
-      items: [
-        {
-          icon: 'manage_accounts',
-          label: 'navigation.items.users',
-          path: '/iam/users',
         },
       ],
     },

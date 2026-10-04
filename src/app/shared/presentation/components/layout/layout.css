@@ -18,6 +18,8 @@
 }
 
 .application-shell__content {
+  background:
+    radial-gradient(circle at 94% 4%, rgba(242, 183, 5, 0.075), transparent 18rem), transparent;
   min-width: 0;
 }
 
