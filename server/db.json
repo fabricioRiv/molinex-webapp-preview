@@ -165,7 +165,28 @@
       "statusChangedAt": "2026-10-03T10:10:00-05:00"
     }
   ],
-  "maintenance-records": [],
+  "maintenance-records": [
+    {
+      "id": "145fb408-c3b4-4f2d-a504-f512419d570e",
+      "machineId": "f893f27c-940b-4be4-9155-e1a4f273cd01",
+      "type": "PREVENTIVE",
+      "performedAt": "2026-10-01T08:00:00-05:00",
+      "description": "Inspection and cleaning of the intake system and drive belts.",
+      "responsiblePrincipalId": "b3d36b83-013b-4655-ad0c-574704f0945e",
+      "responsibleDisplayName": "Carlos Mendoza",
+      "anomalyId": null
+    },
+    {
+      "id": "9b25b1bf-0135-4863-b551-fb8eb45acd03",
+      "machineId": "9085c5fc-e374-4628-aef9-9e44bd407a25",
+      "type": "PREVENTIVE",
+      "performedAt": "2026-10-05T09:30:00-05:00",
+      "description": "Check husking rollers, bearings, and belt tension after the operating cycle.",
+      "responsiblePrincipalId": "b3d36b83-013b-4655-ad0c-574704f0945e",
+      "responsibleDisplayName": "Carlos Mendoza",
+      "anomalyId": null
+    }
+  ],
   "operational-readings": [],
   "alerts": [],
   "recommendations": [],

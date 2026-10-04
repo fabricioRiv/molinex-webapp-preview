@@ -7,5 +7,6 @@ export const environment = {
   qualityResultsEndpointPath: '/quality-results',
   wasteRecordsEndpointPath: '/waste-records',
   machinesEndpointPath: '/machines',
+  maintenanceRecordsEndpointPath: '/maintenance-records',
   reportSummariesEndpointPath: '/report-summaries',
 };

@@ -372,6 +372,8 @@
     "title": "Inventario de maquinaria",
     "description": "Consulta los equipos registrados y su condición operativa actual.",
     "new": "Registrar maquinaria",
+    "maintenance-history": "Mantenimiento",
+    "view-maintenance-history": "Ver historial de mantenimiento",
     "search": "Buscar por código, nombre o modelo",
     "loading": "Cargando maquinaria...",
     "empty": "No hay maquinaria registrada.",
@@ -417,6 +419,59 @@
       "model": "Ingresa un fabricante y modelo de hasta 100 caracteres.",
       "status-changed-at": "Ingresa la fecha y hora del estado.",
       "create": "No se pudo registrar la maquinaria."
+    }
+  },
+  "maintenance": {
+    "eyebrow": "Gestión de Activos y Mantenimiento",
+    "title": "Control de mantenimiento",
+    "description": "Programa actividades preventivas y consulta el historial de mantenimiento de cada máquina.",
+    "machinery": "Inventario de maquinaria",
+    "schedule-preventive": "Programar mantenimiento preventivo",
+    "loading": "Cargando registros de mantenimiento...",
+    "empty": "No hay mantenimientos preventivos registrados.",
+    "retry": "Reintentar",
+    "metrics": {
+      "preventive": "Registros preventivos",
+      "upcoming": "Actividades próximas",
+      "machines": "Máquinas atendidas"
+    },
+    "history": {
+      "eyebrow": "Historial del equipo",
+      "title": "Mantenimiento preventivo",
+      "machine-title": "Historial de {{ machine }}",
+      "count": "{{ count }} actividades"
+    },
+    "filter": {
+      "machine": "Historial de maquinaria",
+      "all-machines": "Todas las máquinas",
+      "clear": "Ver todas"
+    },
+    "statuses": {
+      "upcoming": "Programado",
+      "completed": "Realizado"
+    },
+    "errors": {
+      "load": "No se pudieron cargar los registros de mantenimiento."
+    }
+  },
+  "preventive-maintenance-form": {
+    "eyebrow": "Gestión de Activos y Mantenimiento",
+    "title": "Programar mantenimiento preventivo",
+    "description": "Planifica una actividad preventiva para una máquina registrada y asigna al técnico responsable.",
+    "machine": "Maquinaria",
+    "scheduled-at": "Fecha y hora programada",
+    "responsible": "Técnico responsable",
+    "observations": "Actividad y observaciones",
+    "create": "Programar mantenimiento",
+    "cancel": "Cancelar",
+    "errors": {
+      "machine": "Selecciona una máquina registrada.",
+      "unknown-machine": "La máquina seleccionada no está registrada.",
+      "no-machines": "Registra una máquina antes de programar su mantenimiento.",
+      "scheduled-at": "Ingresa la fecha y hora programada.",
+      "responsible": "Ingresa el nombre del técnico responsable.",
+      "observations": "Describe la actividad preventiva en un máximo de 500 caracteres.",
+      "create": "No se pudo programar el mantenimiento preventivo."
     }
   },
   "views": {

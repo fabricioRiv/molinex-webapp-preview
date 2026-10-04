@@ -372,6 +372,8 @@
     "title": "Machinery inventory",
     "description": "Review registered equipment and its current operating condition.",
     "new": "Register machinery",
+    "maintenance-history": "Maintenance",
+    "view-maintenance-history": "View maintenance history",
     "search": "Search by code, name, or model",
     "loading": "Loading machinery...",
     "empty": "No machinery has been registered.",
@@ -417,6 +419,59 @@
       "model": "Enter a manufacturer and model of up to 100 characters.",
       "status-changed-at": "Enter the status date and time.",
       "create": "The machinery could not be registered."
+    }
+  },
+  "maintenance": {
+    "eyebrow": "Asset & Maintenance Management",
+    "title": "Maintenance control",
+    "description": "Schedule preventive activities and review the maintenance history of each machine.",
+    "machinery": "Machinery inventory",
+    "schedule-preventive": "Schedule preventive maintenance",
+    "loading": "Loading maintenance records...",
+    "empty": "No preventive maintenance has been recorded.",
+    "retry": "Retry",
+    "metrics": {
+      "preventive": "Preventive records",
+      "upcoming": "Upcoming activities",
+      "machines": "Machines covered"
+    },
+    "history": {
+      "eyebrow": "Equipment history",
+      "title": "Preventive maintenance",
+      "machine-title": "History for {{ machine }}",
+      "count": "{{ count }} activities"
+    },
+    "filter": {
+      "machine": "Machine history",
+      "all-machines": "All machines",
+      "clear": "View all"
+    },
+    "statuses": {
+      "upcoming": "Scheduled",
+      "completed": "Completed"
+    },
+    "errors": {
+      "load": "Maintenance records could not be loaded."
+    }
+  },
+  "preventive-maintenance-form": {
+    "eyebrow": "Asset & Maintenance Management",
+    "title": "Schedule preventive maintenance",
+    "description": "Plan a preventive activity for a registered machine and assign its responsible technician.",
+    "machine": "Machine",
+    "scheduled-at": "Scheduled date and time",
+    "responsible": "Responsible technician",
+    "observations": "Activity and observations",
+    "create": "Schedule maintenance",
+    "cancel": "Cancel",
+    "errors": {
+      "machine": "Select a registered machine.",
+      "unknown-machine": "The selected machine is not registered.",
+      "no-machines": "Register a machine before scheduling maintenance.",
+      "scheduled-at": "Enter the scheduled date and time.",
+      "responsible": "Enter the responsible technician's name.",
+      "observations": "Describe the preventive activity in up to 500 characters.",
+      "create": "Preventive maintenance could not be scheduled."
     }
   },
   "views": {
