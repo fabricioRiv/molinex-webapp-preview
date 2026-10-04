@@ -9,7 +9,6 @@ import { TranslatePipe } from '@ngx-translate/core';
 })
 export class SectionOverview {
   readonly description = input.required<string>();
-  readonly eyebrow = input.required<string>();
   readonly icon = input.required<string>();
   readonly title = input.required<string>();
 }

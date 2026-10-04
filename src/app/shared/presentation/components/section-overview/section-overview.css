@@ -37,24 +37,11 @@
   z-index: 1;
 }
 
-.eyebrow {
-  color: var(--molinex-green);
-  display: block;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.hero-card .eyebrow {
-  color: #ffd860;
-}
-
 .hero-card h1 {
   font-size: clamp(1.8rem, 4vw, 2.75rem);
   letter-spacing: -0.035em;
   line-height: 1.12;
-  margin: 0.6rem 0 0;
+  margin: 0;
 }
 
 .hero-card p {

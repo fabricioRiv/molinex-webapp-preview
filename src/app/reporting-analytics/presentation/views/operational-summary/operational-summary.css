@@ -46,17 +46,33 @@
 }
 
 .metric-grid {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-
-.metric-card {
   background: var(--molinex-surface);
   border: 1px solid var(--molinex-border);
   border-radius: 1rem;
-  box-shadow: 0 0.5rem 1.4rem rgba(16, 42, 67, 0.055);
-  padding: 1.25rem;
+  display: grid;
+  gap: 0;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  overflow: hidden;
+}
+
+.metric-card {
+  border-right: 1px solid var(--molinex-border);
+  padding: 1.4rem;
+  position: relative;
+}
+
+.metric-card:last-child {
+  border-right: 0;
+}
+
+.metric-card::after {
+  background: var(--molinex-gold);
+  bottom: 0;
+  content: '';
+  height: 0.18rem;
+  left: 1.4rem;
+  position: absolute;
+  width: 2rem;
 }
 
 .metric-card > .material-symbols-outlined {
@@ -149,12 +165,29 @@
   .metric-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .metric-card:nth-child(2) {
+    border-right: 0;
+  }
+
+  .metric-card:nth-child(-n + 2) {
+    border-bottom: 1px solid var(--molinex-border);
+  }
 }
 
 @media (max-width: 560px) {
   .metric-grid,
   .status-grid {
     grid-template-columns: 1fr;
+  }
+
+  .metric-card {
+    border-bottom: 1px solid var(--molinex-border);
+    border-right: 0;
+  }
+
+  .metric-card:last-child {
+    border-bottom: 0;
   }
 
   .generated-at {

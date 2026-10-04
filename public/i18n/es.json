@@ -3,6 +3,7 @@
     "groups": {
       "general": "General",
       "management": "Gestión",
+      "plant": "Planta",
       "assets": "Activos",
       "analysis": "Análisis",
       "administration": "Administración"
@@ -20,15 +21,10 @@
     }
   },
   "shell": {
-    "operations-center": "Centro de operaciones",
+    "operations-center": "Molino principal",
     "main-navigation": "Navegación principal",
     "open-navigation": "Abrir menú de navegación",
     "close-navigation": "Cerrar menú de navegación",
-    "search-label": "Buscar en Molinex",
-    "search-placeholder": "Buscar",
-    "view-notifications": "Ver notificaciones",
-    "notification-count": "{{ count }} notificaciones",
-    "administrator": "Administrador",
     "preferred-language": "Idioma preferido"
   },
   "page-not-found": {
@@ -38,7 +34,7 @@
     "go-overview": "Volver al resumen"
   },
   "operational-summary": {
-    "eyebrow": "Reportes y Analítica",
+    "eyebrow": "Hoy en el molino",
     "title": "Resumen operativo",
     "description": "Indicadores recientes de producción, calidad y mantenimiento.",
     "loading": "Cargando resumen operativo...",
@@ -55,7 +51,7 @@
     "generated-at": "Actualizado:"
   },
   "production-batches": {
-    "eyebrow": "Gestión de Producción",
+    "eyebrow": "Trazabilidad de lotes",
     "title": "Lotes de producción",
     "description": "Registra y vincula cada lote con su recepción de materia prima.",
     "new": "Nuevo lote",
@@ -84,7 +80,7 @@
     }
   },
   "production-batch": {
-    "eyebrow": "Gestión de Producción",
+    "eyebrow": "Nuevo lote de producción",
     "new-title": "Registrar lote de producción",
     "code": "Código del lote",
     "reception": "Recepción de materia prima",
@@ -98,7 +94,7 @@
     }
   },
   "production-overview": {
-    "eyebrow": "Gestión de Producción",
+    "eyebrow": "Flujo del molino",
     "title": "Operaciones de producción",
     "description": "Supervisa el ingreso de materia prima y la trazabilidad de los lotes.",
     "register-reception": "Registrar recepción",
@@ -123,7 +119,7 @@
       "assign-batch": "Asignar lote",
       "add-batch": "Agregar lote",
       "unlinked-title": "Lotes sin una recepción válida",
-      "unlinked-description": "{{ count }} lotes hacen referencia a una recepción inexistente.",
+      "unlinked-description": "Hay {{ count }} lotes pendientes de vincular con su recepción.",
       "view-receptions": "Ver todas las recepciones",
       "view-batches": "Ver todos los lotes"
     },
@@ -141,7 +137,7 @@
     }
   },
   "production-record": {
-    "eyebrow": "Gestión de Producción",
+    "eyebrow": "Registro de proceso",
     "new-title": "Registrar proceso productivo",
     "edit-title": "Editar proceso productivo",
     "description": "Asocia la información del proceso con su lote de producción.",
@@ -181,7 +177,7 @@
     }
   },
   "production-history": {
-    "eyebrow": "Gestión de Producción",
+    "eyebrow": "Bitácora de turnos",
     "title": "Historial de producción",
     "description": "Consulta los procesos productivos por periodo, lote y estado.",
     "back": "Resumen de producción",
@@ -214,7 +210,7 @@
     }
   },
   "raw-material-receptions": {
-    "eyebrow": "Gestión de Producción",
+    "eyebrow": "Ingreso de materia prima",
     "title": "Recepciones de materia prima",
     "description": "Consulta la materia prima recibida antes de registrar los lotes de producción.",
     "new": "Nueva recepción",
@@ -241,7 +237,7 @@
     }
   },
   "raw-material-reception": {
-    "eyebrow": "Gestión de Producción",
+    "eyebrow": "Nueva recepción",
     "new-title": "Registrar recepción de materia prima",
     "received-at": "Fecha y hora de recepción",
     "supplier": "Proveedor",
@@ -262,7 +258,7 @@
     }
   },
   "quality-overview": {
-    "eyebrow": "Control de Calidad y Rendimiento",
+    "eyebrow": "Rendimiento del grano",
     "title": "Resultados de calidad",
     "description": "Consulta la composición del grano y el rendimiento de cada proceso productivo.",
     "new-assessment": "Registrar resultados",
@@ -284,7 +280,7 @@
     }
   },
   "quality-assessment": {
-    "eyebrow": "Control de Calidad y Rendimiento",
+    "eyebrow": "Nuevo control de calidad",
     "title": "Registrar resultados de calidad",
     "description": "Asocia las mediciones de calidad con un proceso productivo existente.",
     "production-process": "Proceso productivo",
@@ -306,7 +302,7 @@
     }
   },
   "waste-overview": {
-    "eyebrow": "Control de Calidad y Rendimiento",
+    "eyebrow": "Seguimiento de merma",
     "title": "Merma de producción",
     "description": "Consulta la merma generada por cada proceso productivo y lote.",
     "back": "Resultados de calidad",
@@ -342,7 +338,7 @@
     }
   },
   "waste-record-form": {
-    "eyebrow": "Control de Calidad y Rendimiento",
+    "eyebrow": "Nuevo registro de merma",
     "title": "Registrar merma de producción",
     "description": "Asocia la cantidad descartada con un proceso productivo existente.",
     "production-process": "Proceso productivo",
@@ -368,7 +364,7 @@
     }
   },
   "machinery": {
-    "eyebrow": "Gestión de Activos y Mantenimiento",
+    "eyebrow": "Equipos de planta",
     "title": "Inventario de maquinaria",
     "description": "Consulta los equipos registrados y su condición operativa actual.",
     "new": "Registrar maquinaria",
@@ -402,7 +398,7 @@
     }
   },
   "machine-form": {
-    "eyebrow": "Gestión de Activos y Mantenimiento",
+    "eyebrow": "Nueva máquina",
     "title": "Registrar maquinaria",
     "description": "Agrega una máquina al inventario de equipos del molino.",
     "code": "Código de maquinaria",
@@ -422,7 +418,7 @@
     }
   },
   "maintenance": {
-    "eyebrow": "Gestión de Activos y Mantenimiento",
+    "eyebrow": "Agenda de mantenimiento",
     "title": "Control de mantenimiento",
     "description": "Programa actividades preventivas y documenta intervenciones correctivas para cada máquina.",
     "machinery": "Inventario de maquinaria",
@@ -466,7 +462,7 @@
     }
   },
   "preventive-maintenance-form": {
-    "eyebrow": "Gestión de Activos y Mantenimiento",
+    "eyebrow": "Prevenir antes de parar",
     "title": "Programar mantenimiento preventivo",
     "description": "Planifica una actividad preventiva para una máquina registrada y asigna al técnico responsable.",
     "machine": "Maquinaria",
@@ -486,7 +482,7 @@
     }
   },
   "corrective-maintenance-form": {
-    "eyebrow": "Gestión de Activos y Mantenimiento",
+    "eyebrow": "De vuelta en operación",
     "title": "Registrar mantenimiento correctivo",
     "description": "Documenta la intervención realizada después de una falla o avería de maquinaria.",
     "machine": "Máquina afectada",
@@ -497,7 +493,7 @@
     "action": "Acción correctiva realizada",
     "downtime": "Tiempo de parada",
     "anomaly": "Identificador de anomalía relacionada",
-    "anomaly-help": "Referencia opcional proveniente de Inteligencia Operativa.",
+    "anomaly-help": "Opcional. Úsalo cuando la intervención se origine en una alerta.",
     "create": "Registrar mantenimiento correctivo",
     "cancel": "Cancelar",
     "errors": {

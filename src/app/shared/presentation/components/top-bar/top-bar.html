@@ -15,27 +15,11 @@
   </div>
 
   <div class="top-bar__actions">
-    <label class="search" [attr.aria-label]="'shell.search-label' | translate">
-      <span class="material-symbols-outlined" aria-hidden="true">search</span>
-      <input type="search" [placeholder]="'shell.search-placeholder' | translate" />
-      <kbd>Ctrl K</kbd>
-    </label>
-
-    <span class="top-bar__date">{{ formattedDate() }}</span>
+    <span class="top-bar__date">
+      <span class="material-symbols-outlined" aria-hidden="true">calendar_today</span>
+      {{ formattedDate() }}
+    </span>
 
     <app-language-switcher />
-
-    <button
-      class="icon-button notification-button"
-      type="button"
-      [attr.aria-label]="'shell.view-notifications' | translate"
-    >
-      <span class="material-symbols-outlined" aria-hidden="true">notifications</span>
-      <span
-        class="notification-button__badge"
-        [attr.aria-label]="'shell.notification-count' | translate: { count: 3 }"
-        >3</span
-      >
-    </button>
   </div>
 </mat-toolbar>
