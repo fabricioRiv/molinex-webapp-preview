@@ -1,0 +1,2 @@
+export type MachineStatus =
+  'OPERATIONAL' | 'REQUIRES_ATTENTION' | 'UNDER_MAINTENANCE' | 'OUT_OF_SERVICE';
