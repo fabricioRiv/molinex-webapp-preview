@@ -1,0 +1,103 @@
+<section class="corrective-maintenance-form">
+  <header class="page-header">
+    <span class="eyebrow">{{ 'corrective-maintenance-form.eyebrow' | translate }}</span>
+    <h1>{{ 'corrective-maintenance-form.title' | translate }}</h1>
+    <p>{{ 'corrective-maintenance-form.description' | translate }}</p>
+  </header>
+
+  @if (store.error() === 'create-maintenance') {
+    <p class="form-error" role="alert">
+      {{ 'corrective-maintenance-form.errors.create' | translate }}
+    </p>
+  }
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'corrective-maintenance-form.machine' | translate }}</mat-label>
+      <mat-select formControlName="machineId" required>
+        @for (machine of store.machines(); track machine.id) {
+          <mat-option [value]="machine.id"
+            >{{ machine.code.value }} · {{ machine.name }}</mat-option
+          >
+        }
+      </mat-select>
+      @if (form.controls.machineId.hasError('unknownMachine')) {
+        <mat-error>{{
+          'corrective-maintenance-form.errors.unknown-machine' | translate
+        }}</mat-error>
+      } @else if (isInvalidControl(form, 'machineId')) {
+        <mat-error>{{ 'corrective-maintenance-form.errors.machine' | translate }}</mat-error>
+      }
+    </mat-form-field>
+
+    <div class="intervention-fields">
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'corrective-maintenance-form.performed-at' | translate }}</mat-label>
+        <input matInput type="datetime-local" formControlName="performedAt" required />
+        @if (isInvalidControl(form, 'performedAt')) {
+          <mat-error>{{ 'corrective-maintenance-form.errors.performed-at' | translate }}</mat-error>
+        }
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'corrective-maintenance-form.responsible' | translate }}</mat-label>
+        <input matInput formControlName="responsibleDisplayName" maxlength="100" required />
+        @if (isInvalidControl(form, 'responsibleDisplayName')) {
+          <mat-error>{{ 'corrective-maintenance-form.errors.responsible' | translate }}</mat-error>
+        }
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'corrective-maintenance-form.failure' | translate }}</mat-label>
+      <textarea matInput formControlName="failure" maxlength="250" rows="2" required></textarea>
+      @if (isInvalidControl(form, 'failure')) {
+        <mat-error>{{ 'corrective-maintenance-form.errors.failure' | translate }}</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'corrective-maintenance-form.cause' | translate }}</mat-label>
+      <textarea matInput formControlName="cause" maxlength="250" rows="2" required></textarea>
+      @if (isInvalidControl(form, 'cause')) {
+        <mat-error>{{ 'corrective-maintenance-form.errors.cause' | translate }}</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'corrective-maintenance-form.action' | translate }}</mat-label>
+      <textarea matInput formControlName="actionTaken" maxlength="500" rows="3" required></textarea>
+      @if (isInvalidControl(form, 'actionTaken')) {
+        <mat-error>{{ 'corrective-maintenance-form.errors.action' | translate }}</mat-error>
+      }
+    </mat-form-field>
+
+    <div class="intervention-fields">
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'corrective-maintenance-form.downtime' | translate }}</mat-label>
+        <input matInput type="number" min="0" step="1" formControlName="downtimeMinutes" required />
+        <span matTextSuffix>min</span>
+        @if (isInvalidControl(form, 'downtimeMinutes')) {
+          <mat-error>{{ 'corrective-maintenance-form.errors.downtime' | translate }}</mat-error>
+        }
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'corrective-maintenance-form.anomaly' | translate }}</mat-label>
+        <input matInput formControlName="anomalyId" maxlength="100" />
+        <mat-hint>{{ 'corrective-maintenance-form.anomaly-help' | translate }}</mat-hint>
+      </mat-form-field>
+    </div>
+
+    <div class="form-actions">
+      <button mat-button type="button" (click)="navigateToMaintenance()">
+        {{ 'corrective-maintenance-form.cancel' | translate }}
+      </button>
+      <button
+        mat-flat-button
+        type="submit"
+        [disabled]="form.invalid || store.loading() || store.machines().length === 0"
+      >
+        {{ 'corrective-maintenance-form.create' | translate }}
+      </button>
+    </div>
+  </form>
+</section>

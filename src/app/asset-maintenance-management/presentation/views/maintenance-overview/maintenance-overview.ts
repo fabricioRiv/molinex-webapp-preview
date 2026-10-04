@@ -36,17 +36,26 @@ export class MaintenanceOverview {
     const machineId = this.selectedMachineId();
     return machineId ? (this.store.machineMap().get(machineId) ?? null) : null;
   });
-  protected readonly preventiveRecords = computed(() => {
+  protected readonly maintenanceRecords = computed(() => {
     const machineId = this.selectedMachineId();
-    return [...this.store.preventiveMaintenanceRecords()]
+    return [...this.store.maintenanceRecords()]
       .filter((record) => !machineId || record.machineId === machineId)
       .sort((first, second) => second.performedAt.getTime() - first.performedAt.getTime());
   });
+  protected readonly preventiveCount = computed(
+    () => this.maintenanceRecords().filter((record) => record.type === 'PREVENTIVE').length,
+  );
+  protected readonly correctiveCount = computed(
+    () => this.maintenanceRecords().filter((record) => record.type === 'CORRECTIVE').length,
+  );
   protected readonly upcomingCount = computed(
-    () => this.preventiveRecords().filter((record) => this.isUpcoming(record.performedAt)).length,
+    () =>
+      this.maintenanceRecords().filter(
+        (record) => record.type === 'PREVENTIVE' && this.isUpcoming(record.performedAt),
+      ).length,
   );
   protected readonly coveredMachineCount = computed(
-    () => new Set(this.preventiveRecords().map((record) => record.machineId)).size,
+    () => new Set(this.maintenanceRecords().map((record) => record.machineId)).size,
   );
 
   protected isUpcoming(date: Date): boolean {

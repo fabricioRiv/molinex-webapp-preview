@@ -1,4 +1,5 @@
 import { BaseAssembler } from '../../shared/infrastructure/base-assembler';
+import { CorrectiveMaintenanceDetails } from '../domain/model/corrective-maintenance-details';
 import { MaintenanceDescription } from '../domain/model/maintenance-description';
 import { MaintenanceRecord } from '../domain/model/maintenance-record.entity';
 import { TechnicianReference } from '../domain/model/technician-reference';
@@ -28,6 +29,19 @@ export class MaintenanceRecordAssembler implements BaseAssembler<
         resource.responsibleDisplayName,
       ),
       anomalyId: resource.anomalyId,
+      correctiveDetails:
+        resource.type === 'CORRECTIVE' &&
+        resource.failure !== null &&
+        resource.cause !== null &&
+        resource.actionTaken !== null &&
+        resource.downtimeMinutes !== null
+          ? new CorrectiveMaintenanceDetails({
+              failure: resource.failure,
+              cause: resource.cause,
+              actionTaken: resource.actionTaken,
+              downtimeMinutes: resource.downtimeMinutes,
+            })
+          : null,
     });
   }
 
@@ -41,6 +55,10 @@ export class MaintenanceRecordAssembler implements BaseAssembler<
       responsiblePrincipalId: entity.responsible.principalId,
       responsibleDisplayName: entity.responsible.displayName,
       anomalyId: entity.anomalyId,
+      failure: entity.correctiveDetails?.failure ?? null,
+      cause: entity.correctiveDetails?.cause ?? null,
+      actionTaken: entity.correctiveDetails?.actionTaken ?? null,
+      downtimeMinutes: entity.correctiveDetails?.downtimeMinutes ?? null,
     };
   }
 }

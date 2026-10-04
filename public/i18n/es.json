@@ -424,20 +424,22 @@
   "maintenance": {
     "eyebrow": "Gestión de Activos y Mantenimiento",
     "title": "Control de mantenimiento",
-    "description": "Programa actividades preventivas y consulta el historial de mantenimiento de cada máquina.",
+    "description": "Programa actividades preventivas y documenta intervenciones correctivas para cada máquina.",
     "machinery": "Inventario de maquinaria",
     "schedule-preventive": "Programar mantenimiento preventivo",
+    "record-corrective": "Registrar mantenimiento correctivo",
     "loading": "Cargando registros de mantenimiento...",
-    "empty": "No hay mantenimientos preventivos registrados.",
+    "empty": "No hay actividades de mantenimiento registradas.",
     "retry": "Reintentar",
     "metrics": {
       "preventive": "Registros preventivos",
+      "corrective": "Registros correctivos",
       "upcoming": "Actividades próximas",
       "machines": "Máquinas atendidas"
     },
     "history": {
       "eyebrow": "Historial del equipo",
-      "title": "Mantenimiento preventivo",
+      "title": "Historial de mantenimiento",
       "machine-title": "Historial de {{ machine }}",
       "count": "{{ count }} actividades"
     },
@@ -449,6 +451,15 @@
     "statuses": {
       "upcoming": "Programado",
       "completed": "Realizado"
+    },
+    "types": {
+      "corrective": "Correctivo"
+    },
+    "corrective": {
+      "failure": "Falla",
+      "cause": "Causa",
+      "action": "Acción realizada",
+      "downtime": "Tiempo de parada"
     },
     "errors": {
       "load": "No se pudieron cargar los registros de mantenimiento."
@@ -472,6 +483,33 @@
       "responsible": "Ingresa el nombre del técnico responsable.",
       "observations": "Describe la actividad preventiva en un máximo de 500 caracteres.",
       "create": "No se pudo programar el mantenimiento preventivo."
+    }
+  },
+  "corrective-maintenance-form": {
+    "eyebrow": "Gestión de Activos y Mantenimiento",
+    "title": "Registrar mantenimiento correctivo",
+    "description": "Documenta la intervención realizada después de una falla o avería de maquinaria.",
+    "machine": "Máquina afectada",
+    "performed-at": "Fecha y hora de intervención",
+    "responsible": "Técnico responsable",
+    "failure": "Falla detectada",
+    "cause": "Causa identificada",
+    "action": "Acción correctiva realizada",
+    "downtime": "Tiempo de parada",
+    "anomaly": "Identificador de anomalía relacionada",
+    "anomaly-help": "Referencia opcional proveniente de Inteligencia Operativa.",
+    "create": "Registrar mantenimiento correctivo",
+    "cancel": "Cancelar",
+    "errors": {
+      "machine": "Selecciona la máquina afectada.",
+      "unknown-machine": "La máquina seleccionada no está registrada.",
+      "performed-at": "Ingresa la fecha y hora de intervención.",
+      "responsible": "Ingresa el nombre del técnico responsable.",
+      "failure": "Describe la falla detectada.",
+      "cause": "Describe la causa identificada.",
+      "action": "Describe la acción correctiva realizada.",
+      "downtime": "Ingresa un tiempo de parada igual o mayor a cero minutos.",
+      "create": "No se pudo registrar el mantenimiento correctivo."
     }
   },
   "views": {

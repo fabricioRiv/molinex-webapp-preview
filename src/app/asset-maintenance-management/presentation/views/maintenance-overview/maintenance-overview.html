@@ -11,13 +11,21 @@
         <span class="material-symbols-outlined" aria-hidden="true">event</span>
         {{ 'maintenance.schedule-preventive' | translate }}
       </a>
+      <a mat-flat-button routerLink="/assets/maintenance/corrective/new">
+        <span class="material-symbols-outlined" aria-hidden="true">handyman</span>
+        {{ 'maintenance.record-corrective' | translate }}
+      </a>
     </div>
   </header>
 
   <div class="metrics-grid">
     <article class="metric-card">
       <span>{{ 'maintenance.metrics.preventive' | translate }}</span>
-      <strong>{{ preventiveRecords().length }}</strong>
+      <strong>{{ preventiveCount() }}</strong>
+    </article>
+    <article class="metric-card metric-card--corrective">
+      <span>{{ 'maintenance.metrics.corrective' | translate }}</span>
+      <strong>{{ correctiveCount() }}</strong>
     </article>
     <article class="metric-card metric-card--upcoming">
       <span>{{ 'maintenance.metrics.upcoming' | translate }}</span>
@@ -42,7 +50,7 @@
         </h2>
       </div>
       <span>{{
-        'maintenance.history.count' | translate: { count: preventiveRecords().length }
+        'maintenance.history.count' | translate: { count: maintenanceRecords().length }
       }}</span>
     </div>
 
@@ -67,7 +75,7 @@
       }
     </div>
 
-    @if (store.loading() && store.preventiveMaintenanceCount() === 0) {
+    @if (store.loading() && store.maintenanceRecords().length === 0) {
       <div class="state-panel">
         <mat-spinner diameter="36" />{{ 'maintenance.loading' | translate }}
       </div>
@@ -78,21 +86,26 @@
           {{ 'maintenance.retry' | translate }}
         </button>
       </div>
-    } @else if (preventiveRecords().length === 0) {
+    } @else if (maintenanceRecords().length === 0) {
       <div class="state-panel">
         <span class="material-symbols-outlined" aria-hidden="true">event_available</span
         >{{ 'maintenance.empty' | translate }}
       </div>
     } @else {
       <div class="maintenance-timeline">
-        @for (record of preventiveRecords(); track record.id) {
+        @for (record of maintenanceRecords(); track record.id) {
           <article
             class="maintenance-card"
             [class.maintenance-card--upcoming]="isUpcoming(record.performedAt)"
+            [class.maintenance-card--corrective]="record.type === 'CORRECTIVE'"
           >
             <div class="timeline-marker">
               <span class="material-symbols-outlined" aria-hidden="true">{{
-                isUpcoming(record.performedAt) ? 'event_upcoming' : 'task_alt'
+                record.type === 'CORRECTIVE'
+                  ? 'handyman'
+                  : isUpcoming(record.performedAt)
+                    ? 'event_upcoming'
+                    : 'task_alt'
               }}</span>
             </div>
             <div class="maintenance-card__content">
@@ -102,13 +115,36 @@
                   <h3>{{ store.machineMap().get(record.machineId)?.name ?? record.machineId }}</h3>
                 </div>
                 <span class="schedule-badge">{{
-                  (isUpcoming(record.performedAt)
-                    ? 'maintenance.statuses.upcoming'
-                    : 'maintenance.statuses.completed'
+                  (record.type === 'CORRECTIVE'
+                    ? 'maintenance.types.corrective'
+                    : isUpcoming(record.performedAt)
+                      ? 'maintenance.statuses.upcoming'
+                      : 'maintenance.statuses.completed'
                   ) | translate
                 }}</span>
               </header>
-              <p>{{ record.description.value }}</p>
+              @if (record.correctiveDetails; as details) {
+                <dl class="corrective-details">
+                  <div>
+                    <dt>{{ 'maintenance.corrective.failure' | translate }}</dt>
+                    <dd>{{ details.failure }}</dd>
+                  </div>
+                  <div>
+                    <dt>{{ 'maintenance.corrective.cause' | translate }}</dt>
+                    <dd>{{ details.cause }}</dd>
+                  </div>
+                  <div>
+                    <dt>{{ 'maintenance.corrective.action' | translate }}</dt>
+                    <dd>{{ details.actionTaken }}</dd>
+                  </div>
+                  <div>
+                    <dt>{{ 'maintenance.corrective.downtime' | translate }}</dt>
+                    <dd>{{ details.downtimeMinutes }} min</dd>
+                  </div>
+                </dl>
+              } @else {
+                <p>{{ record.description.value }}</p>
+              }
               <footer>
                 <span
                   ><span class="material-symbols-outlined" aria-hidden="true">calendar_month</span
