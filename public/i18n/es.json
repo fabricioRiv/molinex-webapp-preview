@@ -304,6 +304,58 @@
       "create": "No se pudieron registrar los resultados de calidad."
     }
   },
+  "machinery": {
+    "eyebrow": "Gestión de Activos y Mantenimiento",
+    "title": "Inventario de maquinaria",
+    "description": "Consulta los equipos registrados y su condición operativa actual.",
+    "new": "Registrar maquinaria",
+    "search": "Buscar por código, nombre o modelo",
+    "loading": "Cargando maquinaria...",
+    "empty": "No hay maquinaria registrada.",
+    "no-results": "No se encontró maquinaria para la búsqueda.",
+    "retry": "Reintentar",
+    "model": "Modelo",
+    "status-changed-at": "Estado actualizado",
+    "metrics": {
+      "operational": "Operativas",
+      "attention": "Requieren atención",
+      "maintenance": "En mantenimiento",
+      "out-of-service": "Fuera de servicio"
+    },
+    "inventory": {
+      "eyebrow": "Equipos",
+      "title": "Maquinaria registrada"
+    },
+    "statuses": {
+      "OPERATIONAL": "Operativa",
+      "REQUIRES_ATTENTION": "Requiere atención",
+      "UNDER_MAINTENANCE": "En mantenimiento",
+      "OUT_OF_SERVICE": "Fuera de servicio"
+    },
+    "errors": {
+      "load": "No se pudo cargar el inventario de maquinaria."
+    }
+  },
+  "machine-form": {
+    "eyebrow": "Gestión de Activos y Mantenimiento",
+    "title": "Registrar maquinaria",
+    "description": "Agrega una máquina al inventario de equipos del molino.",
+    "code": "Código de maquinaria",
+    "name": "Nombre de maquinaria",
+    "model": "Fabricante y modelo",
+    "status": "Estado operativo",
+    "status-changed-at": "Fecha y hora del estado",
+    "create": "Registrar maquinaria",
+    "cancel": "Cancelar",
+    "errors": {
+      "code": "Ingresa un código de hasta 30 caracteres.",
+      "duplicate-code": "Ya existe una máquina registrada con este código.",
+      "name": "Ingresa un nombre de hasta 100 caracteres.",
+      "model": "Ingresa un fabricante y modelo de hasta 100 caracteres.",
+      "status-changed-at": "Ingresa la fecha y hora del estado.",
+      "create": "No se pudo registrar la maquinaria."
+    }
+  },
   "views": {
     "commercial": {
       "eyebrow": "Relación Comercial",

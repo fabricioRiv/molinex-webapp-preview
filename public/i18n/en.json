@@ -304,6 +304,58 @@
       "create": "The quality results could not be recorded."
     }
   },
+  "machinery": {
+    "eyebrow": "Asset & Maintenance Management",
+    "title": "Machinery inventory",
+    "description": "Review registered equipment and its current operating condition.",
+    "new": "Register machinery",
+    "search": "Search by code, name, or model",
+    "loading": "Loading machinery...",
+    "empty": "No machinery has been registered.",
+    "no-results": "No machinery matches the search.",
+    "retry": "Retry",
+    "model": "Model",
+    "status-changed-at": "Status updated",
+    "metrics": {
+      "operational": "Operational",
+      "attention": "Requires attention",
+      "maintenance": "Under maintenance",
+      "out-of-service": "Out of service"
+    },
+    "inventory": {
+      "eyebrow": "Equipment",
+      "title": "Registered machinery"
+    },
+    "statuses": {
+      "OPERATIONAL": "Operational",
+      "REQUIRES_ATTENTION": "Requires attention",
+      "UNDER_MAINTENANCE": "Under maintenance",
+      "OUT_OF_SERVICE": "Out of service"
+    },
+    "errors": {
+      "load": "The machinery inventory could not be loaded."
+    }
+  },
+  "machine-form": {
+    "eyebrow": "Asset & Maintenance Management",
+    "title": "Register machinery",
+    "description": "Add a machine to the rice mill equipment inventory.",
+    "code": "Machine code",
+    "name": "Machine name",
+    "model": "Manufacturer and model",
+    "status": "Operating status",
+    "status-changed-at": "Status date and time",
+    "create": "Register machinery",
+    "cancel": "Cancel",
+    "errors": {
+      "code": "Enter a machine code of up to 30 characters.",
+      "duplicate-code": "A machine with this code is already registered.",
+      "name": "Enter a machine name of up to 100 characters.",
+      "model": "Enter a manufacturer and model of up to 100 characters.",
+      "status-changed-at": "Enter the status date and time.",
+      "create": "The machinery could not be registered."
+    }
+  },
   "views": {
     "commercial": {
       "eyebrow": "Commercial Engagement",

@@ -118,7 +118,32 @@
     }
   ],
   "waste-records": [],
-  "machines": [],
+  "machines": [
+    {
+      "id": "f893f27c-940b-4be4-9155-e1a4f273cd01",
+      "code": "MOL-CLN-01",
+      "name": "Pre-cleaning unit",
+      "model": "Zaccaria PLZ-2",
+      "status": "OPERATIONAL",
+      "statusChangedAt": "2026-10-03T07:30:00-05:00"
+    },
+    {
+      "id": "9085c5fc-e374-4628-aef9-9e44bd407a25",
+      "code": "MOL-HSK-01",
+      "name": "Rice husker",
+      "model": "Satake THU-35A",
+      "status": "REQUIRES_ATTENTION",
+      "statusChangedAt": "2026-10-03T09:20:00-05:00"
+    },
+    {
+      "id": "a4e65b2e-7747-44d9-9ae3-b82e2cce8995",
+      "code": "MOL-POL-01",
+      "name": "Rice polisher",
+      "model": "Bühler TopWhite II",
+      "status": "UNDER_MAINTENANCE",
+      "statusChangedAt": "2026-10-03T10:10:00-05:00"
+    }
+  ],
   "maintenance-records": [],
   "operational-readings": [],
   "alerts": [],

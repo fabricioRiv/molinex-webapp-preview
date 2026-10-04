@@ -5,5 +5,6 @@ export const environment = {
   productionBatchesEndpointPath: '/production-batches',
   productionRecordsEndpointPath: '/production-records',
   qualityResultsEndpointPath: '/quality-results',
+  machinesEndpointPath: '/machines',
   reportSummariesEndpointPath: '/report-summaries',
 };
