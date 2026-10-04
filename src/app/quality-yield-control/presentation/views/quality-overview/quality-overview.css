@@ -39,6 +39,11 @@
   margin-right: 0.4rem;
 }
 
+.header-actions {
+  display: flex;
+  gap: 0.6rem;
+}
+
 .metrics-grid {
   display: grid;
   gap: 1rem;
@@ -211,8 +216,9 @@
     flex-direction: column;
   }
 
-  .page-header a {
+  .header-actions {
     align-self: flex-start;
+    flex-wrap: wrap;
   }
 
   .metrics-grid,

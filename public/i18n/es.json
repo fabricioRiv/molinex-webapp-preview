@@ -266,6 +266,7 @@
     "title": "Resultados de calidad",
     "description": "Consulta la composición del grano y el rendimiento de cada proceso productivo.",
     "new-assessment": "Registrar resultados",
+    "view-waste": "Merma de producción",
     "loading": "Cargando resultados de calidad...",
     "load-error": "No se pudo cargar la información de calidad.",
     "retry": "Reintentar",
@@ -302,6 +303,68 @@
       "composition": "El grano entero y partido no pueden superar juntos el 100%.",
       "assessed-at": "Ingresa la fecha y hora de evaluación.",
       "create": "No se pudieron registrar los resultados de calidad."
+    }
+  },
+  "waste-overview": {
+    "eyebrow": "Control de Calidad y Rendimiento",
+    "title": "Merma de producción",
+    "description": "Consulta la merma generada por cada proceso productivo y lote.",
+    "back": "Resultados de calidad",
+    "new": "Registrar merma",
+    "loading": "Cargando mermas de producción...",
+    "empty": "No hay mermas de producción registradas.",
+    "no-results": "No hay mermas que coincidan con los filtros seleccionados.",
+    "retry": "Reintentar",
+    "metrics": {
+      "records": "Registros filtrados",
+      "weight": "Merma total",
+      "average": "Merma promedio"
+    },
+    "filters": {
+      "batch": "Lote",
+      "all-batches": "Todos los lotes",
+      "from": "Desde",
+      "to": "Hasta",
+      "clear": "Limpiar filtros"
+    },
+    "records": {
+      "eyebrow": "Trazabilidad",
+      "title": "Registros de merma",
+      "count": "{{ count }} registros",
+      "date": "Fecha",
+      "batch": "Lote",
+      "process": "Proceso productivo",
+      "quantity": "Cantidad",
+      "percentage": "Porcentaje de merma"
+    },
+    "errors": {
+      "load": "No se pudieron cargar las mermas de producción."
+    }
+  },
+  "waste-record-form": {
+    "eyebrow": "Control de Calidad y Rendimiento",
+    "title": "Registrar merma de producción",
+    "description": "Asocia la cantidad descartada con un proceso productivo existente.",
+    "production-process": "Proceso productivo",
+    "batch": "Lote",
+    "processed-weight": "Peso procesado",
+    "quantity": "Cantidad de merma",
+    "unit": "Unidad de medida",
+    "calculated-percentage": "Merma calculada",
+    "percentage-help": "Se calcula a partir del peso procesado.",
+    "recorded-at": "Fecha y hora del registro",
+    "create": "Registrar merma",
+    "cancel": "Cancelar",
+    "units": {
+      "KILOGRAM": "Kilogramos",
+      "METRIC_TON": "Toneladas métricas"
+    },
+    "errors": {
+      "production-process": "Selecciona un proceso productivo.",
+      "quantity": "Ingresa una cantidad mayor que cero.",
+      "exceeds-weight": "La merma no puede superar el peso procesado.",
+      "recorded-at": "Ingresa la fecha y hora del registro.",
+      "create": "No se pudo registrar la merma de producción."
     }
   },
   "machinery": {

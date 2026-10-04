@@ -5,10 +5,16 @@
       <h1>{{ 'quality-overview.title' | translate }}</h1>
       <p>{{ 'quality-overview.description' | translate }}</p>
     </div>
-    <a mat-flat-button routerLink="/quality/assessments/new">
-      <span class="material-symbols-outlined" aria-hidden="true">add</span>
-      {{ 'quality-overview.new-assessment' | translate }}
-    </a>
+    <div class="header-actions">
+      <a mat-button routerLink="/quality/waste">
+        <span class="material-symbols-outlined" aria-hidden="true">delete_sweep</span>
+        {{ 'quality-overview.view-waste' | translate }}
+      </a>
+      <a mat-flat-button routerLink="/quality/assessments/new">
+        <span class="material-symbols-outlined" aria-hidden="true">add</span>
+        {{ 'quality-overview.new-assessment' | translate }}
+      </a>
+    </div>
   </header>
 
   <div class="metrics-grid">
